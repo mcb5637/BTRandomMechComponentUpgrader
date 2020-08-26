@@ -1,0 +1,14 @@
+﻿{
+  "Name": "BTRandomMechComponentUpgrader",
+  "Enabled": true,
+
+  "Description": "",
+  "Author": "mcb",
+  "Website": "https://github.com/mcb5637/BTRandomMechComponentUpgrader",
+
+  "DLL": "BTRandomMechComponentUpgrader.dll",
+
+  "Settings": {
+    "UpgradeListNames": [ "default_extended.json" ]
+  }
+}

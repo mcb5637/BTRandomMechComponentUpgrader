@@ -1,0 +1,1825 @@
+﻿{
+  "Factions": [ "default_all" ],
+  "UpgradePerComponentChance": 0.25,
+  "CanRemove": [ "Gear_HeatSink_Generic_Standard", "Gear_HeatSink_Generic_Double", "Gear_Actuator_Coventry_X55-Standard" ],
+  "RemoveMaxFactor": 0.5,
+  /** upgrading single components.
+  MinDate requires a date to be passed, if not passed next item gets selected.
+  ListLink rerolls the upgrade, possibly upgrading it furher, but this item gets ignored when calculating the upgrade start point.
+  Must be of the same type and using the same ammo (if weapon) **/
+  "Upgrades": [
+    [
+      {
+        "ID": "Weapon_Laser_SmallLaser_0-STOCK",
+        "Weigth": 0
+      },
+      {
+        "ID": "Weapon_Laser_SmallLaser_1-Diverse_Optics",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_Laser_SmallLaser_1-ExoStar",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_Laser_SmallLaser_1-Magna",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_Laser_SmallLaser_2-Diverse_Optics",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_Laser_SmallLaser_2-ExoStar",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_Laser_SmallLaser_2-Intek",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_Laser_SmallLaser_2-Magna",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_Laser_SmallLaserER_NU_0-STOCK",
+        "Weigth": 2,
+        "MinDate": "3050-01-01",
+        "ListLink": true
+      },
+      {
+        "ID": "Weapon_Laser_SmallLaserPulse_NU_0-STOCK",
+        "Weigth": 2,
+        "MinDate": "3050-01-01",
+        "ListLink": true
+      },
+      {
+        "ID": "Weapon_Laser_SmallLaser_3-Intek",
+        "Weigth": 2
+      }
+    ],
+    [
+      {
+        "ID": "Weapon_Laser_SmallLaserER_0-STOCK",
+        "Weigth": 0
+      },
+      {
+        "ID": "Weapon_Laser_SmallLaserER_1-Diverse_Optics",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_Laser_SmallLaserER_2-BlazeFire",
+        "Weigth": 2
+      }
+    ],
+    [
+      {
+        "ID": "Weapon_Laser_SmallLaserER_NU_0-STOCK",
+        "Weigth": 0
+      },
+      {
+        "ID": "Weapon_Laser_SmallLaserER_NU_1-Diverse_Optics",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_Laser_SmallLaserER_NU_1-ExoStar",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_Laser_SmallLaserER_NU_1-Magna",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_Laser_SmallLaserER_NU_2-Diverse_Optics",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_Laser_SmallLaserER_NU_2-ExoStar",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_Laser_SmallLaserER_NU_2-Intek",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_Laser_SmallLaserER_NU_2-Magna",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_Laser_SmallLaserER_NU_3-Intek",
+        "Weigth": 2
+      }
+    ],
+    [
+      {
+        "ID": "Weapon_Laser_SmallLaserPulse_Sa_0-STOCK",
+        "Weigth": 0
+      },
+      {
+        "ID": "Weapon_Laser_SmallLaserPulse_0-STOCK",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_Laser_SmallLaserPulse_1-Maxell",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_Laser_SmallLaserPulse_2-Magna200P",
+        "Weigth": 2
+      }
+    ],
+    [
+      {
+        "ID": "Weapon_Laser_SmallLaserPulse_NU_0-STOCK",
+        "Weigth": 0
+      },
+      {
+        "ID": "Weapon_Laser_SmallLaserPulse_NU_1-Diverse_Optics",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_Laser_SmallLaserPulse_NU_1-ExoStar",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_Laser_SmallLaserPulse_NU_1-Magna",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_Laser_SmallLaserPulse_NU_2-Diverse_Optics",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_Laser_SmallLaserPulse_NU_2-ExoStar",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_Laser_SmallLaserPulse_NU_2-Intek",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_Laser_SmallLaserPulse_NU_3-Intek",
+        "Weigth": 2
+      }
+    ],
+    [
+      {
+        "ID": "Weapon_Laser_MediumLaser_-1-Agra",
+        "Weigth": 0
+      },
+      {
+        "ID": "Weapon_Laser_MediumLaser_0-STOCK",
+        "Weigth": 0
+      },
+      {
+        "ID": "Weapon_Laser_MediumLaser_1-ExoStar",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_Laser_MediumLaser_1-Intek",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_Laser_MediumLaser_1-Magna",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_Laser_MediumLaser_2-Diverse_Optics",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_Laser_MediumLaser_2-ExoStar",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_Laser_MediumLaser_2-Intek",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_Laser_MediumLaser_2-Magna",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_Laser_MediumLaserER_NU_0-STOCK",
+        "Weigth": 2,
+        "MinDate": "3050-01-01",
+        "ListLink": true
+      },
+      {
+        "ID": "Weapon_Laser_MediumLaserPulse_NU_0-STOCK",
+        "Weigth": 2,
+        "MinDate": "3050-01-01",
+        "ListLink": true
+      },
+      {
+        "ID": "Weapon_Laser_MediumLaser_3-Diverse_Optics",
+        "Weigth": 2
+      }
+    ],
+    [
+      {
+        "ID": "Weapon_Laser_MediumLaserER_0-STOCK",
+        "Weigth": 0
+      },
+      {
+        "ID": "Weapon_Laser_MediumLaserER_1-MagnaVI",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_Laser_MediumLaserER_2-BrightBloom",
+        "Weigth": 2
+      }
+    ],
+    [
+      {
+        "ID": "Weapon_Laser_MediumLaserER_NU_0-STOCK",
+        "Weigth": 0
+      },
+      {
+        "ID": "Weapon_Laser_MediumLaserER_NU_1-ExoStar",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_Laser_MediumLaserER_NU_1-Intek",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_Laser_MediumLaserER_NU_1-Magna",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_Laser_MediumLaserER_NU_2-Diverse_Optics",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_Laser_MediumLaserER_NU_2-ExoStar",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_Laser_MediumLaserER_NU_2-Intek",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_Laser_MediumLaserER_NU_2-Magna",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_Laser_MediumLaserER_NU_3-Diverse_Optics",
+        "Weigth": 2
+      }
+    ],
+    [
+      {
+        "ID": "Weapon_Laser_MediumLaserPulse_Sa_0-STOCK",
+        "Weigth": 0
+      },
+      {
+        "ID": "Weapon_Laser_MediumLaserPulse_0-STOCK",
+        "Weigth": 0
+      },
+      {
+        "ID": "Weapon_Laser_MediumLaserPulse_1-RakerIV",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_Laser_MediumLaserPulse_2-Magna400P",
+        "Weigth": 2
+      }
+    ],
+    [
+      {
+        "ID": "Weapon_Laser_MediumLaserPulse_NU_0-STOCK",
+        "Weigth": 0
+      },
+      {
+        "ID": "Weapon_Laser_MediumLaserPulse_NU_1-ExoStar",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_Laser_MediumLaserPulse_NU_1-Intek",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_Laser_MediumLaserPulse_NU_1-Magna",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_Laser_MediumLaserPulse_NU_2-Diverse_Optics",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_Laser_MediumLaserPulse_NU_2-ExoStar",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_Laser_MediumLaserPulse_NU_2-Intek",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_Laser_MediumLaserPulse_NU_2-Magna",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_Laser_MediumLaserPulse_NU_3-Diverse_Optics",
+        "Weigth": 2
+      }
+    ],
+    [
+      {
+        "ID": "Weapon_TAG_Standard_0-STOCK",
+        "Weigth": 0
+      },
+      {
+        "ID": "Weapon_TAG_Standard_1-Mendham",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_TAG_Standard_2-Ceres_Arms",
+        "Weigth": 2
+      }
+    ],
+    [
+      {
+        "ID": "Weapon_Laser_LargeLaser_-1-Tronel",
+        "Weigth": 0
+      },
+      {
+        "ID": "Weapon_Laser_LargeLaser_0-STOCK",
+        "Weigth": 0
+      },
+      {
+        "ID": "Weapon_Laser_LargeLaser_1-Diverse_Optics",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_Laser_LargeLaser_1-ExoStar",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_Laser_LargeLaser_1-Intek",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_Laser_LargeLaser_2-Diverse_Optics",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_Laser_LargeLaser_2-ExoStar",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_Laser_LargeLaser_2-Intek",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_Laser_LargeLaser_2-Magna",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_Laser_LargeLaserER_NU_0-STOCK",
+        "Weigth": 2,
+        "MinDate": "3050-01-01",
+        "ListLink": true
+      },
+      {
+        "ID": "Weapon_Laser_LargeLaserPulse_NU_0-STOCK",
+        "Weigth": 2,
+        "MinDate": "3050-01-01",
+        "ListLink": true
+      },
+      {
+        "ID": "Weapon_Laser_LargeLaser_3-Magna",
+        "Weigth": 2
+      }
+    ],
+    [
+      {
+        "ID": "Weapon_Laser_LargeLaserER_0-STOCK",
+        "Weigth": 0
+      },
+      {
+        "ID": "Weapon_Laser_LargeLaserER_1-Blankenburg25",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_Laser_LargeLaserER_2-BlazeFire",
+        "Weigth": 2
+      }
+    ],
+    [
+      {
+        "ID": "Weapon_Laser_LargeLaserER_NU_0-STOCK",
+        "Weigth": 0
+      },
+      {
+        "ID": "Weapon_Laser_LargeLaserER_NU_1-Diverse_Optics",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_Laser_LargeLaserER_NU_1-ExoStar",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_Laser_LargeLaserER_NU_1-Intek",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_Laser_LargeLaserER_NU_2-Diverse_Optics",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_Laser_LargeLaserER_NU_2-ExoStar",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_Laser_LargeLaserER_NU_2-Intek",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_Laser_LargeLaserER_NU_2-Magna",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_Laser_LargeLaserER_NU_3-Magna",
+        "Weigth": 2
+      }
+    ],
+    [
+      {
+        "ID": "Weapon_Laser_LargeLaserPulse_Sa_0-STOCK",
+        "Weigth": 0
+      },
+      {
+        "ID": "Weapon_Laser_LargeLaserPulse_0-STOCK",
+        "Weigth": 0
+      },
+      {
+        "ID": "Weapon_Laser_LargeLaserPulse_1-Thunderbolt12",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_Laser_LargeLaserPulse_2-Exostar",
+        "Weigth": 2
+      }
+    ],
+    [
+      {
+        "ID": "Weapon_Laser_LargeLaserPulse_NU_0-STOCK",
+        "Weigth": 0
+      },
+      {
+        "ID": "Weapon_Laser_LargeLaserPulse_NU_1-Diverse_Optics",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_Laser_LargeLaserPulse_NU_1-ExoStar",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_Laser_LargeLaserPulse_NU_1-Intek",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_Laser_LargeLaserPulse_NU_2-Diverse_Optics",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_Laser_LargeLaserPulse_NU_2-ExoStar",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_Laser_LargeLaserPulse_NU_2-Intek",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_Laser_LargeLaserPulse_NU_2-Magna",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_Laser_LargeLaserPulse_NU_3-Magna",
+        "Weigth": 2
+      }
+    ],
+    [
+      {
+        "ID": "Weapon_Laser_BinaryLaserCannon_0-STOCK",
+        "Weigth": 0
+      },
+      {
+        "ID": "Weapon_Laser_BinaryLaserCannon_1-Defiance",
+        "Weigth": 2
+      }
+    ],
+    [
+      {
+        "ID": "Weapon_PPC_PPC_-1-Magna",
+        "Weigth": 0
+      },
+      {
+        "ID": "Weapon_PPC_PPC_0-STOCK",
+        "Weigth": 0
+      },
+      {
+        "ID": "Weapon_PPC_PPC_1-Ceres_Arms",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_PPC_PPC_1-Donal",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_PPC_PPC_1-Tiegart",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_PPC_PPC_2-Ceres_Arms",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_PPC_PPC_2-Donal",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_PPC_PPCER_NU_0-STOCK",
+        "Weigth": 2,
+        "MinDate": "3050-01-01",
+        "ListLink": true
+      },
+      {
+        "ID": "Weapon_PPC_PPCSnub_0-STOCK",
+        "Weigth": 2,
+        "MinDate": "3050-01-01",
+        "ListLink": true
+      },
+      {
+        "ID": "Weapon_PPC_PPC_2-Tiegart",
+        "Weigth": 2
+      }
+    ],
+    [
+      {
+        "ID": "Weapon_PPC_PPCER_Sa_0-STOCK",
+        "Weigth": 0
+      },
+      {
+        "ID": "Weapon_PPC_PPCER_0-STOCK",
+        "Weigth": 0
+      },
+      {
+        "ID": "Weapon_PPC_PPCER_1-MagnaFirestar",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_PPC_PPCER_2-TiegartMagnum",
+        "Weigth": 2
+      }
+    ],
+    [
+      {
+        "ID": "Weapon_PPC_PPCER_NU_0-STOCK",
+        "Weigth": 0
+      },
+      {
+        "ID": "Weapon_PPC_PPCER_NU_1-Ceres_Arms",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_PPC_PPCER_NU_1-Donal",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_PPC_PPCER_NU_1-Tiegart",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_PPC_PPCER_NU_2-Ceres_Arms",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_PPC_PPCER_NU_2-Donal",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_PPC_PPCER_NU_2-Tiegart",
+        "Weigth": 2
+      }
+    ],
+    [
+      {
+        "ID": "Weapon_PPC_PPCSnub_0-STOCK",
+        "Weigth": 0
+      },
+      {
+        "ID": "Weapon_PPC_PPCSnub_1-Ceres_Arms",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_PPC_PPCSnub_1-Donal",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_PPC_PPCSnub_1-Donal",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_PPC_PPCSnub_1-Magna",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_PPC_PPCSnub_2-Ceres_Arms",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_PPC_PPCSnub_2-Donal",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_PPC_PPCSnub_2-Magna",
+        "Weigth": 2
+      }
+    ],
+    [
+      {
+        "ID": "Weapon_Flamer_Flamer_0-STOCK",
+        "Weigth": 0
+      },
+      {
+        "ID": "Weapon_Flamer_Flamer_1-Hotshot",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_Flamer_Flamer_2-Olympus",
+        "Weigth": 2
+      }
+    ],
+    [
+      {
+        "ID": "Weapon_MachineGun_MachineGun_0-STOCK",
+        "Weigth": 0
+      },
+      {
+        "ID": "Weapon_MachineGun_MachineGun_1-Brigadier",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_MachineGun_MachineGun_1-VMI",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_MachineGun_MachineGun_2-Brigadier",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_MachineGun_MachineGun_2-VMI",
+        "Weigth": 2
+      }
+    ],
+    [
+      {
+        "ID": "Weapon_Autocannon_AC2_0-STOCK",
+        "Weigth": 0
+      },
+      {
+        "ID": "Weapon_Autocannon_AC2_1-Defiance",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_Autocannon_AC2_1-Federated",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_Autocannon_AC2_1-Kali_Yama",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_Autocannon_AC2_1-Mydron",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_Autocannon_AC2_2-Defiance",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_Autocannon_AC2_2-Federated",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_Autocannon_AC2_2-Imperator",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_Autocannon_AC2_2-Kali_Yama",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_Autocannon_AC2_2-Mydron",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_Autocannon_LB2X_0-STOCK",
+        "Weigth": 2,
+        "MinDate": "3050-01-01",
+        "ListLink": true,
+        "UpgradeAll": true,
+        "SwapAmmoFrom": "Ammo_AmmunitionBox_Generic_AC2",
+        "SwapAmmoTo": "Ammo_AmmunitionBox_Generic_LB2X"
+      },
+      {
+        "ID": "Weapon_Autocannon_UAC2_0-STOCK",
+        "Weigth": 2,
+        "MinDate": "3050-01-01",
+        "ListLink": true
+      },
+      {
+        "ID": "Weapon_Autocannon_AC2_3-Imperator",
+        "Weigth": 2
+      }
+    ],
+    [
+      {
+        "ID": "Weapon_Autocannon_LB2X_0-STOCK",
+        "Weigth": 0
+      },
+      {
+        "ID": "Weapon_Autocannon_LB2X_1-Defiance",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_Autocannon_LB2X_2-Defiance",
+        "Weigth": 2
+      }
+    ],
+    [
+      {
+        "ID": "Weapon_Autocannon_UAC2_0-STOCK",
+        "Weigth": 0
+      },
+      {
+        "ID": "Weapon_Autocannon_UAC2_1-Imperator",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_Autocannon_UAC2_2-Imperator",
+        "Weigth": 2
+      }
+    ],
+    [
+      {
+        "ID": "Weapon_Autocannon_AC5_0-STOCK",
+        "Weigth": 0
+      },
+      {
+        "ID": "Weapon_Autocannon_AC5_1-Defiance",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_Autocannon_AC5_1-Federated",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_Autocannon_AC5_1-Imperator",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_Autocannon_AC5_1-Kali_Yama",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_Autocannon_AC5_2-Defiance",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_Autocannon_AC5_2-Federated",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_Autocannon_AC5_2-Imperator",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_Autocannon_AC5_2-Kali_Yama",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_Autocannon_AC5_2-Mydron",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_Autocannon_LB5X_0-STOCK",
+        "Weigth": 2,
+        "MinDate": "3050-01-01",
+        "ListLink": true,
+        "UpgradeAll": true,
+        "SwapAmmoFrom": "Ammo_AmmunitionBox_Generic_AC5",
+        "SwapAmmoTo": "Ammo_AmmunitionBox_Generic_LB5X"
+      },
+      {
+        "ID": "Weapon_Autocannon_UAC5_NU_0-STOCK",
+        "Weigth": 2,
+        "MinDate": "3050-01-01",
+        "ListLink": true
+      },
+      {
+        "ID": "Weapon_Autocannon_AC5_3-Mydron",
+        "Weigth": 2
+      }
+    ],
+    [
+      {
+        "ID": "Weapon_Autocannon_LB5X_0-STOCK",
+        "Weigth": 0
+      },
+      {
+        "ID": "Weapon_Autocannon_LB5X_1-GM",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_Autocannon_LB5X_2-GM",
+        "Weigth": 2
+      }
+    ],
+    [
+      {
+        "ID": "Weapon_Autocannon_UAC5_Sa_0-STOCK",
+        "Weigth": 0
+      },
+      {
+        "ID": "Weapon_Autocannon_UAC5_0-STOCK",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_Autocannon_UAC5_1-Mydron",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_Autocannon_UAC5_2-Mydron",
+        "Weigth": 2
+      }
+    ],
+    [
+      {
+        "ID": "Weapon_Autocannon_UAC5_NU_0-STOCK",
+        "Weigth": 0
+      },
+      {
+        "ID": "Weapon_Autocannon_UAC5_NU_1-Defiance",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_Autocannon_UAC5_NU_1-Federated",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_Autocannon_UAC5_NU_1-Imperator",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_Autocannon_UAC5_NU_1-Kali_Yama",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_Autocannon_UAC5_NU_2-Defiance",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_Autocannon_UAC5_NU_2-Federated",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_Autocannon_UAC5_NU_2-Imperator",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_Autocannon_UAC5_NU_2-Kali_Yama",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_Autocannon_UAC5_NU_2-Mydron",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_Autocannon_UAC5_NU_3-Mydron",
+        "Weigth": 2
+      }
+    ],
+    [
+      {
+        "ID": "Weapon_Autocannon_AC10_0-STOCK",
+        "Weigth": 0
+      },
+      {
+        "ID": "Weapon_Autocannon_AC10_1-Defiance",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_Autocannon_AC10_1-Imperator",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_Autocannon_AC10_1-Kali_Yama",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_Autocannon_AC10_1-Mydron",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_Autocannon_AC10_2-Defiance",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_Autocannon_AC10_2-Federated",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_Autocannon_AC10_2-Imperator",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_Autocannon_AC10_2-Kali_Yama",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_Autocannon_AC10_2-Mydron",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_Autocannon_LB10X_NU_0-STOCK",
+        "Weigth": 2,
+        "MinDate": "3050-01-01",
+        "ListLink": true,
+        "UpgradeAll": true,
+        "SwapAmmoFrom": "Ammo_AmmunitionBox_Generic_AC10",
+        "SwapAmmoTo": "Ammo_AmmunitionBox_Generic_LB10X"
+      },
+      {
+        "ID": "Weapon_Autocannon_UAC10_0-STOCK",
+        "Weigth": 2,
+        "MinDate": "3050-01-01",
+        "ListLink": true
+      },
+      {
+        "ID": "Weapon_Autocannon_AC10_3-Federated",
+        "Weigth": 2
+      }
+    ],
+    [
+      {
+        "ID": "Weapon_Autocannon_LB10X_Sa_0-STOCK",
+        "Weigth": 0
+      },
+      {
+        "ID": "Weapon_Autocannon_LB10X_0-STOCK",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_Autocannon_LB10X_1-Western",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_Autocannon_LB10X_2-Western",
+        "Weigth": 2
+      }
+    ],
+    [
+      {
+        "ID": "Weapon_Autocannon_LB10X_NU_0-STOCK",
+        "Weigth": 0
+      },
+      {
+        "ID": "Weapon_Autocannon_LB10X_NU_1-Defiance",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_Autocannon_LB10X_NU_1-Imperator",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_Autocannon_LB10X_NU_1-Kali_Yama",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_Autocannon_LB10X_NU_1-Mydron",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_Autocannon_LB10X_NU_2-Defiance",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_Autocannon_LB10X_NU_2-Federated",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_Autocannon_LB10X_NU_2-Imperator",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_Autocannon_LB10X_NU_2-Kali_Yama",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_Autocannon_LB10X_NU_2-Mydron",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_Autocannon_LB10X_NU_3-Federated",
+        "Weigth": 2
+      }
+    ],
+    [
+      {
+        "ID": "Weapon_Autocannon_UAC10_0-STOCK",
+        "Weigth": 0
+      },
+      {
+        "ID": "Weapon_Autocannon_UAC10_1-Federated",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_Autocannon_UAC10_2-Federated",
+        "Weigth": 2
+      }
+    ],
+    [
+      {
+        "ID": "Weapon_Autocannon_AC20_0-STOCK",
+        "Weigth": 0
+      },
+      {
+        "ID": "Weapon_Autocannon_AC20_1-Defiance",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_Autocannon_AC20_1-Federated",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_Autocannon_AC20_1-Imperator",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_Autocannon_AC20_1-Mydron",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_Autocannon_AC20_2-Defiance",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_Autocannon_AC20_2-Federated",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_Autocannon_AC20_2-Imperator",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_Autocannon_AC20_2-Kali_Yama",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_Autocannon_AC20_2-Mydron",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_Autocannon_LB20X_0-STOCK",
+        "Weigth": 2,
+        "MinDate": "3050-01-01",
+        "ListLink": true,
+        "UpgradeAll": true,
+        "SwapAmmoFrom": "Ammo_AmmunitionBox_Generic_AC20",
+        "SwapAmmoTo": "Ammo_AmmunitionBox_Generic_LB20X"
+      },
+      {
+        "ID": "Weapon_Autocannon_UAC20_0-STOCK",
+        "Weigth": 2,
+        "MinDate": "3050-01-01",
+        "ListLink": true
+      },
+      {
+        "ID": "Weapon_Autocannon_AC20_3-Kali_Yama",
+        "Weigth": 2
+      }
+    ],
+    [
+      {
+        "ID": "Weapon_Autocannon_LB20X_0-STOCK",
+        "Weigth": 0
+      },
+      {
+        "ID": "Weapon_Autocannon_LB20X_1-Shengli_Arms",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_Autocannon_LB20X_2-Shengli_Arms",
+        "Weigth": 2
+      }
+    ],
+    [
+      {
+        "ID": "Weapon_Autocannon_UAC20_0-STOCK",
+        "Weigth": 0
+      },
+      {
+        "ID": "Weapon_Autocannon_UAC20_1-Kali_Yama",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_Autocannon_UAC20_2-Kali_Yama",
+        "Weigth": 2
+      }
+    ],
+    [
+      {
+        "ID": "Weapon_Gauss_Gauss_Sa_0-STOCK",
+        "Weigth": 0
+      },
+      {
+        "ID": "Weapon_Gauss_Gauss_0-STOCK",
+        "Weigth": 0
+      },
+      {
+        "ID": "Weapon_Gauss_Gauss_1-M7",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_Gauss_Gauss_2-M9",
+        "Weigth": 2
+      }
+    ],
+    [
+      {
+        "ID": "Weapon_Gauss_Gauss_NU_0-STOCK",
+        "Weigth": 0
+      },
+      {
+        "ID": "Weapon_Gauss_Gauss_NU_1-Defiance",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_Gauss_Gauss_NU_1-Imperator",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_Gauss_Gauss_NU_1-Kali_Yama",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_Gauss_Gauss_NU_2-Defiance",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_Gauss_Gauss_NU_2-Imperator",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_Gauss_Gauss_NU_2-Kali_Yama",
+        "Weigth": 2
+      }
+    ],
+    [
+      {
+        "ID": "Weapon_SRM_SRM2_0-STOCK",
+        "Weigth": 0
+      },
+      {
+        "ID": "Weapon_SRM_SRM2_1-Holly",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_SRM_SRM2_1-Irian",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_SRM_SRM2_2-Holly",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_SRM_SRM2_2-Irian",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_SRM_SRM2_2-Valiant",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_SRM_SRM2_3-Valiant",
+        "Weigth": 2
+      }
+    ],
+    [
+      {
+        "ID": "Weapon_Inferno_Inferno2_0-STOCK",
+        "Weigth": 0
+      },
+      {
+        "ID": "Weapon_Inferno_Inferno2_1-Harvester",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_Inferno_Inferno2_2-Marklin_Mini",
+        "Weigth": 2
+      }
+    ],
+    [
+      {
+        "ID": "Weapon_Narc_Standard_0-STOCK",
+        "Weigth": 0
+      },
+      {
+        "ID": "Weapon_Narc_Standard_1-Ceres_Arms",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_Narc_Standard_2-Kali_Yama",
+        "Weigth": 2
+      }
+    ],
+    [
+      {
+        "ID": "Weapon_SRM_ASRM2_0-STOCK",
+        "Weigth": 0
+      },
+      {
+        "ID": "Weapon_SRM_ASRM2_1-Holly",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_SRM_ASRM2_1-Irian",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_SRM_ASRM2_2-Holly",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_SRM_ASRM2_2-Irian",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_SRM_ASRM2_2-Valiant",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_SRM_ASRM2_3-Valiant",
+        "Weigth": 2
+      }
+    ],
+    [
+      {
+        "ID": "Weapon_SRM_SSRM2_0-STOCK",
+        "Weigth": 0
+      },
+      {
+        "ID": "Weapon_SRM_SSRM2_1-Holly",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_SRM_SSRM2_1-Irian",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_SRM_SSRM2_2-Holly",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_SRM_SSRM2_2-Irian",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_SRM_SSRM2_2-Valiant",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_SRM_SSRM2_3-Valiant",
+        "Weigth": 2
+      }
+    ],
+    [
+      {
+        "ID": "Weapon_SRM_SRM4_0-STOCK",
+        "Weigth": 0
+      },
+      {
+        "ID": "Weapon_SRM_SRM4_1-Holly",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_SRM_SRM4_1-Irian",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_SRM_SRM4_2-Holly",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_SRM_SRM4_2-Irian",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_SRM_SRM4_2-Valiant",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_SRM_SRM4_3-Valiant",
+        "Weigth": 2
+      }
+    ],
+    [
+      {
+        "ID": "Weapon_SRM_ASRM4_0-STOCK",
+        "Weigth": 0
+      },
+      {
+        "ID": "Weapon_SRM_ASRM4_1-Holly",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_SRM_ASRM4_1-Irian",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_SRM_ASRM4_2-Holly",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_SRM_ASRM4_2-Irian",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_SRM_ASRM4_2-Valiant",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_SRM_ASRM4_3-Valiant",
+        "Weigth": 2
+      }
+    ],
+    [
+      {
+        "ID": "Weapon_SRM_SRM6_0-STOCK",
+        "Weigth": 0
+      },
+      {
+        "ID": "Weapon_SRM_SRM6_1-Holly",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_SRM_SRM6_1-Irian",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_SRM_SRM6_2-Holly",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_SRM_SRM6_2-Irian",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_SRM_SRM6_2-Valiant",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_SRM_SRM6_3-Valiant",
+        "Weigth": 2
+      }
+    ],
+    [
+      {
+        "ID": "Weapon_SRM_ASRM6_0-STOCK",
+        "Weigth": 0
+      },
+      {
+        "ID": "Weapon_SRM_ASRM6_1-Holly",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_SRM_ASRM6_1-Irian",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_SRM_ASRM6_2-Holly",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_SRM_ASRM6_2-Irian",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_SRM_ASRM6_2-Valiant",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_SRM_ASRM6_3-Valiant",
+        "Weigth": 2
+      }
+    ],
+    [
+      {
+        "ID": "Weapon_LRM_LRM5_0-STOCK",
+        "Weigth": 0
+      },
+      {
+        "ID": "Weapon_LRM_LRM5_1-Delta",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_LRM_LRM5_1-LongFire",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_LRM_LRM5_1-Telos",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_LRM_LRM5_2-Delta",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_LRM_LRM5_2-LongFire",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_LRM_LRM5_2-Telos",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_LRM_LRM5_2-Zeus",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_LRM_LRM5_3-Zeus",
+        "Weigth": 2
+      }
+    ],
+    [
+      {
+        "ID": "Weapon_LRM_ALRM5_0-STOCK",
+        "Weigth": 0
+      },
+      {
+        "ID": "Weapon_LRM_ALRM5_1-Delta",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_LRM_ALRM5_1-LongFire",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_LRM_ALRM5_1-Telos",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_LRM_ALRM5_2-Delta",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_LRM_ALRM5_2-LongFire",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_LRM_ALRM5_2-Telos",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_LRM_ALRM5_2-Zeus",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_LRM_ALRM5_3-Zeus",
+        "Weigth": 2
+      }
+    ],
+    [
+      {
+        "ID": "Weapon_LRM_LRM10_0-STOCK",
+        "Weigth": 0
+      },
+      {
+        "ID": "Weapon_LRM_LRM10_1-Delta",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_LRM_LRM10_1-LongFire",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_LRM_LRM10_1-Telos",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_LRM_LRM10_2-Delta",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_LRM_LRM10_2-LongFire",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_LRM_LRM10_2-Telos",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_LRM_LRM10_2-Zeus",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_LRM_LRM10_3-Zeus",
+        "Weigth": 2
+      }
+    ],
+    [
+      {
+        "ID": "Weapon_LRM_ALRM10_0-STOCK",
+        "Weigth": 0
+      },
+      {
+        "ID": "Weapon_LRM_ALRM10_1-Delta",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_LRM_ALRM10_1-LongFire",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_LRM_ALRM10_1-Telos",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_LRM_ALRM10_2-Delta",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_LRM_ALRM10_2-LongFire",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_LRM_ALRM10_2-Telos",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_LRM_ALRM10_2-Zeus",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_LRM_ALRM10_3-Zeus",
+        "Weigth": 2
+      }
+    ],
+    [
+      {
+        "ID": "Weapon_LRM_LRM15_0-STOCK",
+        "Weigth": 0
+      },
+      {
+        "ID": "Weapon_LRM_LRM15_1-Delta",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_LRM_LRM15_1-LongFire",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_LRM_LRM15_1-Telos",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_LRM_LRM15_2-Delta",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_LRM_LRM15_2-LongFire",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_LRM_LRM15_2-Telos",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_LRM_LRM15_2-Zeus",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_LRM_LRM15_3-Zeus",
+        "Weigth": 2
+      }
+    ],
+    [
+      {
+        "ID": "Weapon_LRM_ALRM15_0-STOCK",
+        "Weigth": 0
+      },
+      {
+        "ID": "Weapon_LRM_ALRM15_1-Delta",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_LRM_ALRM15_1-LongFire",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_LRM_ALRM15_1-Telos",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_LRM_ALRM15_2-Delta",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_LRM_ALRM15_2-LongFire",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_LRM_ALRM15_2-Telos",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_LRM_ALRM15_2-Zeus",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_LRM_ALRM15_3-Zeus",
+        "Weigth": 2
+      }
+    ],
+    [
+      {
+        "ID": "Weapon_LRM_LRM20_0-STOCK",
+        "Weigth": 0
+      },
+      {
+        "ID": "Weapon_LRM_LRM20_1-Delta",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_LRM_LRM20_1-LongFire",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_LRM_LRM20_1-Telos",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_LRM_LRM20_2-Delta",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_LRM_LRM20_2-LongFire",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_LRM_LRM20_2-Telos",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_LRM_LRM20_2-Zeus",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_LRM_LRM20_3-Zeus",
+        "Weigth": 2
+      }
+    ],
+    [
+      {
+        "ID": "Weapon_LRM_ALRM20_0-STOCK",
+        "Weigth": 0
+      },
+      {
+        "ID": "Weapon_LRM_ALRM20_1-Delta",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_LRM_ALRM20_1-LongFire",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_LRM_ALRM20_1-Telos",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_LRM_ALRM20_2-Delta",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_LRM_ALRM20_2-LongFire",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_LRM_ALRM20_2-Telos",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_LRM_ALRM20_2-Zeus",
+        "Weigth": 2
+      },
+      {
+        "ID": "Weapon_LRM_ALRM20_3-Zeus",
+        "Weigth": 2
+      }
+    ],
+    [
+      {
+        "ID": "Gear_HeatSink_Generic_Standard",
+        "Weigth": 0
+      },
+      {
+        "ID": "Gear_HeatSink_Generic_Double",
+        "Weigth": 2,
+        "MinDate": "3050-01-01"
+      }
+    ]
+  ],
+  "Additions": [
+    [
+      {
+        "ID": "Gear_Cockpit_Ceres_Metals_Braced",
+        "Weigth": 2
+      },
+      {
+        "ID": "Gear_Cockpit_Ceres_Metals_Hardened",
+        "Weigth": 2
+      },
+      {
+        "ID": "Gear_Cockpit_Ceres_Metals_Reinforced",
+        "Weigth": 2
+      },
+      {
+        "ID": "Gear_Cockpit_Majesty_M_M_60KL",
+        "Weigth": 2
+      },
+      {
+        "ID": "Gear_Cockpit_Majesty_M_M_120KL",
+        "Weigth": 2
+      },
+      {
+        "ID": "Gear_Cockpit_Majesty_M_M_180KL",
+        "Weigth": 2
+      },
+      {
+        "ID": "Gear_Cockpit_Majesty_M_M_MagestrixAlpha",
+        "Weigth": 2
+      },
+      {
+        "ID": "Gear_Cockpit_StarCorps_Improved",
+        "Weigth": 2
+      },
+      {
+        "ID": "Gear_Cockpit_StarCorps_Enhanced",
+        "Weigth": 2
+      },
+      {
+        "ID": "Gear_Cockpit_StarCorps_Advanced",
+        "Weigth": 2
+      },
+      {
+        "ID": "Gear_Cockpit_StarCorps_Dalban",
+        "Weigth": 2
+      }
+    ],
+    [
+      {
+        "ID": "Gear_Gyro_Coventry_Mark-75",
+        "Weigth": 2
+      },
+      {
+        "ID": "Gear_Gyro_Coventry_Mark-85",
+        "Weigth": 2
+      },
+      {
+        "ID": "Gear_Gyro_Coventry_Mark-95",
+        "Weigth": 2
+      },
+      {
+        "ID": "Gear_Gyro_Friedhof_Osprey",
+        "Weigth": 2
+      },
+      {
+        "ID": "Gear_Gyro_Friedhof_Kite",
+        "Weigth": 2
+      },
+      {
+        "ID": "Gear_Gyro_Friedhof_Sparrow",
+        "Weigth": 2
+      },
+      {
+        "ID": "Gear_Gyro_Rawlings_StabiliTrak-5",
+        "Weigth": 2
+      },
+      {
+        "ID": "Gear_Gyro_Rawlings_StabiliTrak-10",
+        "Weigth": 2
+      },
+      {
+        "ID": "Gear_Gyro_Rawlings_StabiliTrak-15",
+        "Weigth": 2
+      },
+      {
+        "ID": "Gear_Gyro_Hermes_Equilibrium",
+        "Weigth": 2
+      }
+    ]
+  ]
+}
