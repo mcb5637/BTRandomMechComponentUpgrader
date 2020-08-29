@@ -1,0 +1,38 @@
+﻿[
+  {
+    "ID": "Weapon_LRM_ALRM15_0-STOCK",
+    "Weigth": 0
+  },
+  {
+    "ID": "Weapon_LRM_ALRM15_1-Delta",
+    "Weigth": 2
+  },
+  {
+    "ID": "Weapon_LRM_ALRM15_1-LongFire",
+    "Weigth": 2
+  },
+  {
+    "ID": "Weapon_LRM_ALRM15_1-Telos",
+    "Weigth": 2
+  },
+  {
+    "ID": "Weapon_LRM_ALRM15_2-Delta",
+    "Weigth": 2
+  },
+  {
+    "ID": "Weapon_LRM_ALRM15_2-LongFire",
+    "Weigth": 2
+  },
+  {
+    "ID": "Weapon_LRM_ALRM15_2-Telos",
+    "Weigth": 2
+  },
+  {
+    "ID": "Weapon_LRM_ALRM15_2-Zeus",
+    "Weigth": 2
+  },
+  {
+    "ID": "Weapon_LRM_ALRM15_3-Zeus",
+    "Weigth": 2
+  }
+]

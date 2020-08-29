@@ -9,12 +9,15 @@ namespace BTRandomMechComponentUpgrader
 {
     class BTRandomMechComponentUpgrader_UpgradeList
     {
-        public UpgradeEntry[][] Upgrades = new UpgradeEntry[][] { };
+        public UpgradeEntry[][] Upgrades = null;
         public string[] Factions = new string[] { };
         public float UpgradePerComponentChance = 0.5f;
         public string[] CanRemove = new string[] { };
         public float RemoveMaxFactor = 0.5f;
-        public UpgradeEntry[][] Additions = new UpgradeEntry[][] { };
+        public UpgradeEntry[][] Additions = null;
+        public bool AllowDowngrade = false;
+        public string[] LoadUpgrades = new string[] { };
+        public string[] LoadAdditions = new string[] { };
 
 
         public void CalculateLimits()
@@ -53,7 +56,7 @@ namespace BTRandomMechComponentUpgrader
                 {
                     if (u.ID.Equals(comp) && !u.ListLink)
                     {
-                        minr = u.RandomLimit;
+                        minr = (u.AllowDowngrade || this.AllowDowngrade) ? 0 : u.RandomLimit;
                         return list;
                     }
                 }
@@ -101,6 +104,7 @@ namespace BTRandomMechComponentUpgrader
             public bool UpgradeAll = false;
             public string SwapAmmoFrom = null;
             public string SwapAmmoTo = null;
+            public bool AllowDowngrade = false;
         }
     }
 }

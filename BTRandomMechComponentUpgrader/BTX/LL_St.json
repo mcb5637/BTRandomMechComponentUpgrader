@@ -1,0 +1,54 @@
+﻿[
+  {
+    "ID": "Weapon_Laser_LargeLaser_-1-Tronel",
+    "Weigth": 0
+  },
+  {
+    "ID": "Weapon_Laser_LargeLaser_0-STOCK",
+    "Weigth": 0
+  },
+  {
+    "ID": "Weapon_Laser_LargeLaser_1-Diverse_Optics",
+    "Weigth": 2
+  },
+  {
+    "ID": "Weapon_Laser_LargeLaser_1-ExoStar",
+    "Weigth": 2
+  },
+  {
+    "ID": "Weapon_Laser_LargeLaser_1-Intek",
+    "Weigth": 2
+  },
+  {
+    "ID": "Weapon_Laser_LargeLaser_2-Diverse_Optics",
+    "Weigth": 2
+  },
+  {
+    "ID": "Weapon_Laser_LargeLaser_2-ExoStar",
+    "Weigth": 2
+  },
+  {
+    "ID": "Weapon_Laser_LargeLaser_2-Intek",
+    "Weigth": 2
+  },
+  {
+    "ID": "Weapon_Laser_LargeLaser_2-Magna",
+    "Weigth": 2
+  },
+  {
+    "ID": "Weapon_Laser_LargeLaserER_NU_0-STOCK",
+    "Weigth": 2,
+    "MinDate": "3050-01-01",
+    "ListLink": true
+  },
+  {
+    "ID": "Weapon_Laser_LargeLaserPulse_NU_0-STOCK",
+    "Weigth": 2,
+    "MinDate": "3050-01-01",
+    "ListLink": true
+  },
+  {
+    "ID": "Weapon_Laser_LargeLaser_3-Magna",
+    "Weigth": 2
+  }
+]

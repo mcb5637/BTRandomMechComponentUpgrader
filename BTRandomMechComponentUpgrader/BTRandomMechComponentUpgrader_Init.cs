@@ -24,6 +24,7 @@ namespace BTRandomMechComponentUpgrader
                 for (int i = 0; i < Sett.UpgradeListNames.Length; i++)
                 {
                     Sett.UpgradeLists[i] = LoadUList(Sett.UpgradeListNames[i], directory);
+                    LoadListComponents(Sett.UpgradeLists[i], directory);
                     Sett.UpgradeLists[i].CalculateLimits();
                 }
             }
@@ -37,11 +38,44 @@ namespace BTRandomMechComponentUpgrader
             harmony.PatchAll(Assembly.GetExecutingAssembly());
         }
 
+        private static void LoadListComponents(BTRandomMechComponentUpgrader_UpgradeList li, string directory)
+        {
+            if (li.LoadUpgrades.Length > 0)
+            {
+                if (li.Upgrades == null)
+                    li.Upgrades = new BTRandomMechComponentUpgrader_UpgradeList.UpgradeEntry[li.LoadUpgrades.Length][];
+                for (int j = 0; j < li.LoadUpgrades.Length; j++)
+                {
+                    string name = li.LoadUpgrades[j];
+                    if (name != null)
+                        li.Upgrades[j] = LoadCList(name, directory);
+                }
+            }
+            if (li.LoadAdditions.Length > 0)
+            {
+                if (li.Additions == null)
+                    li.Additions = new BTRandomMechComponentUpgrader_UpgradeList.UpgradeEntry[li.LoadAdditions.Length][];
+                for (int j = 0; j < li.LoadAdditions.Length; j++)
+                {
+                    string name = li.LoadAdditions[j];
+                    if (name != null)
+                        li.Additions[j] = LoadCList(name, directory);
+                }
+            }
+        }
+
         public static BTRandomMechComponentUpgrader_UpgradeList LoadUList(string name, string dir)
         {
             string path = Path.Combine(dir, name);
             string file = File.ReadAllText(path);
             return JsonConvert.DeserializeObject<BTRandomMechComponentUpgrader_UpgradeList>(file);
+        }
+
+        public static BTRandomMechComponentUpgrader_UpgradeList.UpgradeEntry[] LoadCList(string name, string dir)
+        {
+            string path = Path.Combine(dir, name);
+            string file = File.ReadAllText(path);
+            return JsonConvert.DeserializeObject<BTRandomMechComponentUpgrader_UpgradeList.UpgradeEntry[]>(file);
         }
     }
 }
