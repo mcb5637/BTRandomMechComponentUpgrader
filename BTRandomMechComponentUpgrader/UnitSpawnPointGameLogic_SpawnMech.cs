@@ -18,9 +18,11 @@ namespace BTRandomMechComponentUpgrader
             ChassisLocations.RightArm, ChassisLocations.RightLeg, ChassisLocations.RightTorso,
             ChassisLocations.LeftArm, ChassisLocations.LeftLeg, ChassisLocations.LeftTorso};
 
-        public static void Prefix(ref MechDef mDef, Team team)
+        public static void Prefix(UnitSpawnPointGameLogic __instance, ref MechDef mDef, Team team)
         {
-            SimGameState s = UnityGameInstance.BattleTechGame.Simulation;
+            SimGameState s = __instance.Combat.BattleTechGame.Simulation;
+            if (s == null)
+                return;
             if (s.DataManager.MechDefs.TryGet(mDef.Description.Id, out MechDef m))
             {
                 if (mDef == m) // if its a player mech, it is a different mechdef than in the datamanager
