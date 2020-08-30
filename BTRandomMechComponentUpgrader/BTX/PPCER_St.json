@@ -1,18 +1,18 @@
 ﻿[
   {
     "ID": "Weapon_PPC_PPCER_Sa_0-STOCK",
-    "Weigth": 0
+    "Weight": 0
   },
   {
     "ID": "Weapon_PPC_PPCER_0-STOCK",
-    "Weigth": 0
+    "Weight": 0
   },
   {
     "ID": "Weapon_PPC_PPCER_1-MagnaFirestar",
-    "Weigth": 2
+    "Weight": 2
   },
   {
     "ID": "Weapon_PPC_PPCER_2-TiegartMagnum",
-    "Weigth": 2
+    "Weight": 2
   }
 ]

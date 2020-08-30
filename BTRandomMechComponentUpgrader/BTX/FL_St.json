@@ -1,14 +1,14 @@
 ﻿[
   {
     "ID": "Weapon_Flamer_Flamer_0-STOCK",
-    "Weigth": 0
+    "Weight": 0
   },
   {
     "ID": "Weapon_Flamer_Flamer_1-Hotshot",
-    "Weigth": 2
+    "Weight": 2
   },
   {
     "ID": "Weapon_Flamer_Flamer_2-Olympus",
-    "Weigth": 2
+    "Weight": 2
   }
 ]

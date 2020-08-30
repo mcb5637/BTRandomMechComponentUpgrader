@@ -1,18 +1,18 @@
 ﻿[
   {
     "ID": "Weapon_Autocannon_LB10X_Sa_0-STOCK",
-    "Weigth": 0
+    "Weight": 0
   },
   {
     "ID": "Weapon_Autocannon_LB10X_0-STOCK",
-    "Weigth": 2
+    "Weight": 2
   },
   {
     "ID": "Weapon_Autocannon_LB10X_1-Western",
-    "Weigth": 2
+    "Weight": 2
   },
   {
     "ID": "Weapon_Autocannon_LB10X_2-Western",
-    "Weigth": 2
+    "Weight": 2
   }
 ]

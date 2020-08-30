@@ -1,14 +1,14 @@
 ﻿[
 	{
 		"ID": "Weapon_Laser_SmallLaserER_0-STOCK",
-		"Weigth": 0
+		"Weight": 0
 	},
 	{
 		"ID": "Weapon_Laser_SmallLaserER_1-Diverse_Optics",
-		"Weigth": 2
+		"Weight": 2
 	},
 	{
 		"ID": "Weapon_Laser_SmallLaserER_2-BlazeFire",
-		"Weigth": 2
+		"Weight": 2
 	}
 ]

@@ -1,54 +1,54 @@
 ﻿[
   {
     "ID": "Weapon_Laser_MediumLaser_-1-Agra",
-    "Weigth": 0
+    "Weight": 0
   },
   {
     "ID": "Weapon_Laser_MediumLaser_0-STOCK",
-    "Weigth": 0
+    "Weight": 0
   },
   {
     "ID": "Weapon_Laser_MediumLaser_1-ExoStar",
-    "Weigth": 2
+    "Weight": 2
   },
   {
     "ID": "Weapon_Laser_MediumLaser_1-Intek",
-    "Weigth": 2
+    "Weight": 2
   },
   {
     "ID": "Weapon_Laser_MediumLaser_1-Magna",
-    "Weigth": 2
+    "Weight": 2
   },
   {
     "ID": "Weapon_Laser_MediumLaser_2-Diverse_Optics",
-    "Weigth": 2
+    "Weight": 2
   },
   {
     "ID": "Weapon_Laser_MediumLaser_2-ExoStar",
-    "Weigth": 2
+    "Weight": 2
   },
   {
     "ID": "Weapon_Laser_MediumLaser_2-Intek",
-    "Weigth": 2
+    "Weight": 2
   },
   {
     "ID": "Weapon_Laser_MediumLaser_2-Magna",
-    "Weigth": 2
+    "Weight": 2
   },
   {
     "ID": "Weapon_Laser_MediumLaserER_NU_0-STOCK",
-    "Weigth": 2,
+    "Weight": 2,
     "MinDate": "3050-01-01",
     "ListLink": true
   },
   {
     "ID": "Weapon_Laser_MediumLaserPulse_NU_0-STOCK",
-    "Weigth": 2,
+    "Weight": 2,
     "MinDate": "3050-01-01",
     "ListLink": true
   },
   {
     "ID": "Weapon_Laser_MediumLaser_3-Diverse_Optics",
-    "Weigth": 2
+    "Weight": 2
   }
 ]

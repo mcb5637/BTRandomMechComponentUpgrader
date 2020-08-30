@@ -1,14 +1,14 @@
 ﻿[
   {
     "ID": "Weapon_Inferno_Inferno2_0-STOCK",
-    "Weigth": 0
+    "Weight": 0
   },
   {
     "ID": "Weapon_Inferno_Inferno2_1-Harvester",
-    "Weigth": 2
+    "Weight": 2
   },
   {
     "ID": "Weapon_Inferno_Inferno2_2-Marklin_Mini",
-    "Weigth": 2
+    "Weight": 2
   }
 ]

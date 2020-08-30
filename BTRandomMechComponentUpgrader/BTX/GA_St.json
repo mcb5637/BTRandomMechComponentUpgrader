@@ -1,18 +1,18 @@
 ﻿[
   {
     "ID": "Weapon_Gauss_Gauss_Sa_0-STOCK",
-    "Weigth": 0
+    "Weight": 0
   },
   {
     "ID": "Weapon_Gauss_Gauss_0-STOCK",
-    "Weigth": 0
+    "Weight": 0
   },
   {
     "ID": "Weapon_Gauss_Gauss_1-M7",
-    "Weigth": 2
+    "Weight": 2
   },
   {
     "ID": "Weapon_Gauss_Gauss_2-M9",
-    "Weigth": 2
+    "Weight": 2
   }
 ]

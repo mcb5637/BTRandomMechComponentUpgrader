@@ -1,46 +1,46 @@
 ﻿[
   {
     "ID": "Gear_Cockpit_Ceres_Metals_Braced",
-    "Weigth": 2
+    "Weight": 2
   },
   {
     "ID": "Gear_Cockpit_Ceres_Metals_Hardened",
-    "Weigth": 2
+    "Weight": 2
   },
   {
     "ID": "Gear_Cockpit_Ceres_Metals_Reinforced",
-    "Weigth": 2
+    "Weight": 2
   },
   {
     "ID": "Gear_Cockpit_Majesty_M_M_60KL",
-    "Weigth": 2
+    "Weight": 2
   },
   {
     "ID": "Gear_Cockpit_Majesty_M_M_120KL",
-    "Weigth": 2
+    "Weight": 2
   },
   {
     "ID": "Gear_Cockpit_Majesty_M_M_180KL",
-    "Weigth": 2
+    "Weight": 2
   },
   {
     "ID": "Gear_Cockpit_Majesty_M_M_MagestrixAlpha",
-    "Weigth": 2
+    "Weight": 2
   },
   {
     "ID": "Gear_Cockpit_StarCorps_Improved",
-    "Weigth": 2
+    "Weight": 2
   },
   {
     "ID": "Gear_Cockpit_StarCorps_Enhanced",
-    "Weigth": 2
+    "Weight": 2
   },
   {
     "ID": "Gear_Cockpit_StarCorps_Advanced",
-    "Weigth": 2
+    "Weight": 2
   },
   {
     "ID": "Gear_Cockpit_StarCorps_Dalban",
-    "Weigth": 2
+    "Weight": 2
   }
 ]

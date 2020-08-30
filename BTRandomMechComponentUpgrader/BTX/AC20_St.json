@@ -1,47 +1,47 @@
 ﻿[
   {
     "ID": "Weapon_Autocannon_AC20_0-STOCK",
-    "Weigth": 0
+    "Weight": 0
   },
   {
     "ID": "Weapon_Autocannon_AC20_1-Defiance",
-    "Weigth": 2
+    "Weight": 2
   },
   {
     "ID": "Weapon_Autocannon_AC20_1-Federated",
-    "Weigth": 2
+    "Weight": 2
   },
   {
     "ID": "Weapon_Autocannon_AC20_1-Imperator",
-    "Weigth": 2
+    "Weight": 2
   },
   {
     "ID": "Weapon_Autocannon_AC20_1-Mydron",
-    "Weigth": 2
+    "Weight": 2
   },
   {
     "ID": "Weapon_Autocannon_AC20_2-Defiance",
-    "Weigth": 2
+    "Weight": 2
   },
   {
     "ID": "Weapon_Autocannon_AC20_2-Federated",
-    "Weigth": 2
+    "Weight": 2
   },
   {
     "ID": "Weapon_Autocannon_AC20_2-Imperator",
-    "Weigth": 2
+    "Weight": 2
   },
   {
     "ID": "Weapon_Autocannon_AC20_2-Kali_Yama",
-    "Weigth": 2
+    "Weight": 2
   },
   {
     "ID": "Weapon_Autocannon_AC20_2-Mydron",
-    "Weigth": 2
+    "Weight": 2
   },
   {
     "ID": "Weapon_Autocannon_LB20X_0-STOCK",
-    "Weigth": 2,
+    "Weight": 2,
     "MinDate": "3050-01-01",
     "ListLink": true,
     "UpgradeAll": true,
@@ -50,12 +50,12 @@
   },
   {
     "ID": "Weapon_Autocannon_UAC20_0-STOCK",
-    "Weigth": 2,
+    "Weight": 2,
     "MinDate": "3050-01-01",
     "ListLink": true
   },
   {
     "ID": "Weapon_Autocannon_AC20_3-Kali_Yama",
-    "Weigth": 2
+    "Weight": 2
   }
 ]

@@ -1,11 +1,11 @@
 ﻿[
   {
     "ID": "Gear_HeatSink_Generic_Standard",
-    "Weigth": 0
+    "Weight": 0
   },
   {
     "ID": "Gear_HeatSink_Generic_Double",
-    "Weigth": 2,
+    "Weight": 2,
     "MinDate": "3050-01-01"
   }
 ]

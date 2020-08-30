@@ -1,38 +1,38 @@
 ﻿[
   {
     "ID": "Weapon_Laser_LargeLaserER_NU_0-STOCK",
-    "Weigth": 0
+    "Weight": 0
   },
   {
     "ID": "Weapon_Laser_LargeLaserER_NU_1-Diverse_Optics",
-    "Weigth": 2
+    "Weight": 2
   },
   {
     "ID": "Weapon_Laser_LargeLaserER_NU_1-ExoStar",
-    "Weigth": 2
+    "Weight": 2
   },
   {
     "ID": "Weapon_Laser_LargeLaserER_NU_1-Intek",
-    "Weigth": 2
+    "Weight": 2
   },
   {
     "ID": "Weapon_Laser_LargeLaserER_NU_2-Diverse_Optics",
-    "Weigth": 2
+    "Weight": 2
   },
   {
     "ID": "Weapon_Laser_LargeLaserER_NU_2-ExoStar",
-    "Weigth": 2
+    "Weight": 2
   },
   {
     "ID": "Weapon_Laser_LargeLaserER_NU_2-Intek",
-    "Weigth": 2
+    "Weight": 2
   },
   {
     "ID": "Weapon_Laser_LargeLaserER_NU_2-Magna",
-    "Weigth": 2
+    "Weight": 2
   },
   {
     "ID": "Weapon_Laser_LargeLaserER_NU_3-Magna",
-    "Weigth": 2
+    "Weight": 2
   }
 ]

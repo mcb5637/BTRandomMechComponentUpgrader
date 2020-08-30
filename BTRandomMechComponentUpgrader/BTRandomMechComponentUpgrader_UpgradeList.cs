@@ -34,11 +34,11 @@ namespace BTRandomMechComponentUpgrader
 
         private static void CalculateLimit(UpgradeEntry[] ut)
         {
-            float cw = ut.Sum((u) => u.Weigth);
+            float cw = ut.Sum((u) => u.Weight);
             float last = 0;
             foreach (UpgradeEntry u in ut)
             {
-                last += u.Weigth / cw;
+                last += u.Weight / cw;
                 u.RandomLimit = last;
             }
         }
@@ -97,7 +97,7 @@ namespace BTRandomMechComponentUpgrader
         public class UpgradeEntry
         {
             public string ID = null;
-            public int Weigth = 0;
+            public int Weight = 0;
             public float RandomLimit = 0;
             public DateTime MinDate = DateTime.MinValue;
             public bool ListLink = false;

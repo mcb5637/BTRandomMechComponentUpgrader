@@ -1,30 +1,30 @@
 ﻿[
   {
     "ID": "Weapon_SRM_SRM4_0-STOCK",
-    "Weigth": 0
+    "Weight": 0
   },
   {
     "ID": "Weapon_SRM_SRM4_1-Holly",
-    "Weigth": 2
+    "Weight": 2
   },
   {
     "ID": "Weapon_SRM_SRM4_1-Irian",
-    "Weigth": 2
+    "Weight": 2
   },
   {
     "ID": "Weapon_SRM_SRM4_2-Holly",
-    "Weigth": 2
+    "Weight": 2
   },
   {
     "ID": "Weapon_SRM_SRM4_2-Irian",
-    "Weigth": 2
+    "Weight": 2
   },
   {
     "ID": "Weapon_SRM_SRM4_2-Valiant",
-    "Weigth": 2
+    "Weight": 2
   },
   {
     "ID": "Weapon_SRM_SRM4_3-Valiant",
-    "Weigth": 2
+    "Weight": 2
   }
 ]
