@@ -1,0 +1,22 @@
+﻿[
+  {
+    "ID": "Weapon_MachineGun_MachineGun_0-STOCK",
+    "Weight": 0
+  },
+  {
+    "ID": "Weapon_MachineGun_MachineGun_1-Brigadier",
+    "Weight": 2
+  },
+  {
+    "ID": "Weapon_MachineGun_MachineGun_1-VMI",
+    "Weight": 2
+  },
+  {
+    "ID": "Weapon_MachineGun_MachineGun_2-Brigadier",
+    "Weight": 2
+  },
+  {
+    "ID": "Weapon_MachineGun_MachineGun_2-VMI",
+    "Weight": 2
+  }
+]

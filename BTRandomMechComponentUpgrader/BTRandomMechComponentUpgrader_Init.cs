@@ -1,5 +1,6 @@
 ﻿using BattleTech;
 using Harmony;
+using HBS.Logging;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -14,9 +15,11 @@ namespace BTRandomMechComponentUpgrader
     class BTRandomMechComponentUpgrader_Init
     {
         public static BTRandomMechComponentUpgrader_Settings Sett;
+        public static ILog Log;
 
         public static void Init(string directory, string settingsJSON)
         {
+            Log = Logger.GetLogger("BTRandomMechComponentUpgrader");
             try
             {
                 Sett = JsonConvert.DeserializeObject<BTRandomMechComponentUpgrader_Settings>(settingsJSON);
@@ -31,10 +34,9 @@ namespace BTRandomMechComponentUpgrader
             catch (Exception e)
             {
                 Sett = new BTRandomMechComponentUpgrader_Settings();
-                FileLog.Log(e.Message);
-                FileLog.Log(e.StackTrace);
+                Log.LogException(e);
             }
-            var harmony = HarmonyInstance.Create("com.github.mcb5637.BTRandomMechComponentUpgrader");
+            HarmonyInstance harmony = HarmonyInstance.Create("com.github.mcb5637.BTRandomMechComponentUpgrader");
             harmony.PatchAll(Assembly.GetExecutingAssembly());
         }
 

@@ -1,0 +1,30 @@
+﻿[
+  {
+    "ID": "Weapon_PPC_PPCSnub_0-STOCK",
+    "Weight": 0
+  },
+  {
+    "ID": "Weapon_PPC_PPCSnub_1-Ceres_Arms",
+    "Weight": 2
+  },
+  {
+    "ID": "Weapon_PPC_PPCSnub_1-Donal",
+    "Weight": 2
+  },
+  {
+    "ID": "Weapon_PPC_PPCSnub_1-Magna",
+    "Weight": 2
+  },
+  {
+    "ID": "Weapon_PPC_PPCSnub_2-Ceres_Arms",
+    "Weight": 2
+  },
+  {
+    "ID": "Weapon_PPC_PPCSnub_2-Donal",
+    "Weight": 2
+  },
+  {
+    "ID": "Weapon_PPC_PPCSnub_2-Magna",
+    "Weight": 2
+  }
+]

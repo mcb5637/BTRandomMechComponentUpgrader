@@ -31,7 +31,7 @@ namespace BTRandomMechComponentUpgrader
                     if (ulist == null)
                         return;
 
-                    FileLog.Log($"upgrading {mDef.Description.Name} {mDef.Chassis.VariantName}");
+                    BTRandomMechComponentUpgrader_Init.Log.Log($"upgrading {mDef.Description.Name} {mDef.Chassis.VariantName}");
 
                     mDef = new MechDef(mDef); // dont break mechdefs in datamanager
 
@@ -51,12 +51,12 @@ namespace BTRandomMechComponentUpgrader
                     CorrectTonnage(mDef, s, ulist, inv);
 
                     mDef.SetInventory(inv.ToArray());
-                    FileLog.Log("finished, inv dump:");
+                    BTRandomMechComponentUpgrader_Init.Log.Log("finished, inv dump:");
                     foreach (MechComponentRef r in mDef.Inventory)
                     {
-                        FileLog.Log($"inventory {r.ComponentDefID} at {r.MountedLocation} {r.HardpointSlot}");
+                        BTRandomMechComponentUpgrader_Init.Log.Log($"inventory {r.ComponentDefID} at {r.MountedLocation} {r.HardpointSlot}");
                     }
-                    FileLog.Log("done");
+                    BTRandomMechComponentUpgrader_Init.Log.Log("done");
 
                     if (!ValidateMech(mDef, s))
                         mDef = m;
@@ -86,7 +86,7 @@ namespace BTRandomMechComponentUpgrader
                         }
                         if (loc == ChassisLocations.None)
                             continue;
-                        FileLog.Log($"adding {sel} into {loc}");
+                        BTRandomMechComponentUpgrader_Init.Log.Log($"adding {sel} into {loc}");
                         MechComponentRef r = new MechComponentRef(sel, null, d.ComponentType, loc, -1, ComponentDamageLevel.Functional, false);
                         r.SetComponentDef(d);
                         inv.Add(r);
@@ -105,10 +105,10 @@ namespace BTRandomMechComponentUpgrader
                 int i = inv.FindIndex((x) => ulist.CanRemove.Contains(x.ComponentDefID));
                 if (i == -1)
                 {
-                    FileLog.Log("no removable found");
+                    BTRandomMechComponentUpgrader_Init.Log.Log("no removable found");
                     break;
                 }
-                FileLog.Log($"removed {inv[i].ComponentDefID} to reduce weight");
+                BTRandomMechComponentUpgrader_Init.Log.Log($"removed {inv[i].ComponentDefID} to reduce weight");
                 tonnage -= inv[i].Def.Tonnage;
                 inv.RemoveAt(i);
             }
@@ -138,15 +138,15 @@ namespace BTRandomMechComponentUpgrader
                 }
                 if (loc == ChassisLocations.None)
                 {
-                    FileLog.Log("no free location found!");
+                    BTRandomMechComponentUpgrader_Init.Log.Log("no free location found!");
                     break;
                 }
                 MechComponentRef r = new MechComponentRef(d.Description.Id, null, d.ComponentType, loc, -1, ComponentDamageLevel.Functional, false);
                 r.SetComponentDef(d);
                 inv.Add(r);
-                FileLog.Log($"added {r.ComponentDefID} to use free weight");
+                BTRandomMechComponentUpgrader_Init.Log.Log($"added {r.ComponentDefID} to use free weight");
             }
-            FileLog.Log($"final weight: {tonnage}/{mDef.Chassis.Tonnage}");
+            BTRandomMechComponentUpgrader_Init.Log.Log($"final weight: {tonnage}/{mDef.Chassis.Tonnage}");
         }
 
         private static void CheckUpgrades(MechDef mDef, SimGameState s, BTRandomMechComponentUpgrader_UpgradeList ulist, ref float canFreeTonns)
@@ -160,14 +160,14 @@ namespace BTRandomMechComponentUpgrader
                 }
                 catch (Exception e)
                 {
-                    FileLog.Log(e.Message);
-                    FileLog.Log(e.StackTrace);
+                    BTRandomMechComponentUpgrader_Init.Log.LogException(e);
                 }
             }
         }
 
         public static BTRandomMechComponentUpgrader_UpgradeList GetUpgradeList(Team team)
         {
+            BTRandomMechComponentUpgrader_Init.Log.Log($"using team {team.FactionValue}");
             foreach (BTRandomMechComponentUpgrader_UpgradeList l in BTRandomMechComponentUpgrader_Init.Sett.UpgradeLists)
             {
                 if (l.DoesApplyToFaction(team.FactionValue.ToString()))
@@ -196,11 +196,11 @@ namespace BTRandomMechComponentUpgrader
                     if (repeat <= -2)
                         repeat = -1;
                     repeatResults[le] = repeat;
-                    FileLog.Log($"changing {r.ComponentDefID} -> {sel}");
+                    BTRandomMechComponentUpgrader_Init.Log.Log($"changing {r.ComponentDefID} -> {sel}");
                     MechComponentDef d = GetComponentDefFromID(s, sel);
                     if (!CanUpgrade(r, d, canFreeTonns, mech, r.MountedLocation))
                     {
-                        FileLog.Log("cannot upgrade");
+                        BTRandomMechComponentUpgrader_Init.Log.Log("cannot upgrade");
                         return;
                     }
                     DoUpgrade(r, d, ref canFreeTonns);
@@ -211,7 +211,7 @@ namespace BTRandomMechComponentUpgrader
                         {
                             if (re.ComponentDefID.Equals(swapAmmoFrom))
                             {
-                                FileLog.Log($"changing ammo {re.ComponentDefID} -> {swapAmmoTo}");
+                                BTRandomMechComponentUpgrader_Init.Log.Log($"changing ammo {re.ComponentDefID} -> {swapAmmoTo}");
                                 DoUpgrade(re, am, ref canFreeTonns);
                             }
                         }
@@ -220,7 +220,7 @@ namespace BTRandomMechComponentUpgrader
                         CheckForAndPerformUpgrade(r, s, l, ref canFreeTonns, mech, repeatResults);
                 }
                 else
-                    FileLog.Log($"found no upgrade for {r.ComponentDefID}");
+                    BTRandomMechComponentUpgrader_Init.Log.Log($"found no upgrade for {r.ComponentDefID}");
             }
         }
 
@@ -287,7 +287,7 @@ namespace BTRandomMechComponentUpgrader
             {
                 foreach (Text t in kv.Value)
                 {
-                    FileLog.Log($"validation error: {t}");
+                    BTRandomMechComponentUpgrader_Init.Log.Log($"validation error: {t}");
                     r = false;
                 }
             }
