@@ -1,0 +1,18 @@
+﻿[
+  {
+    "ID": "Weapon_Autocannon_UAC5_Sa_0-STOCK",
+    "Weight": 0
+  },
+  {
+    "ID": "Weapon_Autocannon_UAC5_0-STOCK",
+    "Weight": 15
+  },
+  {
+    "ID": "Weapon_Autocannon_UAC5_1-Mydron",
+    "Weight": 10
+  },
+  {
+    "ID": "Weapon_Autocannon_UAC5_2-Mydron",
+    "Weight": 5
+  }
+]

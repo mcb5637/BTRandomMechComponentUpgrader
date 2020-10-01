@@ -1,0 +1,34 @@
+﻿[
+  {
+    "ID": "Weapon_Laser_SmallLaserPulse_NU_0-STOCK",
+    "Weight": 24
+  },
+  {
+    "ID": "Weapon_Laser_SmallLaserPulse_NU_1-Diverse_Optics",
+    "Weight": 16
+  },
+  {
+    "ID": "Weapon_Laser_SmallLaserPulse_NU_1-ExoStar",
+    "Weight": 16
+  },
+  {
+    "ID": "Weapon_Laser_SmallLaserPulse_NU_1-Magna",
+    "Weight": 16
+  },
+  {
+    "ID": "Weapon_Laser_SmallLaserPulse_NU_2-Diverse_Optics",
+    "Weight": 8
+  },
+  {
+    "ID": "Weapon_Laser_SmallLaserPulse_NU_2-ExoStar",
+    "Weight": 8
+  },
+  {
+    "ID": "Weapon_Laser_SmallLaserPulse_NU_2-Intek",
+    "Weight": 8
+  },
+  {
+    "ID": "Weapon_Laser_SmallLaserPulse_NU_3-Intek",
+    "Weight": 4
+  }
+]

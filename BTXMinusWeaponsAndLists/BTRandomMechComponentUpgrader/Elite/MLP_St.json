@@ -1,0 +1,18 @@
+﻿[
+  {
+    "ID": "Weapon_Laser_MediumLaserPulse_Sa_0-STOCK",
+    "Weight": 0
+  },
+  {
+    "ID": "Weapon_Laser_MediumLaserPulse_0-STOCK",
+    "Weight": 25
+  },
+  {
+    "ID": "Weapon_Laser_MediumLaserPulse_1-RakerIV",
+    "Weight": 50
+  },
+  {
+    "ID": "Weapon_Laser_MediumLaserPulse_2-Magna400P",
+    "Weight": 25
+  }
+]

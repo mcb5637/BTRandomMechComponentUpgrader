@@ -1,0 +1,15 @@
+﻿{
+  "Name": "BTXMinusWeapons",
+  "Enabled": true,
+
+  "Description": "",
+  "Author": "RJPhoenix & mcb",
+  "Website": "https://github.com/mcb5637/BTRandomMechComponentUpgrader",
+  "Version": "0.9",
+
+  "DependsOn": [ "BTRandomMechComponentUpgrader", "BT_Extended" ],
+  
+  "Manifest": [
+    { "Type": "WeaponDef", "Path": "weapons" }
+  ]
+}

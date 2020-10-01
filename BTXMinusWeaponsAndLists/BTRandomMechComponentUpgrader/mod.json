@@ -5,15 +5,14 @@
   "Description": "",
   "Author": "mcb",
   "Website": "https://github.com/mcb5637/BTRandomMechComponentUpgrader",
-  "Version": "0.9",
+  "Version": "1.0",
 
   "DLL": "BTRandomMechComponentUpgrader.dll",
+  
+  "DependsOn": [ "BT_Extended" ],
 
   "Settings": {
     /* load upgrade lists from here. default lists for vanilla and BTX are included */
-    "UpgradeListNames": [ "default_vanilla.json" ]
-    /*
-    "UpgradeListNames": [ "default_extended.json" ]
-    */
+    "UpgradeListNames": [ "list_elite.json", "list_house.json", "list_periphery.json", "default_extendedm.json" ]
   }
 }

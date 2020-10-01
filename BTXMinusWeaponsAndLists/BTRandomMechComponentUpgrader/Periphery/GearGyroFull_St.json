@@ -1,0 +1,46 @@
+﻿[
+  {
+    "ID": "",
+    "Weight": 70
+  },
+  {
+    "ID": "Gear_Gyro_Coventry_Mark-75",
+    "Weight": 4
+  },
+  {
+    "ID": "Gear_Gyro_Coventry_Mark-85",
+    "Weight": 2
+  },
+  {
+    "ID": "Gear_Gyro_Coventry_Mark-95",
+    "Weight": 1
+  },
+  {
+    "ID": "Gear_Gyro_Friedhof_Osprey",
+    "Weight": 4
+  },
+  {
+    "ID": "Gear_Gyro_Friedhof_Kite",
+    "Weight": 2
+  },
+  {
+    "ID": "Gear_Gyro_Friedhof_Sparrow",
+    "Weight": 1
+  },
+  {
+    "ID": "Gear_Gyro_Rawlings_StabiliTrak-5",
+    "Weight": 4
+  },
+  {
+    "ID": "Gear_Gyro_Rawlings_StabiliTrak-10",
+    "Weight": 4
+  },
+  {
+    "ID": "Gear_Gyro_Rawlings_StabiliTrak-15",
+    "Weight": 4
+  },
+  {
+    "ID": "Gear_Gyro_Hermes_Equilibrium",
+    "Weight": 4
+  }
+]

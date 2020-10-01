@@ -1,0 +1,30 @@
+﻿[
+  {
+    "ID": "Weapon_PPC_PPCER_NU_0-STOCK",
+    "Weight": 55
+  },
+  {
+    "ID": "Weapon_PPC_PPCER_NU_1-Ceres_Arms",
+    "Weight": 10
+  },
+  {
+    "ID": "Weapon_PPC_PPCER_NU_1-Donal",
+    "Weight": 10
+  },
+  {
+    "ID": "Weapon_PPC_PPCER_NU_1-Tiegart",
+    "Weight": 10
+  },
+  {
+    "ID": "Weapon_PPC_PPCER_NU_2-Ceres_Arms",
+    "Weight": 5
+  },
+  {
+    "ID": "Weapon_PPC_PPCER_NU_2-Donal",
+    "Weight": 5
+  },
+  {
+    "ID": "Weapon_PPC_PPCER_NU_2-Tiegart",
+    "Weight": 5
+  }
+]

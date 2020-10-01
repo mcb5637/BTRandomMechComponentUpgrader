@@ -1,0 +1,80 @@
+﻿{
+  /** determine factions this list is for. first list that matches a faction gets used (the same order as you load them in the settings. **/
+  "Factions": [ "Ives", "SteelBeast", "SianTriumphant", "BountyHunterAssociates", "HouseNakano", "HouseKhulan", "ProfHorvat", "default_all" ],
+  /** base upgrade/addition chance (can be set to 1 to run on everything, should be used with AllowDowngrade when 1) **/
+  "UpgradePerComponentChance": 1,
+  /** Weight modification allows to remove any of these (in this order), or add them if Weight gets freed. **/
+  "CanRemove": [ "Gear_HeatSink_Generic_Standard", "Gear_HeatSink_Generic_Double", "Gear_Actuator_Coventry_X55-Standard" ],
+  /** a factor of how much Weight can be removed at maximum. **/
+  "RemoveMaxFactor": 2,
+  /** upgrading single components.
+  MinDate requires a date to be passed, if not passed next item gets selected.
+  ListLink rerolls the upgrade, possibly upgrading it furher, but this item gets ignored when calculating the upgrade start point.
+  UpgradeAll upgrades all copies to this variant (ignores if already other upgraded).
+  SwapAmmoFrom changes ammo types to SwapAmmoTo (in conjunction with UpgradeAll used to change to different ammo weapons).
+  AllowDowngrade allows lower items (and itself) to be selected, downgrading equipment (global or as per component) (i recommend only putting it on the base component, so something like The Raids custom mechs dont get downgraded).**/
+  "LoadUpgrades": [
+    "BTXM/SL_St.json",
+    "BTXM/SLER_St.json",
+    "BTXM/SLERNU_St.json",
+    "BTXM/SLP_St.json",
+    "BTXM/SLPNU_St.json",
+    "BTXM/ML_St.json",
+    "BTXM/MLER_St.json",
+    "BTXM/MLERNU_St.json",
+    "BTXM/MLP_St.json",
+    "BTXM/MLPNU_St.json",
+    "BTXM/TAG_St.json",
+    "BTXM/LL_St.json",
+    "BTXM/LLER_St.json",
+    "BTXM/LLERNU_St.json",
+    "BTXM/LLP_St.json",
+    "BTXM/LLPNU_St.json",
+    "BTXM/BL_St.json",
+    "BTXM/PPC_St.json",
+    "BTXM/PPCER_St.json",
+    "BTXM/PPCERNU_St.json",
+    "BTXM/PCC_St.json",
+    "BTXM/FL_St.json",
+    "BTXM/MG_St.json",
+    "BTXM/AC2_St.json",
+    "BTXM/AC2LBX_St.json",
+    "BTXM/AC2U_St.json",
+    "BTXM/AC5_St.json",
+    "BTXM/AC5LBX_St.json",
+    "BTXM/AC5U_St.json",
+    "BTXM/AC5UNU_St.json",
+    "BTXM/AC10_St.json",
+    "BTXM/AC10LBX_St.json",
+    "BTXM/AC10LBXNU_St.json",
+    "BTXM/AC10U_St.json",
+    "BTXM/AC20_St.json",
+    "BTXM/AC20LBX_St.json",
+    "BTXM/AC20U_St.json",
+    "BTXM/GA_St.json",
+    "BTXM/GANU_St.json",
+    "BTXM/SRM2_St.json",
+    "BTXM/SRM2IN_St.json",
+    "BTXM/NARC_St.json",
+    "BTXM/SRM2A_St.json",
+    "BTXM/SRM2S_St.json",
+    "BTXM/SRM4_St.json",
+    "BTXM/SRM4A_St.json",
+    "BTXM/SRM6_St.json",
+    "BTXM/SRM6A_St.json",
+    "BTXM/LRM5_St.json",
+    "BTXM/LRM5A_St.json",
+    "BTXM/LRM10_St.json",
+    "BTXM/LRM10A_St.json",
+    "BTXM/LRM15_St.json",
+    "BTXM/LRM15A_St.json",
+    "BTXM/LRM20_St.json",
+    "BTXM/LRM20A_St.json",
+    "BTXM/HeatSink_St.json"
+  ],
+  /** adding components randomly, uses the same format as upgrades, but anything special (under ListLink) gets ignored. **/
+  "LoadAdditions": [
+    "BTXM/GearCockpitFull_St.json",
+    "BTXM/GearGyroFull_St.json"
+  ]
+}

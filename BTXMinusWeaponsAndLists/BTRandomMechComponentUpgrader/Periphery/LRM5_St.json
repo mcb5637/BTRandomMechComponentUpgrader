@@ -1,0 +1,63 @@
+﻿[
+  {
+	"ID": 	"Weapon_LRM_LRM2_0-STOCK",
+	"Weight": 2
+  },
+  {
+	"ID": 	"Weapon_LRM_LRM5_-3-Zeus",
+	"Weight": 7
+  },
+  {
+	"ID": 	"Weapon_LRM_LRM5_-2-Longbow",
+	"Weight": 14
+  },
+  {
+	"ID": 	"Weapon_LRM_LRM5_-2-Telos",
+	"Weight": 14
+  },
+  {
+	"ID": 	"Weapon_LRM_LRM5_-1-Delta",
+	"Weight": 28
+  },
+  {
+	"ID": 	"Weapon_LRM_LRM5_-1-Telos",
+	"Weight": 28
+  },
+  {
+    "ID": "Weapon_LRM_LRM5_0-STOCK",
+    "Weight": 55,
+    "AllowDowngrade": true
+  },
+  {
+    "ID": "Weapon_LRM_LRM5_1-Delta",
+    "Weight": 10
+  },
+  {
+    "ID": "Weapon_LRM_LRM5_1-LongFire",
+    "Weight": 10
+  },
+  {
+    "ID": "Weapon_LRM_LRM5_1-Telos",
+    "Weight": 10
+  },
+  {
+    "ID": "Weapon_LRM_LRM5_2-Delta",
+    "Weight": 5
+  },
+  {
+    "ID": "Weapon_LRM_LRM5_2-LongFire",
+    "Weight": 5
+  },
+  {
+    "ID": "Weapon_LRM_LRM5_2-Telos",
+    "Weight": 5
+  },
+  {
+    "ID": "Weapon_LRM_LRM5_2-Zeus",
+    "Weight": 5
+  },
+  {
+    "ID": "Weapon_LRM_LRM5_3-Zeus",
+    "Weight": 2
+  }
+]

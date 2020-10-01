@@ -1,0 +1,30 @@
+﻿[
+  {
+    "ID": "Weapon_SRM_ASRM2_0-STOCK",
+    "Weight": 76
+  },
+  {
+    "ID": "Weapon_SRM_ASRM2_1-Holly",
+    "Weight": 7
+  },
+  {
+    "ID": "Weapon_SRM_ASRM2_1-Irian",
+    "Weight": 7
+  },
+  {
+    "ID": "Weapon_SRM_ASRM2_2-Holly",
+    "Weight": 3
+  },
+  {
+    "ID": "Weapon_SRM_ASRM2_2-Irian",
+    "Weight": 3
+  },
+  {
+    "ID": "Weapon_SRM_ASRM2_2-Valiant",
+    "Weight": 3
+  },
+  {
+    "ID": "Weapon_SRM_ASRM2_3-Valiant",
+    "Weight": 1
+  }
+]

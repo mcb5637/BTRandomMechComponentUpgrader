@@ -1,0 +1,31 @@
+﻿[
+  {
+	"ID": 	"Weapon_MachineGun_MachineGun_-2-Blackwell",
+	"Weight": 15
+  },
+  {
+	"ID": 	"Weapon_MachineGun_MachineGun_-1-Blackwell",
+	"Weight": 30
+  },
+  {
+    "ID": "Weapon_MachineGun_MachineGun_0-STOCK",
+    "Weight": 25,
+    "AllowDowngrade": true
+  },
+  {
+    "ID": "Weapon_MachineGun_MachineGun_1-Brigadier",
+    "Weight": 10
+  },
+  {
+    "ID": "Weapon_MachineGun_MachineGun_1-VMI",
+    "Weight": 10
+  },
+  {
+    "ID": "Weapon_MachineGun_MachineGun_2-Brigadier",
+    "Weight": 5
+  },
+  {
+    "ID": "Weapon_MachineGun_MachineGun_2-VMI",
+    "Weight": 5
+  }
+]

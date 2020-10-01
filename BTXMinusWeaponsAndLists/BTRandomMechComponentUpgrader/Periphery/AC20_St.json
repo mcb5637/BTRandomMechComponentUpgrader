@@ -1,0 +1,90 @@
+﻿[
+  {
+	"ID": 	"Weapon_Autocannon_AC20_-3-Kali_Yama",
+	"Weight": 4
+  },
+  {
+	"ID": 	"Weapon_Autocannon_AC20_-2-Defiance",
+	"Weight": 8
+  },
+  {
+	"ID": 	"Weapon_Autocannon_AC20_-2-Imperator",
+	"Weight": 8
+  },
+  {
+	"ID": 	"Weapon_Autocannon_AC20_-2-Pontiac",
+	"Weight": 8
+  },
+  {
+	"ID": 	"Weapon_Autocannon_AC20_-1-Defiance",
+	"Weight": 17
+  },
+  {
+	"ID": 	"Weapon_Autocannon_AC20_-1-Imperator",
+	"Weight": 17
+  },
+  {
+	"ID": 	"Weapon_Autocannon_AC20_-1-Pontiac",
+	"Weight": 17
+  },
+  {
+    "ID": "Weapon_Autocannon_AC20_0-STOCK",
+    "Weight": 50,
+    "AllowDowngrade": true
+  },
+  {
+    "ID": "Weapon_Autocannon_AC20_1-Defiance",
+    "Weight": 10
+  },
+  {
+    "ID": "Weapon_Autocannon_AC20_1-Federated",
+    "Weight": 10
+  },
+  {
+    "ID": "Weapon_Autocannon_AC20_1-Imperator",
+    "Weight": 10
+  },
+  {
+    "ID": "Weapon_Autocannon_AC20_1-Mydron",
+    "Weight": 10
+  },
+  {
+    "ID": "Weapon_Autocannon_AC20_2-Defiance",
+    "Weight": 5
+  },
+  {
+    "ID": "Weapon_Autocannon_AC20_2-Federated",
+    "Weight": 5
+  },
+  {
+    "ID": "Weapon_Autocannon_AC20_2-Imperator",
+    "Weight": 5
+  },
+  {
+    "ID": "Weapon_Autocannon_AC20_2-Kali_Yama",
+    "Weight": 5
+  },
+  {
+    "ID": "Weapon_Autocannon_AC20_2-Mydron",
+    "Weight": 5
+  },
+  {
+    "ID": "Weapon_Autocannon_LB20X_0-STOCK",
+    "Weight": 2,
+    "MinDate": "3050-01-01",
+    "ListLink": true,
+    "UpgradeAll": true,
+    "SwapAmmoFrom": "Ammo_AmmunitionBox_Generic_AC20",
+    "SwapAmmoTo": "Ammo_AmmunitionBox_Generic_LB20X"
+  },
+  {
+    "ID": "Weapon_Autocannon_UAC20_0-STOCK",
+    "Weight": 2,
+    "MinDate": "3050-01-01",
+    "ListLink": true
+  },
+  {
+    "ID": "Weapon_Autocannon_AC20_3-Kali_Yama",
+    "Weight": 2
+  }
+]

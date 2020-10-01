@@ -1,0 +1,65 @@
+{
+    "Category" : "Ballistic",
+    "Type" : "Autocannon",
+    "WeaponSubType" : "AC5",
+    "MinRange" : 90,
+    "MaxRange" : 540,
+    "RangeSplit" : [
+        360,
+        360,
+        540
+    ],
+    "ammoCategoryID" : "AC5",
+    "StartingAmmoCapacity" : 0,
+    "HeatGenerated" : 4,
+    "Damage" : 40,
+    "OverheatedDamageMultiplier" : 0,
+    "EvasiveDamageMultiplier" : 0,
+    "EvasivePipsIgnored" : 0,
+    "DamageVariance" : 0,
+    "HeatDamage" : 0,
+    "AccuracyModifier" : 0,
+    "CriticalChanceMultiplier" : 1,
+    "AOECapable" : false,
+    "IndirectFireCapable" : false,
+    "RefireModifier" : 1,
+    "ShotsWhenFired" : 1,
+    "ProjectilesPerShot" : 2,
+    "AttackRecoil" : 2,
+    "Instability" : 15,
+    "WeaponEffectID" : "WeaponEffect-Weapon_AC5",
+    "Description" : {
+        "Cost" : 40000,
+        "Rarity" : 4,
+        "Purchasable" : true,
+        "Manufacturer" : "Kali Yama",
+        "Model" : "Tactical Autocannon",
+        "UIName" : "AC/5 - -",
+        "Id" : "Weapon_Autocannon_AC5_-2-Kali_Yama",
+        "Name" : "AC/5 - -",
+        "Details" : "A flexible weapon, AC/5s strike a balance between long range, power, and performance. The latest ballistics on this weapon show its damage is slightly below par and needs replacement. Like all Autocannon weaponry, AC/5s suffer from recoil effects from continuous fire.",
+        "Icon" : "uixSvgIcon_weapon_Ballistic"
+    },
+    "BonusValueA" : "- 5 Dmg.",
+    "BonusValueB" : "",
+    "ComponentType" : "Weapon",
+    "ComponentSubType" : "Weapon",
+    "PrefabIdentifier" : "AC5",
+    "BattleValue" : 0,
+    "InventorySize" : 2,
+    "Tonnage" : 8,
+    "AllowedLocations" : "All",
+    "DisallowedLocations" : "All",
+    "CriticalComponent" : false,
+    "statusEffects" : [
+        
+    ],
+    "ComponentTags" : {
+        "items" : [
+            "component_type_variant",
+            "component_type_variant2",
+            "range_very-long"
+        ],
+        "tagSetSourceFile" : ""
+    }
+}

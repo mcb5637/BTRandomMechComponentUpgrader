@@ -1,0 +1,23 @@
+﻿[
+  {
+	"ID": 	"Weapon_Flamer_Flamer_-2-Purity",
+	"Weight": 17
+  },
+  {
+	"ID": 	"Weapon_Flamer_Flamer_-1-Purity",
+	"Weight": 34
+  },
+  {
+    "ID": "Weapon_Flamer_Flamer_0-STOCK",
+    "Weight": 25,
+    "AllowDowngrade": true
+  },
+  {
+    "ID": "Weapon_Flamer_Flamer_1-Hotshot",
+    "Weight": 16
+  },
+  {
+    "ID": "Weapon_Flamer_Flamer_2-Olympus",
+    "Weight": 8
+  }
+]

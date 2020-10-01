@@ -1,0 +1,14 @@
+﻿[
+  {
+    "ID": "Weapon_Autocannon_UAC10_0-STOCK",
+    "Weight": 15
+  },
+  {
+    "ID": "Weapon_Autocannon_UAC10_1-Federated",
+    "Weight": 10
+  },
+  {
+    "ID": "Weapon_Autocannon_UAC10_2-Federated",
+    "Weight": 5
+  }
+]

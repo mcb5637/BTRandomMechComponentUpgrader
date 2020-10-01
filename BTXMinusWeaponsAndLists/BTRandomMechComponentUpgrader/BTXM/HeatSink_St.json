@@ -1,0 +1,16 @@
+﻿[
+  {
+    "ID": "Gear_HeatSink_Generic_Standard",
+    "Weight": 78
+  },
+  {
+    "ID": "Gear_HeatSink_Generic_Double",
+    "Weight": 20,
+    "MinDate": "3050-01-01"
+  },
+  {
+    "ID": "Gear_HeatSink_Clan_Double",
+    "Weight": 2,
+    "MinDate": "3052-01-01"
+  }  
+]

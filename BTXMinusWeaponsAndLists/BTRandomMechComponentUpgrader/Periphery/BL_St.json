@@ -1,0 +1,10 @@
+﻿[
+  {
+    "ID": "Weapon_Laser_BinaryLaserCannon_0-STOCK",
+    "Weight": 75
+  },
+  {
+    "ID": "Weapon_Laser_BinaryLaserCannon_1-Defiance",
+    "Weight": 25
+  }
+]
