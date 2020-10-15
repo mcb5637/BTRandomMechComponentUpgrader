@@ -2,7 +2,7 @@
   /** determine factions this list is for. first list that matches a faction gets used (the same order as you load them in the settings. **/
   "Factions": [ "default_all" ],
   /** base upgrade/addition chance (can be set to 1 to run on everything, should be used with AllowDowngrade when 1) **/
-  "UpgradePerComponentChance": 1,
+  "UpgradePerComponentChance": 0.2,
   /** weigth modification allows to remove any of these (in this order), or add them if weight gets freed. **/
   "CanRemove": [ "Gear_HeatSink_Generic_Standard", "Gear_HeatSink_Generic_Double", "Gear_Actuator_Coventry_X55-Standard" ],
   /** a factor of how much weight can be removed at maximum. **/
