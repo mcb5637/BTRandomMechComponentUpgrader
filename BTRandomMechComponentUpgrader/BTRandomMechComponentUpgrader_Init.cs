@@ -10,7 +10,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
-[assembly:AssemblyVersion("1.0.0")]
+[assembly:AssemblyVersion("1.1.0")]
 
 namespace BTRandomMechComponentUpgrader
 {
@@ -19,65 +19,85 @@ namespace BTRandomMechComponentUpgrader
         public static BTRandomMechComponentUpgrader_Settings Sett;
         public static ILog Log;
 
+        public static List<BTRandomMechComponentUpgrader_UpgradeList> UpgradeLists;
+
         public static void Init(string directory, string settingsJSON)
         {
             Log = Logger.GetLogger("BTRandomMechComponentUpgrader");
             try
             {
                 Sett = JsonConvert.DeserializeObject<BTRandomMechComponentUpgrader_Settings>(settingsJSON);
-                Sett.UpgradeLists = new BTRandomMechComponentUpgrader_UpgradeList[Sett.UpgradeListNames.Length];
-                for (int i = 0; i < Sett.UpgradeListNames.Length; i++)
-                {
-                    Sett.UpgradeLists[i] = LoadUList(Sett.UpgradeListNames[i], directory);
-                    LoadListComponents(Sett.UpgradeLists[i], directory);
-                    Sett.UpgradeLists[i].CalculateLimits();
-                }
             }
             catch (Exception e)
             {
                 Sett = new BTRandomMechComponentUpgrader_Settings();
                 Log.LogException(e);
             }
+            if (Sett.LogLevelLog)
+                Logger.SetLoggerLevel("BTRandomMechComponentUpgrader", LogLevel.Log);
             HarmonyInstance harmony = HarmonyInstance.Create("com.github.mcb5637.BTRandomMechComponentUpgrader");
             harmony.PatchAll(Assembly.GetExecutingAssembly());
         }
 
-        private static void LoadListComponents(BTRandomMechComponentUpgrader_UpgradeList li, string directory)
+        public static void FinishedLoading(Dictionary<string, Dictionary<string, VersionManifestEntry>> customResources)
         {
-            if (li.LoadUpgrades.Length > 0)
+            if (!customResources.ContainsKey("ComponentUpgradeList") || !customResources.ContainsKey("ComponentUpgradeListEntry"))
             {
-                if (li.Upgrades == null)
-                    li.Upgrades = new BTRandomMechComponentUpgrader_UpgradeList.UpgradeEntry[li.LoadUpgrades.Length][];
-                for (int j = 0; j < li.LoadUpgrades.Length; j++)
-                {
-                    string name = li.LoadUpgrades[j];
-                    if (name != null)
-                        li.Upgrades[j] = LoadCList(name, directory);
-                }
+                Log.LogError("Error: Missing custom Resource!");
+                return;
             }
-            if (li.LoadAdditions.Length > 0)
+            try
             {
-                if (li.Additions == null)
-                    li.Additions = new BTRandomMechComponentUpgrader_UpgradeList.UpgradeEntry[li.LoadAdditions.Length][];
-                for (int j = 0; j < li.LoadAdditions.Length; j++)
+                Dictionary<string, BTRandomMechComponentUpgrader_UpgradeList.UpgradeEntry[]> entries = new Dictionary<string, BTRandomMechComponentUpgrader_UpgradeList.UpgradeEntry[]>();
+                UpgradeLists = new List<BTRandomMechComponentUpgrader_UpgradeList>();
+                foreach (KeyValuePair<string, VersionManifestEntry> kv in customResources["ComponentUpgradeListEntry"])
                 {
-                    string name = li.LoadAdditions[j];
-                    if (name != null)
-                        li.Additions[j] = LoadCList(name, directory);
+                    entries.Add(kv.Value.FileName, LoadCList(kv.Value.FilePath));
                 }
+                foreach (KeyValuePair<string, VersionManifestEntry> kv in customResources["ComponentUpgradeList"])
+                {
+                    BTRandomMechComponentUpgrader_UpgradeList ulist = LoadUList(kv.Value.FilePath);
+                    ulist.Name = kv.Value.FileName;
+                    LoadListComponents(ulist.LoadUpgrades, ulist.Upgrades, entries);
+                    LoadListComponents(ulist.LoadAdditions, ulist.Additions, entries);
+                    ulist.CalculateLimits();
+                    UpgradeLists.Add(ulist);
+                }
+                UpgradeLists.Sort();
+            }
+            catch (Exception e)
+            {
+                UpgradeLists = new List<BTRandomMechComponentUpgrader_UpgradeList>();
+                Log.LogException(e);
             }
         }
 
-        public static BTRandomMechComponentUpgrader_UpgradeList LoadUList(string name, string dir)
+        private static void LoadListComponents(string[] load, List<BTRandomMechComponentUpgrader_UpgradeList.UpgradeEntry[]> data, Dictionary<string, BTRandomMechComponentUpgrader_UpgradeList.UpgradeEntry[]> entries)
         {
-            string path = Path.Combine(dir, name);
+            if (load != null && load.Length > 0)
+                foreach (string l in load)
+                    if (l != null)
+                        data.Add(entries[l]);
+        }
+
+        public static BTRandomMechComponentUpgrader_UpgradeList LoadUList(string name, string dir = null)
+        {
+            string path;
+            if (dir == null)
+                path = name;
+            else
+                path = Path.Combine(dir, name);
             string file = File.ReadAllText(path);
             return JsonConvert.DeserializeObject<BTRandomMechComponentUpgrader_UpgradeList>(file);
         }
 
-        public static BTRandomMechComponentUpgrader_UpgradeList.UpgradeEntry[] LoadCList(string name, string dir)
+        public static BTRandomMechComponentUpgrader_UpgradeList.UpgradeEntry[] LoadCList(string name, string dir = null)
         {
-            string path = Path.Combine(dir, name);
+            string path;
+            if (dir == null)
+                path = name;
+            else
+                path = Path.Combine(dir, name);
             string file = File.ReadAllText(path);
             return JsonConvert.DeserializeObject<BTRandomMechComponentUpgrader_UpgradeList.UpgradeEntry[]>(file);
         }

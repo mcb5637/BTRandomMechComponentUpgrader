@@ -1,5 +1,5 @@
 ﻿{
-  "Name": "BTRandomMechComponentUpgrader",
+  "Name": "BTRandomMechComponentUpgraderBTX",
   "Enabled": true,
 
   "Description": "",
@@ -7,9 +7,9 @@
   "Website": "https://github.com/mcb5637/BTRandomMechComponentUpgrader",
   "Version": "1.1.0",
 
-  "CustomResourceTypes": [ "ComponentUpgradeList", "ComponentUpgradeListEntry" ],
+  "DependsOn": [ "BTRandomMechComponentUpgrader", "BT_Extended" ],
 
-  "DLL": "BTRandomMechComponentUpgrader.dll",
+  "CustomResourceTypes": [ "ComponentUpgradeList", "ComponentUpgradeListEntry" ],
 
   "Manifest": [
     {
@@ -21,7 +21,5 @@
       "Path": "ComponentUpgradeListEntry"
     }
   ],
-
-  "Settings": {
-  }
+  "RemoveManifestEntries": [ "default_vanilla" ]
 }

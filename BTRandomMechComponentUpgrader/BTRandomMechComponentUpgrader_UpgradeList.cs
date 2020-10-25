@@ -7,17 +7,19 @@ using System.Threading.Tasks;
 
 namespace BTRandomMechComponentUpgrader
 {
-    class BTRandomMechComponentUpgrader_UpgradeList
+    class BTRandomMechComponentUpgrader_UpgradeList : IComparable<BTRandomMechComponentUpgrader_UpgradeList>
     {
-        public UpgradeEntry[][] Upgrades = null;
+        public List<UpgradeEntry[]> Upgrades = new List<UpgradeEntry[]>();
         public string[] Factions = new string[] { };
         public float UpgradePerComponentChance = 0.5f;
         public string[] CanRemove = new string[] { };
         public float RemoveMaxFactor = 0.5f;
-        public UpgradeEntry[][] Additions = null;
+        public List<UpgradeEntry[]> Additions = new List<UpgradeEntry[]>();
         public bool AllowDowngrade = false;
         public string[] LoadUpgrades = new string[] { };
         public string[] LoadAdditions = new string[] { };
+        public string Name;
+        public int Sort = 0;
 
 
         public void CalculateLimits()
@@ -92,6 +94,11 @@ namespace BTRandomMechComponentUpgrader
             swapAmmoFrom = null;
             swapAmmoTo = null;
             return null;
+        }
+
+        public int CompareTo(BTRandomMechComponentUpgrader_UpgradeList other)
+        {
+            return this.Sort - other.Sort;
         }
 
         public class UpgradeEntry

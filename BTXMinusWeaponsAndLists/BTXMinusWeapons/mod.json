@@ -5,11 +5,35 @@
   "Description": "",
   "Author": "RJPhoenix & mcb",
   "Website": "https://github.com/mcb5637/BTRandomMechComponentUpgrader",
-  "Version": "1.0.0",
+  "Version": "1.1.0",
 
   "DependsOn": [ "BTRandomMechComponentUpgrader", "BT_Extended" ],
   
   "Manifest": [
-    { "Type": "WeaponDef", "Path": "weapons" }
-  ]
+    {
+      "Type": "WeaponDef",
+      "Path": "weapons"
+    },
+    {
+      "Type": "ComponentUpgradeList",
+      "Path": "ComponentUpgradeList"
+    },
+    {
+      "Type": "ComponentUpgradeListEntry",
+      "Path": "BTXM"
+    },
+    {
+      "Type": "ComponentUpgradeListEntry",
+      "Path": "Elite"
+    },
+    {
+      "Type": "ComponentUpgradeListEntry",
+      "Path": "House"
+    },
+    {
+      "Type": "ComponentUpgradeListEntry",
+      "Path": "Periphery"
+    }
+  ],
+  "RemoveManifestEntries": [ "default_vanilla" ]
 }

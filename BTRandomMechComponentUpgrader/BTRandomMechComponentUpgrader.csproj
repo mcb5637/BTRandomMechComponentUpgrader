@@ -36,305 +36,308 @@
     <StartupObject />
   </PropertyGroup>
   <ItemGroup>
-    <None Include="default_vanilla.json">
+    <None Include="BTRandomMechComponentUpgraderBTX\mod.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Vanilla\AC10LBX_St.json">
+    <None Include="ComponentUpgradeListEntry\Vanilla_AC10LBX_St.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Vanilla\AC10U_St.json">
+    <None Include="ComponentUpgradeListEntry\Vanilla_AC10U_St.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Vanilla\AC10_St.json">
+    <None Include="ComponentUpgradeListEntry\Vanilla_AC10_St.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Vanilla\AC20LBX_St.json">
+    <None Include="ComponentUpgradeListEntry\Vanilla_AC20LBX_St.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Vanilla\AC20U_St.json">
+    <None Include="ComponentUpgradeListEntry\Vanilla_AC20U_St.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Vanilla\AC20_St.json">
+    <None Include="ComponentUpgradeListEntry\Vanilla_AC20_St.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Vanilla\AC2LBX_St.json">
+    <None Include="ComponentUpgradeListEntry\Vanilla_AC2LBX_St.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Vanilla\AC2U_St.json">
+    <None Include="ComponentUpgradeListEntry\Vanilla_AC2U_St.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Vanilla\AC2_St.json">
+    <None Include="ComponentUpgradeListEntry\Vanilla_AC2_St.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Vanilla\AC5LBX_St.json">
+    <None Include="ComponentUpgradeListEntry\Vanilla_AC5LBX_St.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Vanilla\AC5U_St.json">
+    <None Include="ComponentUpgradeListEntry\Vanilla_AC5U_St.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Vanilla\AC5_St.json">
+    <None Include="ComponentUpgradeListEntry\Vanilla_AC5_St.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Vanilla\FL_St.json">
+    <None Include="ComponentUpgradeListEntry\Vanilla_FL_St.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Vanilla\GA_St.json">
+    <None Include="ComponentUpgradeListEntry\Vanilla_GA_St.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Vanilla\GearCockpitFull_St.json">
+    <None Include="ComponentUpgradeListEntry\Vanilla_GearCockpitFull_St.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Vanilla\GearGyroFull_St.json">
+    <None Include="ComponentUpgradeListEntry\Vanilla_GearGyroFull_St.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Vanilla\HeatSink_St.json">
+    <None Include="ComponentUpgradeListEntry\Vanilla_HeatSink_St.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Vanilla\LLER_St.json">
+    <None Include="ComponentUpgradeListEntry\Vanilla_LLER_St.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Vanilla\LLP_St.json">
+    <None Include="ComponentUpgradeListEntry\Vanilla_LLP_St.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Vanilla\LL_St.json">
+    <None Include="ComponentUpgradeListEntry\Vanilla_LL_St.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Vanilla\LRM10_St.json">
+    <None Include="ComponentUpgradeListEntry\Vanilla_LRM10_St.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Vanilla\LRM15_St.json">
+    <None Include="ComponentUpgradeListEntry\Vanilla_LRM15_St.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Vanilla\LRM20_St.json">
+    <None Include="ComponentUpgradeListEntry\Vanilla_LRM20_St.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Vanilla\LRM5_St.json">
+    <None Include="ComponentUpgradeListEntry\Vanilla_LRM5_St.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Vanilla\MG_St.json">
+    <None Include="ComponentUpgradeListEntry\Vanilla_MG_St.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Vanilla\MLER_St.json">
+    <None Include="ComponentUpgradeListEntry\Vanilla_MLER_St.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Vanilla\MLP_St.json">
+    <None Include="ComponentUpgradeListEntry\Vanilla_MLP_St.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Vanilla\ML_St.json">
+    <None Include="ComponentUpgradeListEntry\Vanilla_ML_St.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Vanilla\NARC_St.json">
+    <None Include="ComponentUpgradeListEntry\Vanilla_NARC_St.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Vanilla\PCC_St.json">
+    <None Include="ComponentUpgradeListEntry\Vanilla_PCC_St.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Vanilla\PPCER_St.json">
+    <None Include="ComponentUpgradeListEntry\Vanilla_PPCER_St.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Vanilla\PPC_St.json">
+    <None Include="ComponentUpgradeListEntry\Vanilla_PPC_St.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Vanilla\SLER_St.json">
+    <None Include="ComponentUpgradeListEntry\Vanilla_SLER_St.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Vanilla\SLP_St.json">
+    <None Include="ComponentUpgradeListEntry\Vanilla_SLP_St.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Vanilla\SL_St.json">
+    <None Include="ComponentUpgradeListEntry\Vanilla_SL_St.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Vanilla\SRM2IN_St.json">
+    <None Include="ComponentUpgradeListEntry\Vanilla_SRM2IN_St.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Vanilla\SRM2_St.json">
+    <None Include="ComponentUpgradeListEntry\Vanilla_SRM2_St.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Vanilla\SRM4_St.json">
+    <None Include="ComponentUpgradeListEntry\Vanilla_SRM4_St.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Vanilla\SRM6_St.json">
+    <None Include="ComponentUpgradeListEntry\Vanilla_SRM6_St.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Vanilla\TAG_St.json">
+    <None Include="ComponentUpgradeListEntry\Vanilla_TAG_St.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="BTX\AC10LBXNU_St.json">
+    <None Include="ComponentUpgradeList\default_vanilla.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="BTX\AC10LBX_St.json">
+    <None Include="BTRandomMechComponentUpgraderBTX\ComponentUpgradeListEntry\BTX_AC10LBXNU_St.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="BTX\AC10U_St.json">
+    <None Include="BTRandomMechComponentUpgraderBTX\ComponentUpgradeListEntry\BTX_AC10LBX_St.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="BTX\AC10_St.json">
+    <None Include="BTRandomMechComponentUpgraderBTX\ComponentUpgradeListEntry\BTX_AC10U_St.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="BTX\AC20LBX_St.json">
+    <None Include="BTRandomMechComponentUpgraderBTX\ComponentUpgradeListEntry\BTX_AC10_St.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="BTX\AC20U_St.json">
+    <None Include="BTRandomMechComponentUpgraderBTX\ComponentUpgradeListEntry\BTX_AC20LBX_St.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="BTX\AC20_St.json">
+    <None Include="BTRandomMechComponentUpgraderBTX\ComponentUpgradeListEntry\BTX_AC20U_St.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="BTX\AC2LBX_St.json">
+    <None Include="BTRandomMechComponentUpgraderBTX\ComponentUpgradeListEntry\BTX_AC20_St.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="BTX\AC2_St.json">
+    <None Include="BTRandomMechComponentUpgraderBTX\ComponentUpgradeListEntry\BTX_AC2LBX_St.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="BTX\AC5LBX_St.json">
+    <None Include="BTRandomMechComponentUpgraderBTX\ComponentUpgradeListEntry\BTX_AC2_St.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="BTX\AC5UNU_St.json">
+    <None Include="BTRandomMechComponentUpgraderBTX\ComponentUpgradeListEntry\BTX_AC5LBX_St.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="BTX\AC5U_St.json">
+    <None Include="BTRandomMechComponentUpgraderBTX\ComponentUpgradeListEntry\BTX_AC5UNU_St.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="BTX\AC5_St.json">
+    <None Include="BTRandomMechComponentUpgraderBTX\ComponentUpgradeListEntry\BTX_AC5U_St.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="BTRandomMechComponentUpgraderBTX\ComponentUpgradeListEntry\BTX_AC5_St.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="App.config" />
-    <None Include="BTX\BL_St.json">
+    <None Include="BTRandomMechComponentUpgraderBTX\ComponentUpgradeListEntry\BTX_BL_St.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="BTX\MLER_St.json">
+    <None Include="BTRandomMechComponentUpgraderBTX\ComponentUpgradeListEntry\BTX_MLER_St.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="BTX\ML_St.json">
+    <None Include="BTRandomMechComponentUpgraderBTX\ComponentUpgradeListEntry\BTX_ML_St.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="BTX\SLERNU_St.json">
+    <None Include="BTRandomMechComponentUpgraderBTX\ComponentUpgradeListEntry\BTX_SLERNU_St.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="BTX\SLPNU_St.json">
+    <None Include="BTRandomMechComponentUpgraderBTX\ComponentUpgradeListEntry\BTX_SLPNU_St.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="BTX\SLP_St.json">
+    <None Include="BTRandomMechComponentUpgraderBTX\ComponentUpgradeListEntry\BTX_SLP_St.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="default_extended.json">
+    <None Include="BTRandomMechComponentUpgraderBTX\ComponentUpgradeList\default_extended.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="BTX\MLERNU_St.json">
+    <None Include="BTRandomMechComponentUpgraderBTX\ComponentUpgradeListEntry\BTX_MLERNU_St.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="BTX\MLPNU_St.json">
+    <None Include="BTRandomMechComponentUpgraderBTX\ComponentUpgradeListEntry\BTX_MLPNU_St.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="BTX\MLP_St.json">
+    <None Include="BTRandomMechComponentUpgraderBTX\ComponentUpgradeListEntry\BTX_MLP_St.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="BTX\LLERNU_St.json">
+    <None Include="BTRandomMechComponentUpgraderBTX\ComponentUpgradeListEntry\BTX_LLERNU_St.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="BTX\LLER_St.json">
+    <None Include="BTRandomMechComponentUpgraderBTX\ComponentUpgradeListEntry\BTX_LLER_St.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="BTX\LLPNU_St.json">
+    <None Include="BTRandomMechComponentUpgraderBTX\ComponentUpgradeListEntry\BTX_LLPNU_St.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="BTX\LLP_St.json">
+    <None Include="BTRandomMechComponentUpgraderBTX\ComponentUpgradeListEntry\BTX_LLP_St.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="BTX\LL_St.json">
+    <None Include="BTRandomMechComponentUpgraderBTX\ComponentUpgradeListEntry\BTX_LL_St.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="BTX\FL_St.json">
+    <None Include="BTRandomMechComponentUpgraderBTX\ComponentUpgradeListEntry\BTX_FL_St.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="BTX\MG_St.json">
+    <None Include="BTRandomMechComponentUpgraderBTX\ComponentUpgradeListEntry\BTX_MG_St.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="BTX\GANU_St.json">
+    <None Include="BTRandomMechComponentUpgraderBTX\ComponentUpgradeListEntry\BTX_GANU_St.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="BTX\GA_St.json">
+    <None Include="BTRandomMechComponentUpgraderBTX\ComponentUpgradeListEntry\BTX_GA_St.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="BTX\HeatSink_St.json">
+    <None Include="BTRandomMechComponentUpgraderBTX\ComponentUpgradeListEntry\BTX_HeatSink_St.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="BTX\LRM10A_St.json">
+    <None Include="BTRandomMechComponentUpgraderBTX\ComponentUpgradeListEntry\BTX_LRM10A_St.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="BTX\LRM10_St.json">
+    <None Include="BTRandomMechComponentUpgraderBTX\ComponentUpgradeListEntry\BTX_LRM10_St.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="BTX\LRM15A_St.json">
+    <None Include="BTRandomMechComponentUpgraderBTX\ComponentUpgradeListEntry\BTX_LRM15A_St.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="BTX\LRM15_St.json">
+    <None Include="BTRandomMechComponentUpgraderBTX\ComponentUpgradeListEntry\BTX_LRM15_St.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="BTX\LRM20A_St.json">
+    <None Include="BTRandomMechComponentUpgraderBTX\ComponentUpgradeListEntry\BTX_LRM20A_St.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="BTX\LRM20_St.json">
+    <None Include="BTRandomMechComponentUpgraderBTX\ComponentUpgradeListEntry\BTX_LRM20_St.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="BTX\LRM5A_St.json">
+    <None Include="BTRandomMechComponentUpgraderBTX\ComponentUpgradeListEntry\BTX_LRM5A_St.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="BTX\LRM5_St.json">
+    <None Include="BTRandomMechComponentUpgraderBTX\ComponentUpgradeListEntry\BTX_LRM5_St.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="BTX\GearCockpitFull_St.json">
+    <None Include="BTRandomMechComponentUpgraderBTX\ComponentUpgradeListEntry\BTX_GearCockpitFull_St.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="BTX\GearGyroFull_St.json">
+    <None Include="BTRandomMechComponentUpgraderBTX\ComponentUpgradeListEntry\BTX_GearGyroFull_St.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="mod.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="BTX\SL_St.json">
+    <None Include="BTRandomMechComponentUpgraderBTX\ComponentUpgradeListEntry\BTX_SL_St.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="BTX\TAG_St.json">
+    <None Include="BTRandomMechComponentUpgraderBTX\ComponentUpgradeListEntry\BTX_TAG_St.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="BTX\PCC_St.json">
+    <None Include="BTRandomMechComponentUpgraderBTX\ComponentUpgradeListEntry\BTX_PCC_St.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="BTX\PPCERNU_St.json">
+    <None Include="BTRandomMechComponentUpgraderBTX\ComponentUpgradeListEntry\BTX_PPCERNU_St.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="BTX\PPCER_St.json">
+    <None Include="BTRandomMechComponentUpgraderBTX\ComponentUpgradeListEntry\BTX_PPCER_St.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="BTX\PPC_St.json">
+    <None Include="BTRandomMechComponentUpgraderBTX\ComponentUpgradeListEntry\BTX_PPC_St.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="BTX\NARC_St.json">
+    <None Include="BTRandomMechComponentUpgraderBTX\ComponentUpgradeListEntry\BTX_NARC_St.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="BTX\SRM2IN_St.json">
+    <None Include="BTRandomMechComponentUpgraderBTX\ComponentUpgradeListEntry\BTX_SRM2IN_St.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="BTX\SRM2_St.json">
+    <None Include="BTRandomMechComponentUpgraderBTX\ComponentUpgradeListEntry\BTX_SRM2_St.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="BTX\SRM2A_St.json">
+    <None Include="BTRandomMechComponentUpgraderBTX\ComponentUpgradeListEntry\BTX_SRM2A_St.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="BTX\SRM2S_St.json">
+    <None Include="BTRandomMechComponentUpgraderBTX\ComponentUpgradeListEntry\BTX_SRM2S_St.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="BTX\SRM4A_St.json">
+    <None Include="BTRandomMechComponentUpgraderBTX\ComponentUpgradeListEntry\BTX_SRM4A_St.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="BTX\SRM4_St.json">
+    <None Include="BTRandomMechComponentUpgraderBTX\ComponentUpgradeListEntry\BTX_SRM4_St.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="BTX\SRM6A_St.json">
+    <None Include="BTRandomMechComponentUpgraderBTX\ComponentUpgradeListEntry\BTX_SRM6A_St.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="BTX\SRM6_St.json">
+    <None Include="BTRandomMechComponentUpgraderBTX\ComponentUpgradeListEntry\BTX_SRM6_St.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
@@ -368,12 +371,12 @@
     <Compile Include="UnitSpawnPointGameLogic_SpawnMech.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="BTX\SLER_St.json">
+    <None Include="BTRandomMechComponentUpgraderBTX\ComponentUpgradeListEntry\BTX_SLER_St.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="BTX\AC2U_St.json">
+    <None Include="BTRandomMechComponentUpgraderBTX\ComponentUpgradeListEntry\BTX_AC2U_St.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>

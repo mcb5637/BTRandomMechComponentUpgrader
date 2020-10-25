@@ -20,6 +20,7 @@ namespace BTRandomMechComponentUpgrader
 
         public static void Prefix(UnitSpawnPointGameLogic __instance, ref MechDef mDef, Team team)
         {
+            BTRandomMechComponentUpgrader_Init.Log.Log("called");
             SimGameState s = __instance.Combat.BattleTechGame.Simulation;
             if (s == null)
                 return;
@@ -28,6 +29,7 @@ namespace BTRandomMechComponentUpgrader
                 if (mDef == m) // if its a player mech, it is a different mechdef than in the datamanager
                 {
                     BTRandomMechComponentUpgrader_UpgradeList ulist = GetUpgradeList(team); // check if we got a upgradelist for that faction
+                    BTRandomMechComponentUpgrader_Init.Log.Log($"selected ulist {(ulist == null ? "null" : ulist.Name)}");
                     if (ulist == null)
                         return;
 
@@ -167,8 +169,8 @@ namespace BTRandomMechComponentUpgrader
 
         public static BTRandomMechComponentUpgrader_UpgradeList GetUpgradeList(Team team)
         {
-            BTRandomMechComponentUpgrader_Init.Log.Log($"using team {team.FactionValue}");
-            foreach (BTRandomMechComponentUpgrader_UpgradeList l in BTRandomMechComponentUpgrader_Init.Sett.UpgradeLists)
+            BTRandomMechComponentUpgrader_Init.Log.Log($"searching UpgradeList for faction {team.FactionValue}");
+            foreach (BTRandomMechComponentUpgrader_UpgradeList l in BTRandomMechComponentUpgrader_Init.UpgradeLists)
             {
                 if (l.DoesApplyToFaction(team.FactionValue.ToString()))
                     return l;
