@@ -26,21 +26,22 @@ namespace BTRandomMechComponentUpgrader
         {
             foreach (UpgradeEntry[] ut in Upgrades)
             {
-                CalculateLimit(ut);
+                CalculateLimit(ut, DateTime.MaxValue, -2);
             }
             foreach (UpgradeEntry[] ut in Additions)
             {
-                CalculateLimit(ut);
+                CalculateLimit(ut, DateTime.MaxValue, -2);
             }
         }
 
-        private static void CalculateLimit(UpgradeEntry[] ut)
+        private static void CalculateLimit(UpgradeEntry[] ut, DateTime d, int repeatUpgradeResult)
         {
-            float cw = ut.Sum((u) => u.Weight);
+            float cw = ut.Sum((u) => CheckUpgradeCond(u, d, repeatUpgradeResult) ? u.Weight : 0);
             float last = 0;
             foreach (UpgradeEntry u in ut)
             {
-                last += u.Weight / cw;
+                if (CheckUpgradeCond(u, d, repeatUpgradeResult))
+                    last += u.Weight / cw;
                 u.RandomLimit = last;
             }
         }
@@ -67,6 +68,15 @@ namespace BTRandomMechComponentUpgrader
             return null;
         }
 
+        private static bool CheckUpgradeCond(UpgradeEntry u, DateTime d, int repeatUpgradeResult)
+        {
+            if (u.MinDate > d)
+                return false;
+            if (u.UpgradeAll && repeatUpgradeResult > -2)
+                return false;
+            return true;
+        }
+
         public static string GetUpgradeFromRandom(UpgradeEntry[] list, float r, DateTime date, out bool ReCheckUpgrade, ref int repeatUpgradeResult, out string swapAmmoFrom, out string swapAmmoTo)
         {
             if (repeatUpgradeResult >= 0)
@@ -77,10 +87,11 @@ namespace BTRandomMechComponentUpgrader
                 swapAmmoTo = u.SwapAmmoTo;
                 return u.ID;
             }
+            CalculateLimit(list, date, repeatUpgradeResult);
             for (int i = 0; i < list.Length; i++)
             {
                 UpgradeEntry u = list[i];
-                if (r < u.RandomLimit && u.MinDate <= date && (!u.UpgradeAll || repeatUpgradeResult<=-2))
+                if (r < u.RandomLimit && CheckUpgradeCond(u, date, repeatUpgradeResult))
                 {
                     ReCheckUpgrade = u.ListLink;
                     swapAmmoFrom = u.SwapAmmoFrom;

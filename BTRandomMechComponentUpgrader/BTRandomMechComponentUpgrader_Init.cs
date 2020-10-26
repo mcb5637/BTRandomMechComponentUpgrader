@@ -60,7 +60,7 @@ namespace BTRandomMechComponentUpgrader
                     ulist.Name = kv.Value.FileName;
                     LoadListComponents(ulist.LoadUpgrades, ulist.Upgrades, entries);
                     LoadListComponents(ulist.LoadAdditions, ulist.Additions, entries);
-                    ulist.CalculateLimits();
+                    //ulist.CalculateLimits();
                     UpgradeLists.Add(ulist);
                 }
                 UpgradeLists.Sort();
