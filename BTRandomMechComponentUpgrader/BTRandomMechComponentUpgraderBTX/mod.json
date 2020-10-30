@@ -9,7 +9,7 @@
 
   "DependsOn": [ "BTRandomMechComponentUpgrader", "BT_Extended" ],
 
-  "CustomResourceTypes": [ "ComponentUpgradeList", "ComponentUpgradeListEntry" ],
+  "CustomResourceTypes": [ "ComponentUpgradeList", "ComponentUpgradeSubList" ],
 
   "Manifest": [
     {
@@ -17,8 +17,8 @@
       "Path": "ComponentUpgradeList"
     },
     {
-      "Type": "ComponentUpgradeListEntry",
-      "Path": "ComponentUpgradeListEntry"
+      "Type": "ComponentUpgradeSubList",
+      "Path": "ComponentUpgradeSubList"
     }
   ],
   "RemoveManifestEntries": [ "default_vanilla" ]

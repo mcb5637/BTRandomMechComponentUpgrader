@@ -7,7 +7,7 @@
   "Website": "https://github.com/mcb5637/BTRandomMechComponentUpgrader",
   "Version": "1.1.0",
 
-  "CustomResourceTypes": [ "ComponentUpgradeList", "ComponentUpgradeListEntry" ],
+  "CustomResourceTypes": [ "ComponentUpgradeList", "ComponentUpgradeSubList" ],
 
   "DLL": "BTRandomMechComponentUpgrader.dll",
 
@@ -17,8 +17,8 @@
       "Path": "ComponentUpgradeList"
     },
     {
-      "Type": "ComponentUpgradeListEntry",
-      "Path": "ComponentUpgradeListEntry"
+      "Type": "ComponentUpgradeSubList",
+      "Path": "ComponentUpgradeSubList"
     }
   ],
 

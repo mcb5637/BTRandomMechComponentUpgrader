@@ -14,66 +14,83 @@ namespace BTRandomMechComponentUpgrader
     [HarmonyPatch(typeof(UnitSpawnPointGameLogic), "SpawnMech")]
     class UnitSpawnPointGameLogic_SpawnMech
     {
-        private static ChassisLocations[] Locations = new ChassisLocations[] { ChassisLocations.CenterTorso, ChassisLocations.Head,
+        private static readonly ChassisLocations[] Locations = new ChassisLocations[] { ChassisLocations.CenterTorso, ChassisLocations.Head,
             ChassisLocations.RightArm, ChassisLocations.RightLeg, ChassisLocations.RightTorso,
             ChassisLocations.LeftArm, ChassisLocations.LeftLeg, ChassisLocations.LeftTorso};
+        private static readonly ChassisLocations[] RearArmoredLocs = new ChassisLocations[] { ChassisLocations.CenterTorso, ChassisLocations.RightTorso, ChassisLocations.LeftTorso };
 
         public static void Prefix(UnitSpawnPointGameLogic __instance, ref MechDef mDef, Team team)
         {
-            BTRandomMechComponentUpgrader_Init.Log.Log("called");
-            SimGameState s = __instance.Combat.BattleTechGame.Simulation;
-            if (s == null)
-                return;
-            if (s.DataManager.MechDefs.TryGet(mDef.Description.Id, out MechDef m))
+            try
             {
-                if (mDef == m) // if its a player mech, it is a different mechdef than in the datamanager
+                SimGameState s = __instance.Combat.BattleTechGame.Simulation;
+                if (s == null)
                 {
-                    BTRandomMechComponentUpgrader_UpgradeList ulist = GetUpgradeList(team); // check if we got a upgradelist for that faction
-                    BTRandomMechComponentUpgrader_Init.Log.Log($"selected ulist {(ulist == null ? "null" : ulist.Name)}");
-                    if (ulist == null)
-                        return;
-
-                    BTRandomMechComponentUpgrader_Init.Log.Log($"upgrading {mDef.Description.Name} {mDef.Chassis.VariantName}");
-
-                    mDef = new MechDef(mDef); // dont break mechdefs in datamanager
-
-                    float canFreeTonns = Mathf.Floor(mDef.Inventory.Sum((r) => ulist.CanRemove.Contains(r.ComponentDefID) ? r.Def.Tonnage : 0f) * ulist.RemoveMaxFactor);
-
-
-                    // check standard upgrade
-                    CheckUpgrades(mDef, s, ulist, ref canFreeTonns);
-
-                    List<MechComponentRef> inv = mDef.Inventory.ToList();
-
-                    // check additions
-                    CheckAdditions(mDef, s, ulist, inv, ref canFreeTonns);
-
-                    // fix tonnage (remove or add heatsinks)
-                    mDef.SetInventory(inv.ToArray());
-                    CorrectTonnage(mDef, s, ulist, inv);
-
-                    mDef.SetInventory(inv.ToArray());
-                    BTRandomMechComponentUpgrader_Init.Log.Log("finished, inv dump:");
-                    foreach (MechComponentRef r in mDef.Inventory)
-                    {
-                        BTRandomMechComponentUpgrader_Init.Log.Log($"inventory {r.ComponentDefID} at {r.MountedLocation} {r.HardpointSlot}");
-                    }
-                    BTRandomMechComponentUpgrader_Init.Log.Log("done");
-
-                    if (!ValidateMech(mDef, s))
-                        mDef = m;
+                    BTRandomMechComponentUpgrader_Init.Log.Log("no simgame, aborting");
+                    return;
                 }
+
+                if (s.DataManager.MechDefs.TryGet(mDef.Description.Id, out MechDef m))
+                {
+                    if (mDef == m) // if its a player mech, it is a different mechdef than in the datamanager
+                    {
+                        BTRandomMechComponentUpgrader_UpgradeList ulist = GetUpgradeList(team); // check if we got a upgradelist for that faction
+                        BTRandomMechComponentUpgrader_Init.Log.Log($"selected ulist {(ulist == null ? "null" : ulist.Name)}");
+                        if (ulist == null)
+                            return;
+
+                        BTRandomMechComponentUpgrader_Init.Log.Log($"upgrading {mDef.Description.Name} {mDef.Chassis.VariantName}");
+
+                        MechDef n = new MechDef(mDef); // dont break mechdefs in datamanager
+
+                        float canFreeTonns = Mathf.Floor(n.Inventory.Sum((r) => ulist.CanRemove.Contains(r.ComponentDefID) ? r.Def.Tonnage : 0f) * ulist.RemoveMaxFactor);
+
+
+                        // check standard upgrade
+                        CheckUpgrades(n, s, ulist, ref canFreeTonns);
+
+                        // check additions
+                        CheckAdditions(n, s, ulist, ref canFreeTonns);
+
+                        // fix tonnage (remove or add heatsinks/armor)
+                        CorrectTonnage(n, s, ulist);
+
+                        BTRandomMechComponentUpgrader_Init.Log.Log("finished, inv dump:");
+                        foreach (MechComponentRef r in n.Inventory)
+                        {
+                            BTRandomMechComponentUpgrader_Init.Log.Log($"inventory {r.ComponentDefID} at {r.MountedLocation} {r.HardpointSlot}");
+                        }
+                        BTRandomMechComponentUpgrader_Init.Log.Log("done");
+
+                        if (ValidateMech(n, s))
+                            mDef = n;
+                    }
+                    else
+                    {
+                        BTRandomMechComponentUpgrader_Init.Log.Log("player modified mech, no upgrading");
+                    }
+                }
+                else
+                {
+                    BTRandomMechComponentUpgrader_Init.Log.Log($"no mechdef found in datamanager for {mDef.Description.Id}");
+                }
+            }
+            catch (Exception e)
+            {
+                BTRandomMechComponentUpgrader_Init.Log.LogException(e);
             }
         }
 
-        private static void CheckAdditions(MechDef mDef, SimGameState s, BTRandomMechComponentUpgrader_UpgradeList ulist, List<MechComponentRef> inv, ref float canFreeTonns)
+        private static void CheckAdditions(MechDef mDef, SimGameState s, BTRandomMechComponentUpgrader_UpgradeList ulist, ref float canFreeTonns)
         {
+            List<MechComponentRef> inv = mDef.Inventory.ToList();
             foreach (BTRandomMechComponentUpgrader_UpgradeList.UpgradeEntry[] l in ulist.Additions)
             {
                 if (s.NetworkRandom.Float(0f, 1f) < ulist.UpgradePerComponentChance)
                 {
                     int repeatResult = -1;
-                    string sel = BTRandomMechComponentUpgrader_UpgradeList.GetUpgradeFromRandom(l, s.NetworkRandom.Float(0f, 1f), s.CurrentDate, out bool _, ref repeatResult, out string _, out string _);
+                    float r1 = s.NetworkRandom.Float(0f, 1f);
+                    string sel = BTRandomMechComponentUpgrader_UpgradeList.GetUpgradeFromRandom(l, r1, s.CurrentDate, out bool _, ref repeatResult, out string _, out string _);
                     if (sel != null)
                     {
                         MechComponentDef d = GetComponentDefFromID(s, sel);
@@ -87,18 +104,30 @@ namespace BTRandomMechComponentUpgrader
                             }
                         }
                         if (loc == ChassisLocations.None)
+                        {
+                            BTRandomMechComponentUpgrader_Init.Log.Log($"cannot add {sel}");
                             continue;
+                        }
                         BTRandomMechComponentUpgrader_Init.Log.Log($"adding {sel} into {loc}");
                         MechComponentRef r = new MechComponentRef(sel, null, d.ComponentType, loc, -1, ComponentDamageLevel.Functional, false);
                         r.SetComponentDef(d);
                         inv.Add(r);
                     }
+                    else
+                    {
+                        BTRandomMechComponentUpgrader_Init.Log.Log($"found no addition for {l[0].ID}, rolled {r1}");
+                        foreach (BTRandomMechComponentUpgrader_UpgradeList.UpgradeEntry e in l)
+                            BTRandomMechComponentUpgrader_Init.Log.Log($"\t limits {e.ID} {e.RandomLimit}");
+                    }
                 }
             }
+            mDef.SetInventory(inv.ToArray());
         }
 
-        private static void CorrectTonnage(MechDef mDef, SimGameState s, BTRandomMechComponentUpgrader_UpgradeList ulist, List<MechComponentRef> inv)
+        private static void CorrectTonnage(MechDef mDef, SimGameState s, BTRandomMechComponentUpgrader_UpgradeList ulist)
         {
+            BTRandomMechComponentUpgrader_Init.Log.Log("correcting tonage 1: inventory");
+            List<MechComponentRef> inv = mDef.Inventory.ToList();
             float tonnage = 0;
             float max = 0;
             MechStatisticsRules.CalculateTonnage(mDef, ref tonnage, ref max);
@@ -114,40 +143,109 @@ namespace BTRandomMechComponentUpgrader
                 tonnage -= inv[i].Def.Tonnage;
                 inv.RemoveAt(i);
             }
-            MechComponentDef fill1ton = null;
-            MechComponentDef fill05ton = null;
+
             foreach (string id in ulist.CanRemove)
             {
                 MechComponentDef d = GetComponentDefFromID(s, id);
-                if (fill1ton == null && d.Tonnage == 1)
-                    fill1ton = d;
-                if (fill05ton == null && d.Tonnage == 0.5f)
-                    fill05ton = d;
-            }
-            while (tonnage + 0.5 <= mDef.Chassis.Tonnage)
-            {
-                MechComponentDef d = fill05ton;
-                if (tonnage + 1 <= mDef.Chassis.Tonnage)
-                    d = fill1ton;
-                ChassisLocations loc = ChassisLocations.None;
-                foreach (ChassisLocations l in Locations)
+                while (tonnage + d.Tonnage <= mDef.Chassis.Tonnage)
                 {
-                    if (GetFreeSlotsInLoc(mDef, inv, l, null) >= d.InventorySize && CanPutComponentIntoLoc(d, l))
+                    ChassisLocations loc = ChassisLocations.None;
+                    foreach (ChassisLocations l in Locations)
                     {
-                        loc = l;
+                        if (GetFreeSlotsInLoc(mDef, inv, l, null) >= d.InventorySize && CanPutComponentIntoLoc(d, l))
+                        {
+                            loc = l;
+                            break;
+                        }
+                    }
+                    if (loc == ChassisLocations.None)
+                    {
+                        BTRandomMechComponentUpgrader_Init.Log.Log("no free location found!");
                         break;
                     }
+                    MechComponentRef r = new MechComponentRef(d.Description.Id, null, d.ComponentType, loc, -1, ComponentDamageLevel.Functional, false);
+                    r.SetComponentDef(d);
+                    inv.Add(r);
+                    tonnage += d.Tonnage;
+                    BTRandomMechComponentUpgrader_Init.Log.Log($"added {r.ComponentDefID} to use free weight");
                 }
-                if (loc == ChassisLocations.None)
+            }
+            mDef.SetInventory(inv.ToArray());
+
+            float armorfact = GetMechArmorPointFactor(mDef);
+            BTRandomMechComponentUpgrader_Init.Log.Log($"correcting tonnage 2: armor (each armor point costs {armorfact} t)");
+            while (tonnage + armorfact <= mDef.Chassis.Tonnage)
+            {
+                bool assOne = false;
+                foreach (ChassisLocations c in Locations)
                 {
-                    BTRandomMechComponentUpgrader_Init.Log.Log("no free location found!");
+                    if (tonnage + armorfact >= mDef.Chassis.Tonnage)
+                        break;
+                    LocationLoadoutDef l = mDef.GetLocationLoadoutDef(c);
+                    if (l.AssignedArmor >= mDef.GetChassisLocationDef(c).MaxArmor)
+                        continue;
+                    l.AssignedArmor += 1;
+                    l.CurrentArmor += 1;
+                    tonnage += armorfact;
+                    BTRandomMechComponentUpgrader_Init.Log.Log($"increased {l} armor to {l.AssignedArmor}");
+                    assOne = true;
+                }
+                foreach (ChassisLocations c in RearArmoredLocs)
+                {
+                    if (tonnage + armorfact >= mDef.Chassis.Tonnage)
+                        break;
+                    LocationLoadoutDef l = mDef.GetLocationLoadoutDef(c);
+                    if (l.AssignedRearArmor >= mDef.GetChassisLocationDef(c).MaxRearArmor)
+                        continue;
+                    l.AssignedRearArmor += 1;
+                    l.CurrentRearArmor += 1;
+                    tonnage += armorfact;
+                    BTRandomMechComponentUpgrader_Init.Log.Log($"increased {l} rear armor to {l.AssignedRearArmor}");
+                    assOne = true;
+                }
+                if (!assOne)
+                {
+                    BTRandomMechComponentUpgrader_Init.Log.Log("no free armor location found!");
                     break;
                 }
-                MechComponentRef r = new MechComponentRef(d.Description.Id, null, d.ComponentType, loc, -1, ComponentDamageLevel.Functional, false);
-                r.SetComponentDef(d);
-                inv.Add(r);
-                BTRandomMechComponentUpgrader_Init.Log.Log($"added {r.ComponentDefID} to use free weight");
             }
+            while (tonnage > mDef.Chassis.Tonnage)
+            {
+                bool assOne = false;
+                foreach (ChassisLocations c in Locations)
+                {
+                    if (tonnage <= mDef.Chassis.Tonnage)
+                        break;
+                    LocationLoadoutDef l = mDef.GetLocationLoadoutDef(c);
+                    if (l.AssignedArmor <= 1)
+                        continue;
+                    l.AssignedArmor -= 1;
+                    l.CurrentArmor -= 1;
+                    tonnage -= armorfact;
+                    BTRandomMechComponentUpgrader_Init.Log.Log($"decreased {c} armor to {l.AssignedArmor}");
+                    assOne = true;
+                }
+                foreach (ChassisLocations c in RearArmoredLocs)
+                {
+                    if (tonnage <= mDef.Chassis.Tonnage)
+                        break;
+                    LocationLoadoutDef l = mDef.GetLocationLoadoutDef(c);
+                    if (l.AssignedRearArmor <= 1)
+                        continue;
+                    l.AssignedRearArmor -= 1;
+                    l.CurrentRearArmor -= 1;
+                    tonnage -= armorfact;
+                    BTRandomMechComponentUpgrader_Init.Log.Log($"decreased {c} rear armor to {l.AssignedRearArmor}");
+                    assOne = true;
+                }
+                if (!assOne)
+                {
+                    BTRandomMechComponentUpgrader_Init.Log.Log("no free armor location found!");
+                    break;
+                }
+            }
+
+
             BTRandomMechComponentUpgrader_Init.Log.Log($"final weight: {tonnage}/{mDef.Chassis.Tonnage}");
         }
 
@@ -156,14 +254,7 @@ namespace BTRandomMechComponentUpgrader
             Dictionary<BTRandomMechComponentUpgrader_UpgradeList.UpgradeEntry[], int> repeatUpgradeResults = new Dictionary<BTRandomMechComponentUpgrader_UpgradeList.UpgradeEntry[], int>();
             foreach (MechComponentRef r in mDef.Inventory)
             {
-                try
-                {
-                    CheckForAndPerformUpgrade(r, s, ulist, ref canFreeTonns, mDef, repeatUpgradeResults);
-                }
-                catch (Exception e)
-                {
-                    BTRandomMechComponentUpgrader_Init.Log.LogException(e);
-                }
+                CheckForAndPerformUpgrade(r, s, ulist, ref canFreeTonns, mDef, repeatUpgradeResults);
             }
         }
 
@@ -180,8 +271,6 @@ namespace BTRandomMechComponentUpgrader
 
         public static void CheckForAndPerformUpgrade(MechComponentRef r, SimGameState s, BTRandomMechComponentUpgrader_UpgradeList l, ref float canFreeTonns, MechDef mech, Dictionary<BTRandomMechComponentUpgrader_UpgradeList.UpgradeEntry[], int> repeatResults)
         {
-            if (l == null)
-                return;
             BTRandomMechComponentUpgrader_UpgradeList.UpgradeEntry[] le = l.GetUpgradeArrayAndOffset(r.Def.Description.Id, out float minr);
             if (le != null)
             {
@@ -192,7 +281,8 @@ namespace BTRandomMechComponentUpgrader
                 if (repeat<0 && s.NetworkRandom.Float(0f, 1f) > l.UpgradePerComponentChance) // roll if upgrade only if no repeat is saved
                     return;
 
-                string sel = BTRandomMechComponentUpgrader_UpgradeList.GetUpgradeFromRandom(le, s.NetworkRandom.Float(minr, 1f), s.CurrentDate, out bool ReCheckUpgrade, ref repeat, out string swapAmmoFrom, out string swapAmmoTo);
+                float r1 = s.NetworkRandom.Float(minr, 1f);
+                string sel = BTRandomMechComponentUpgrader_UpgradeList.GetUpgradeFromRandom(le, r1, s.CurrentDate, out bool ReCheckUpgrade, ref repeat, out string swapAmmoFrom, out string swapAmmoTo);
                 if (sel != null)
                 {
                     if (repeat <= -2)
@@ -222,7 +312,15 @@ namespace BTRandomMechComponentUpgrader
                         CheckForAndPerformUpgrade(r, s, l, ref canFreeTonns, mech, repeatResults);
                 }
                 else
-                    BTRandomMechComponentUpgrader_Init.Log.Log($"found no upgrade for {r.ComponentDefID}");
+                {
+                    BTRandomMechComponentUpgrader_Init.Log.Log($"found no upgrade for {r.ComponentDefID}, rolled {r1}");
+                    foreach (BTRandomMechComponentUpgrader_UpgradeList.UpgradeEntry e in le)
+                        BTRandomMechComponentUpgrader_Init.Log.Log($"\t limits {e.ID} {e.RandomLimit}");
+                }
+            }
+            else
+            {
+                BTRandomMechComponentUpgrader_Init.Log.Log($"upgradesublist null for {r.ComponentDefID}");
             }
         }
 
@@ -245,7 +343,6 @@ namespace BTRandomMechComponentUpgrader
         {
             canFreeTonns += r.Def.Tonnage;
             r.ComponentDefID = d.Description.Id;
-            //Traverse.Create(r).Property("Def").SetValue(wdef);
             r.SetComponentDef(d);
             canFreeTonns -= r.Def.Tonnage;
         }
@@ -280,6 +377,34 @@ namespace BTRandomMechComponentUpgrader
         public static bool CanPutComponentIntoLoc(MechComponentDef d, ChassisLocations loc)
         {
             return (d.AllowedLocations & loc) != ChassisLocations.None;
+        }
+
+        public static float GetMechArmor(MechDef m)
+        {
+            float r = 0;
+            foreach (ChassisLocations l in Locations)
+            {
+                LocationLoadoutDef v = m.GetLocationLoadoutDef(l);
+                r += v.AssignedArmor;
+            }
+            foreach (ChassisLocations l in RearArmoredLocs)
+            {
+                LocationLoadoutDef v = m.GetLocationLoadoutDef(l);
+                r += v.AssignedRearArmor;
+            }
+            return r;
+        }
+
+        public static float GetMechArmorPointFactor(MechDef m)
+        {
+            float t = 0;
+            float _ = 0;
+            MechStatisticsRules.CalculateTonnage(m, ref t, ref _);
+            t -= m.Chassis.InitialTonnage;
+            foreach (MechComponentRef i in m.Inventory)
+                t -= i.Def.Tonnage;
+            float arm = GetMechArmor(m);
+            return t / arm;
         }
 
         public static bool ValidateMech(MechDef m, SimGameState s)

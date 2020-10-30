@@ -41,7 +41,7 @@ namespace BTRandomMechComponentUpgrader
 
         public static void FinishedLoading(Dictionary<string, Dictionary<string, VersionManifestEntry>> customResources)
         {
-            if (!customResources.ContainsKey("ComponentUpgradeList") || !customResources.ContainsKey("ComponentUpgradeListEntry"))
+            if (!customResources.ContainsKey("ComponentUpgradeList") || !customResources.ContainsKey("ComponentUpgradeSubList"))
             {
                 Log.LogError("Error: Missing custom Resource!");
                 return;
@@ -50,7 +50,7 @@ namespace BTRandomMechComponentUpgrader
             {
                 Dictionary<string, BTRandomMechComponentUpgrader_UpgradeList.UpgradeEntry[]> entries = new Dictionary<string, BTRandomMechComponentUpgrader_UpgradeList.UpgradeEntry[]>();
                 UpgradeLists = new List<BTRandomMechComponentUpgrader_UpgradeList>();
-                foreach (KeyValuePair<string, VersionManifestEntry> kv in customResources["ComponentUpgradeListEntry"])
+                foreach (KeyValuePair<string, VersionManifestEntry> kv in customResources["ComponentUpgradeSubList"])
                 {
                     entries.Add(kv.Value.FileName, LoadCList(kv.Value.FilePath));
                 }

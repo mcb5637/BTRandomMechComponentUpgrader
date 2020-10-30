@@ -9,6 +9,8 @@
 
   "DependsOn": [ "BTRandomMechComponentUpgrader", "BT_Extended" ],
   
+  "CustomResourceTypes": [ "ComponentUpgradeList", "ComponentUpgradeSubList" ],
+  
   "Manifest": [
     {
       "Type": "WeaponDef",
@@ -19,19 +21,19 @@
       "Path": "ComponentUpgradeList"
     },
     {
-      "Type": "ComponentUpgradeListEntry",
+      "Type": "ComponentUpgradeSubList",
       "Path": "BTXM"
     },
     {
-      "Type": "ComponentUpgradeListEntry",
+      "Type": "ComponentUpgradeSubList",
       "Path": "Elite"
     },
     {
-      "Type": "ComponentUpgradeListEntry",
+      "Type": "ComponentUpgradeSubList",
       "Path": "House"
     },
     {
-      "Type": "ComponentUpgradeListEntry",
+      "Type": "ComponentUpgradeSubList",
       "Path": "Periphery"
     }
   ],

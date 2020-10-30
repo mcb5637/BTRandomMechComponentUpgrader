@@ -91,7 +91,7 @@ namespace BTRandomMechComponentUpgrader
             for (int i = 0; i < list.Length; i++)
             {
                 UpgradeEntry u = list[i];
-                if (r < u.RandomLimit && CheckUpgradeCond(u, date, repeatUpgradeResult))
+                if (r <= u.RandomLimit && CheckUpgradeCond(u, date, repeatUpgradeResult))
                 {
                     ReCheckUpgrade = u.ListLink;
                     swapAmmoFrom = u.SwapAmmoFrom;

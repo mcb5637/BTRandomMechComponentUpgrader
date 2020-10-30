@@ -11,6 +11,6 @@ namespace BTRandomMechComponentUpgrader
         //public string[][] UpgradeLists = new string[][] { new string[] { } };
         //public string[] UpgradeListNames = new string[] { };
         //public BTRandomMechComponentUpgrader_UpgradeList[] UpgradeLists = new BTRandomMechComponentUpgrader_UpgradeList[] {};
-        public bool LogLevelLog;
+        public bool LogLevelLog = true;
     }
 }
