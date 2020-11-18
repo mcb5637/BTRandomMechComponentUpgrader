@@ -29,12 +29,12 @@ namespace BTRandomMechComponentUpgrader
                     BTRandomMechComponentUpgrader_Init.Log.Log("no simgame, aborting");
                     return;
                 }
-
+                
                 if (s.DataManager.MechDefs.TryGet(mDef.Description.Id, out MechDef m))
                 {
                     if (mDef == m) // if its a player mech, it is a different mechdef than in the datamanager
                     {
-                        BTRandomMechComponentUpgrader_UpgradeList ulist = GetUpgradeList(team); // check if we got a upgradelist for that faction
+                        BTRandomMechComponentUpgrader_UpgradeList ulist = GetUpgradeList(team.IsLocalPlayer ? __instance.Combat.ActiveContract.Override.employerTeam.FactionValue.ToString() : team.FactionValue.ToString()); // check if we got a upgradelist for that faction
                         BTRandomMechComponentUpgrader_Init.Log.Log($"selected ulist {(ulist == null ? "null" : ulist.Name)}");
                         if (ulist == null)
                             return;
@@ -258,12 +258,12 @@ namespace BTRandomMechComponentUpgrader
             }
         }
 
-        public static BTRandomMechComponentUpgrader_UpgradeList GetUpgradeList(Team team)
+        public static BTRandomMechComponentUpgrader_UpgradeList GetUpgradeList(string team)
         {
-            BTRandomMechComponentUpgrader_Init.Log.Log($"searching UpgradeList for faction {team.FactionValue}");
+            BTRandomMechComponentUpgrader_Init.Log.Log($"searching UpgradeList for faction {team}");
             foreach (BTRandomMechComponentUpgrader_UpgradeList l in BTRandomMechComponentUpgrader_Init.UpgradeLists)
             {
-                if (l.DoesApplyToFaction(team.FactionValue.ToString()))
+                if (l.DoesApplyToFaction(team))
                     return l;
             }
             return null;
