@@ -46,20 +46,23 @@ namespace BTRandomMechComponentUpgrader
                 Log.LogError("Error: Missing custom Resource!");
                 return;
             }
+            string missing = "";
             try
             {
                 Dictionary<string, BTRandomMechComponentUpgrader_UpgradeList.UpgradeEntry[]> entries = new Dictionary<string, BTRandomMechComponentUpgrader_UpgradeList.UpgradeEntry[]>();
                 UpgradeLists = new List<BTRandomMechComponentUpgrader_UpgradeList>();
                 foreach (KeyValuePair<string, VersionManifestEntry> kv in customResources["ComponentUpgradeSubList"])
                 {
+                    missing = kv.Value.FilePath;
                     entries.Add(kv.Value.FileName, LoadCList(kv.Value.FilePath));
                 }
                 foreach (KeyValuePair<string, VersionManifestEntry> kv in customResources["ComponentUpgradeList"])
                 {
+                    missing = kv.Value.FilePath;
                     BTRandomMechComponentUpgrader_UpgradeList ulist = LoadUList(kv.Value.FilePath);
                     ulist.Name = kv.Value.FileName;
-                    LoadListComponents(ulist.LoadUpgrades, ulist.Upgrades, entries);
-                    LoadListComponents(ulist.LoadAdditions, ulist.Additions, entries);
+                    LoadListComponents(ulist.LoadUpgrades, ulist.Upgrades, entries, out missing);
+                    LoadListComponents(ulist.LoadAdditions, ulist.Additions, entries, out missing);
                     //ulist.CalculateLimits();
                     UpgradeLists.Add(ulist);
                 }
@@ -69,15 +72,20 @@ namespace BTRandomMechComponentUpgrader
             {
                 UpgradeLists = new List<BTRandomMechComponentUpgrader_UpgradeList>();
                 Log.LogException(e);
+                Log.LogError(missing);
             }
         }
 
-        private static void LoadListComponents(string[] load, List<BTRandomMechComponentUpgrader_UpgradeList.UpgradeEntry[]> data, Dictionary<string, BTRandomMechComponentUpgrader_UpgradeList.UpgradeEntry[]> entries)
+        private static void LoadListComponents(string[] load, List<BTRandomMechComponentUpgrader_UpgradeList.UpgradeEntry[]> data, Dictionary<string, BTRandomMechComponentUpgrader_UpgradeList.UpgradeEntry[]> entries, out string missing)
         {
             if (load != null && load.Length > 0)
                 foreach (string l in load)
                     if (l != null)
+                    {
+                        missing = l;
                         data.Add(entries[l]);
+                    }
+            missing = "";
         }
 
         public static BTRandomMechComponentUpgrader_UpgradeList LoadUList(string name, string dir = null)

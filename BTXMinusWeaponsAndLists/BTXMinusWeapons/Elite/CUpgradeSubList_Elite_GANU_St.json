@@ -1,0 +1,30 @@
+﻿[
+  {
+    "ID": "Weapon_Gauss_Gauss_NU_0-STOCK",
+    "Weight": 25
+  },
+  {
+    "ID": "Weapon_Gauss_Gauss_NU_1-Defiance",
+    "Weight": 17
+  },
+  {
+    "ID": "Weapon_Gauss_Gauss_NU_1-Imperator",
+    "Weight": 17
+  },
+  {
+    "ID": "Weapon_Gauss_Gauss_NU_1-Kali_Yama",
+    "Weight": 17
+  },
+  {
+    "ID": "Weapon_Gauss_Gauss_NU_2-Defiance",
+    "Weight": 8
+  },
+  {
+    "ID": "Weapon_Gauss_Gauss_NU_2-Imperator",
+    "Weight": 8
+  },
+  {
+    "ID": "Weapon_Gauss_Gauss_NU_2-Kali_Yama",
+    "Weight": 8
+  }
+]

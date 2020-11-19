@@ -5,10 +5,12 @@
   "Description": "",
   "Author": "RJPhoenix & mcb",
   "Website": "https://github.com/mcb5637/BTRandomMechComponentUpgrader",
-  "Version": "1.1.0",
+  "Version": "1.2.0",
 
   "DependsOn": [ "BTRandomMechComponentUpgrader", "BT_Extended" ],
   
+  "ConflictsWith": [ "BTRandomMechComponentUpgraderBTX" ],
+
   "CustomResourceTypes": [ "ComponentUpgradeList", "ComponentUpgradeSubList" ],
   
   "Manifest": [
@@ -35,7 +37,11 @@
     {
       "Type": "ComponentUpgradeSubList",
       "Path": "Periphery"
+    },
+    {
+      "Type": "ComponentUpgradeSubList",
+      "Path": "ComStar"
     }
   ],
-  "RemoveManifestEntries": [ "default_vanilla" ]
+  "RemoveManifestEntries": [ "CUpgradeList_default_vanilla" ]
 }

@@ -1,0 +1,82 @@
+﻿[
+  {
+    "ID": "Gear_Actuator_Coventry_X55-Standard",
+    "Weight": 2
+  },
+  {
+    "ID": "Gear_Actuator_Coventry_X65-Standard",
+    "Weight": 2
+  },
+  {
+    "ID": "Gear_Actuator_Coventry_X75-Standard",
+    "Weight": 2
+  },
+  {
+    "ID": "Gear_Actuator_Coventry_B20-Extended",
+    "Weight": 2
+  },
+  {
+    "ID": "Gear_Actuator_Coventry_B40-Extended",
+    "Weight": 2
+  },
+  {
+    "ID": "Gear_Actuator_Coventry_B60-Extended",
+    "Weight": 2
+  },
+  {
+    "ID": "Gear_Actuator_Coventry_Alpha",
+    "Weight": 2
+  },
+  {
+    "ID": "Gear_Actuator_Friedhof_Theseus",
+    "Weight": 2
+  },
+  {
+    "ID": "Gear_Actuator_Friedhof_Perseus",
+    "Weight": 2
+  },
+  {
+    "ID": "Gear_Actuator_Friedhof_Heracles",
+    "Weight": 2
+  },
+  {
+    "ID": "Gear_Actuator_Friedhof_Behemoth",
+    "Weight": 2
+  },
+  {
+    "ID": "Gear_Actuator_Friedhof_Gargantuan",
+    "Weight": 2
+  },
+  {
+    "ID": "Gear_Actuator_Friedhof_Colossus",
+    "Weight": 2
+  },
+  {
+    "ID": "Gear_Actuator_Friedhof_Cronos",
+    "Weight": 2
+  },
+  {
+    "ID": "Gear_Actuator_Pitban_Jackrabbit",
+    "Weight": 2
+  },
+  {
+    "ID": "Gear_Actuator_Pitban_Wallaby",
+    "Weight": 2
+  },
+  {
+    "ID": "Gear_Actuator_Pitban_Kangaroo",
+    "Weight": 2
+  },
+  {
+    "ID": "Gear_Actuator_Rawlings_Epsilon",
+    "Weight": 2
+  },
+  {
+    "ID": "Gear_Actuator_Rawlings_Omicron",
+    "Weight": 2
+  },
+  {
+    "ID": "Gear_Actuator_Rawlings_Omega",
+    "Weight": 2
+  }
+]

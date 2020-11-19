@@ -1,0 +1,63 @@
+﻿{
+  /** determine factions this list is for. first list that matches a faction gets used (the same order as you load them in the settings. **/
+  "Factions": [ "default_all" ],
+  /** base upgrade/addition chance (can be set to 1 to run on everything, should be used with AllowDowngrade when 1) **/
+  "UpgradePerComponentChance": 0.2,
+  /** weigth modification allows to remove any of these (in this order), or add them if weight gets freed. **/
+  "CanRemove": [ "Gear_HeatSink_Generic_Standard", "Gear_HeatSink_Generic_Double" ],
+  /** a factor of how much weight can be removed at maximum. **/
+  "RemoveMaxFactor": 0.5,
+  /** upgrading single components.
+  MinDate requires a date to be passed, if not passed next item gets selected.
+  ListLink rerolls the upgrade, possibly upgrading it furher, but this item gets ignored when calculating the upgrade start point.
+  UpgradeAll upgrades all copies to this variant (ignores if already other upgraded).
+  SwapAmmoFrom changes ammo types to SwapAmmoTo (in conjunction with UpgradeAll used to change to different ammo weapons).
+  AllowDowngrade allows lower items (and itself) to be selected, downgrading equipment (global or as per component) (i recommend only putting it on the base component, so something like The Raids custom mechs dont get downgraded).**/
+  "LoadUpgrades": [
+    "CUpgradeSubList_Vanilla_SL_St.json",
+    "CUpgradeSubList_Vanilla_SLER_St.json",
+    "CUpgradeSubList_Vanilla_SLP_St.json",
+    "CUpgradeSubList_Vanilla_ML_St.json",
+    "CUpgradeSubList_Vanilla_MLER_St.json",
+    "CUpgradeSubList_Vanilla_MLP_St.json",
+    "CUpgradeSubList_Vanilla_TAG_St.json",
+    "CUpgradeSubList_Vanilla_LL_St.json",
+    "CUpgradeSubList_Vanilla_LLER_St.json",
+    "CUpgradeSubList_Vanilla_LLP_St.json",
+    "CUpgradeSubList_Vanilla_PPC_St.json",
+    "CUpgradeSubList_Vanilla_PPCER_St.json",
+    "CUpgradeSubList_Vanilla_PCC_St.json",
+    "CUpgradeSubList_Vanilla_FL_St.json",
+    "CUpgradeSubList_Vanilla_MG_St.json",
+    "CUpgradeSubList_Vanilla_AC2_St.json",
+    "CUpgradeSubList_Vanilla_AC2LBX_St.json",
+    "CUpgradeSubList_Vanilla_AC2U_St.json",
+    "CUpgradeSubList_Vanilla_AC5_St.json",
+    "CUpgradeSubList_Vanilla_AC5LBX_St.json",
+    "CUpgradeSubList_Vanilla_AC5U_St.json",
+    "CUpgradeSubList_Vanilla_AC10_St.json",
+    "CUpgradeSubList_Vanilla_AC10LBX_St.json",
+    "CUpgradeSubList_Vanilla_AC10U_St.json",
+    "CUpgradeSubList_Vanilla_AC20_St.json",
+    "CUpgradeSubList_Vanilla_AC20LBX_St.json",
+    "CUpgradeSubList_Vanilla_AC20U_St.json",
+    "CUpgradeSubList_Vanilla_GA_St.json",
+    "CUpgradeSubList_Vanilla_SRM2_St.json",
+    "CUpgradeSubList_Vanilla_SRM2IN_St.json",
+    "CUpgradeSubList_Vanilla_NARC_St.json",
+    "CUpgradeSubList_Vanilla_SRM4_St.json",
+    "CUpgradeSubList_Vanilla_SRM6_St.json",
+    "CUpgradeSubList_Vanilla_LRM5_St.json",
+    "CUpgradeSubList_Vanilla_LRM10_St.json",
+    "CUpgradeSubList_Vanilla_LRM15_St.json",
+    "CUpgradeSubList_Vanilla_LRM20_St.json",
+    "CUpgradeSubList_Vanilla_HeatSink_St.json"
+  ],
+  /** adding components randomly, uses the same format as upgrades, but anything special (under ListLink) gets ignored. **/
+  "LoadAdditions": [
+    "CUpgradeSubList_Vanilla_GearCockpitFull_St.json",
+    "CUpgradeSubList_Vanilla_GearGyroFull_St.json",
+    "CUpgradeSubList_Vanilla_GearOtherFull_St.json",
+    "CUpgradeSubList_Vanilla_GearActuatorsFull_St.json"
+  ]
+}

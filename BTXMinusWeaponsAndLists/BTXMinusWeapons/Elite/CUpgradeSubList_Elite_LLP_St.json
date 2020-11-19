@@ -1,0 +1,18 @@
+﻿[
+  {
+    "ID": "Weapon_Laser_LargeLaserPulse_Sa_0-STOCK",
+    "Weight": 0
+  },
+  {
+    "ID": "Weapon_Laser_LargeLaserPulse_0-STOCK",
+    "Weight": 25
+  },
+  {
+    "ID": "Weapon_Laser_LargeLaserPulse_1-Thunderbolt12",
+    "Weight": 50
+  },
+  {
+    "ID": "Weapon_Laser_LargeLaserPulse_2-Exostar",
+    "Weight": 25
+  }
+]

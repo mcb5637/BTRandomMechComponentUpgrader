@@ -1,0 +1,82 @@
+﻿{
+  /** determine factions this list is for. first list that matches a faction gets used (the same order as you load them in the settings. **/
+  "Factions": [ "default_all" ],
+  /** base upgrade/addition chance (can be set to 1 to run on everything, should be used with AllowDowngrade when 1) **/
+  "UpgradePerComponentChance": 0.2,
+  /** weigth modification allows to remove any of these (in this order), or add them if weight gets freed. **/
+  "CanRemove": [ "Gear_HeatSink_Generic_Standard", "Gear_HeatSink_Generic_Double" ],
+  /** a factor of how much weight can be removed at maximum. **/
+  "RemoveMaxFactor": 0.5,
+  /** upgrading single components.
+  MinDate requires a date to be passed, if not passed next item gets selected.
+  ListLink rerolls the upgrade, possibly upgrading it furher, but this item gets ignored when calculating the upgrade start point.
+  UpgradeAll upgrades all copies to this variant (ignores if already other upgraded).
+  SwapAmmoFrom changes ammo types to SwapAmmoTo (in conjunction with UpgradeAll used to change to different ammo weapons).
+  AllowDowngrade allows lower items (and itself) to be selected, downgrading equipment (global or as per component) (i recommend only putting it on the base component, so something like The Raids custom mechs dont get downgraded).**/
+  "LoadUpgrades": [
+    "CUpgradeSubList_BTX_SL_St.json",
+    "CUpgradeSubList_BTX_SLER_St.json",
+    "CUpgradeSubList_BTX_SLERNU_St.json",
+    "CUpgradeSubList_BTX_SLP_St.json",
+    "CUpgradeSubList_BTX_SLPNU_St.json",
+    "CUpgradeSubList_BTX_ML_St.json",
+    "CUpgradeSubList_BTX_MLER_St.json",
+    "CUpgradeSubList_BTX_MLERNU_St.json",
+    "CUpgradeSubList_BTX_MLP_St.json",
+    "CUpgradeSubList_BTX_MLPNU_St.json",
+    "CUpgradeSubList_BTX_TAG_St.json",
+    "CUpgradeSubList_BTX_LL_St.json",
+    "CUpgradeSubList_BTX_LLER_St.json",
+    "CUpgradeSubList_BTX_LLERNU_St.json",
+    "CUpgradeSubList_BTX_LLP_St.json",
+    "CUpgradeSubList_BTX_LLPNU_St.json",
+    "CUpgradeSubList_BTX_BL_St.json",
+    "CUpgradeSubList_BTX_PPC_St.json",
+    "CUpgradeSubList_BTX_PPCER_St.json",
+    "CUpgradeSubList_BTX_PPCERNU_St.json",
+    "CUpgradeSubList_BTX_PCC_St.json",
+    "CUpgradeSubList_BTX_FL_St.json",
+    "CUpgradeSubList_BTX_MG_St.json",
+    "CUpgradeSubList_BTX_AC2_St.json",
+    "CUpgradeSubList_BTX_AC2LBX_St.json",
+    "CUpgradeSubList_BTX_AC2U_St.json",
+    "CUpgradeSubList_BTX_AC5_St.json",
+    "CUpgradeSubList_BTX_AC5LBX_St.json",
+    "CUpgradeSubList_BTX_AC5U_St.json",
+    "CUpgradeSubList_BTX_AC5UNU_St.json",
+    "CUpgradeSubList_BTX_AC10_St.json",
+    "CUpgradeSubList_BTX_AC10LBX_St.json",
+    "CUpgradeSubList_BTX_AC10LBXNU_St.json",
+    "CUpgradeSubList_BTX_AC10U_St.json",
+    "CUpgradeSubList_BTX_AC20_St.json",
+    "CUpgradeSubList_BTX_AC20LBX_St.json",
+    "CUpgradeSubList_BTX_AC20U_St.json",
+    "CUpgradeSubList_BTX_GA_St.json",
+    "CUpgradeSubList_BTX_GANU_St.json",
+    "CUpgradeSubList_BTX_SRM2_St.json",
+    "CUpgradeSubList_BTX_SRM2IN_St.json",
+    "CUpgradeSubList_BTX_NARC_St.json",
+    "CUpgradeSubList_BTX_SRM2A_St.json",
+    "CUpgradeSubList_BTX_SRM2S_St.json",
+    "CUpgradeSubList_BTX_SRM4_St.json",
+    "CUpgradeSubList_BTX_SRM4A_St.json",
+    "CUpgradeSubList_BTX_SRM6_St.json",
+    "CUpgradeSubList_BTX_SRM6A_St.json",
+    "CUpgradeSubList_BTX_LRM5_St.json",
+    "CUpgradeSubList_BTX_LRM5A_St.json",
+    "CUpgradeSubList_BTX_LRM10_St.json",
+    "CUpgradeSubList_BTX_LRM10A_St.json",
+    "CUpgradeSubList_BTX_LRM15_St.json",
+    "CUpgradeSubList_BTX_LRM15A_St.json",
+    "CUpgradeSubList_BTX_LRM20_St.json",
+    "CUpgradeSubList_BTX_LRM20A_St.json",
+    "CUpgradeSubList_BTX_HeatSink_St.json"
+  ],
+  /** adding components randomly, uses the same format as upgrades, but anything special (under ListLink) gets ignored. **/
+  "LoadAdditions": [
+    "CUpgradeSubList_BTX_GearCockpitFull_St.json",
+    "CUpgradeSubList_BTX_GearGyroFull_St.json",
+    "CUpgradeSubList_Vanilla_GearOtherFull_St.json",
+    "CUpgradeSubList_Vanilla_GearActuatorsFull_St.json"
+  ]
+}

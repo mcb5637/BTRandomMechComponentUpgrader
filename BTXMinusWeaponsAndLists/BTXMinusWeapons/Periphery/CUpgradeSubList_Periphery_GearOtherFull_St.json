@@ -1,0 +1,74 @@
+﻿[
+  {
+    "ID": "",
+    "Weight": 500
+  },
+  {
+    "ID": "Gear_TargetingTrackingSystem_Hartford_F1800",
+    "Weight": 10
+  },
+  {
+    "ID": "Gear_TargetingTrackingSystem_Hartford_F2400",
+    "Weight": 6
+  },
+  {
+    "ID": "Gear_TargetingTrackingSystem_Hartford_F3000",
+    "Weight": 4
+  },
+  {
+    "ID": "Gear_TargetingTrackingSystem_Hartford_S2000",
+    "Weight": 2
+  },
+  {
+    "ID": "Gear_TargetingTrackingSystem_Kallon_A-C-1000",
+    "Weight": 10
+  },
+  {
+    "ID": "Gear_TargetingTrackingSystem_Kallon_A-C-1500",
+    "Weight": 6
+  },
+  {
+    "ID": "Gear_TargetingTrackingSystem_Kallon_A-C-P150+",
+    "Weight": 4
+  },
+  {
+    "ID": "Gear_TargetingTrackingSystem_Kallon_Lock-On",
+    "Weight": 2
+  },
+  {
+    "ID": "Gear_TargetingTrackingSystem_RCA_InstaTrac-VIII",
+    "Weight": 10
+  },
+  {
+    "ID": "Gear_TargetingTrackingSystem_RCA_InstaTrac-IX",
+    "Weight": 6
+  },
+  {
+    "ID": "Gear_TargetingTrackingSystem_RCA_InstaTrac-X",
+    "Weight": 4
+  },
+  {
+    "ID": "Gear_TargetingTrackingSystem_RCA_InstaTrac-XII",
+    "Weight": 2
+  },
+  {
+    "ID": "Gear_HeatSink_Generic_Standard-Bank",
+    "Weight": 8
+  },
+  {
+    "ID": "Gear_HeatSink_Generic_Improved-Bank",
+    "Weight": 4
+  },
+  {
+    "ID": "Gear_HeatSink_Generic_Thermal-Exchanger-I",
+    "Weight": 8
+  },
+  {
+    "ID": "Gear_HeatSink_Generic_Thermal-Exchanger-II",
+    "Weight": 4
+  },
+  {
+    "ID": "Gear_HeatSink_Generic_Thermal-Exchanger-III",
+    "Weight": 2
+  }
+]

@@ -1,0 +1,52 @@
+﻿[
+  {
+	"ID": 	"Weapon_SRM_SRM4_-3-Valiant",
+	"Weight": 1
+  },
+  {
+	"ID": 	"Weapon_SRM_SRM4_-2-Holly",
+	"Weight": 2
+  },
+  {
+	"ID": 	"Weapon_SRM_SRM4_-1-Holly",
+	"Weight": 3
+  },
+  {
+	"ID": 	"Weapon_SRM_SRM4_-1-Hovertec",
+	"Weight": 3
+  },
+  {
+    "ID": "Weapon_SRM_SRM4_0-STOCK",
+    "Weight": 26,
+    "AllowDowngrade": true
+  },
+  {
+    "ID": "Weapon_SRM_SRM4_1-Holly",
+    "Weight": 13
+  },
+  {
+    "ID": "Weapon_SRM_SRM4_1-Irian",
+    "Weight": 13
+  },
+  {
+    "ID": "Weapon_SRM_SRM4_2-Holly",
+    "Weight": 6
+  },
+  {
+    "ID": "Weapon_SRM_SRM4_2-Irian",
+    "Weight": 6
+  },
+  {
+    "ID": "Weapon_SRM_SRM4_2-Valiant",
+    "Weight": 6
+  },
+  {
+    "ID": "Weapon_SRM_SRM4_3-Valiant",
+    "Weight": 3
+  },
+  {
+    "ID": "Weapon_SRM_ASRM4_0-STOCK",
+    "Weight": 5,
+    "ListLink": true
+  }
+]
