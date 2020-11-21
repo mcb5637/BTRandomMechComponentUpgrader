@@ -21,26 +21,13 @@ namespace BTRandomMechComponentUpgrader
         public string Name;
         public int Sort = 0;
 
-
-        public void CalculateLimits()
+        private static void CalculateLimit(UpgradeEntry[] ut, DateTime d)
         {
-            foreach (UpgradeEntry[] ut in Upgrades)
-            {
-                CalculateLimit(ut, DateTime.MaxValue, -2);
-            }
-            foreach (UpgradeEntry[] ut in Additions)
-            {
-                CalculateLimit(ut, DateTime.MaxValue, -2);
-            }
-        }
-
-        private static void CalculateLimit(UpgradeEntry[] ut, DateTime d, int repeatUpgradeResult)
-        {
-            float cw = ut.Sum((u) => CheckUpgradeCond(u, d, repeatUpgradeResult) ? u.Weight : 0);
+            float cw = ut.Sum((u) => CheckUpgradeCond(u, d) ? u.Weight : 0);
             float last = 0;
             foreach (UpgradeEntry u in ut)
             {
-                if (CheckUpgradeCond(u, d, repeatUpgradeResult))
+                if (CheckUpgradeCond(u, d))
                     last += u.Weight / cw;
                 u.RandomLimit = last;
             }
@@ -51,60 +38,63 @@ namespace BTRandomMechComponentUpgrader
             return Factions.Contains("default_all") || Factions.Contains(fac);
         }
 
-        public UpgradeEntry[] GetUpgradeArrayAndOffset(string comp, out float minr)
+        public UpgradeEntry[] GetUpgradeArrayAndOffset(string comp, out int min)
         {
             foreach (UpgradeEntry[] list in Upgrades)
             {
-                foreach (UpgradeEntry u in list)
+                for (int i = 0; i < list.Length; i++)
                 {
+                    UpgradeEntry u = list[i];
                     if (u.ID.Equals(comp) && !u.ListLink)
                     {
-                        minr = (u.AllowDowngrade || this.AllowDowngrade) ? 0 : u.RandomLimit;
+                        min = (u.AllowDowngrade || this.AllowDowngrade) ? -1 : i;
                         return list;
                     }
                 }
             }
-            minr = -1f;
+            min = -1;
             return null;
         }
 
-        private static bool CheckUpgradeCond(UpgradeEntry u, DateTime d, int repeatUpgradeResult)
+        private static bool CheckUpgradeCond(UpgradeEntry u, DateTime d)
         {
             if (u.MinDate > d)
-                return false;
-            if (u.UpgradeAll && repeatUpgradeResult > -2)
                 return false;
             return true;
         }
 
-        public static string GetUpgradeFromRandom(UpgradeEntry[] list, float r, DateTime date, out bool ReCheckUpgrade, ref int repeatUpgradeResult, out string swapAmmoFrom, out string swapAmmoTo)
+        public UpgradeEntry RollEntryFromMatchingSubList(string baseid, NetworkRandom nr, DateTime date, ref string log)
         {
-            if (repeatUpgradeResult >= 0)
+            UpgradeEntry[] sublist = GetUpgradeArrayAndOffset(baseid, out int min);
+            UpgradeEntry r = null;
+            if (sublist != null)
             {
-                UpgradeEntry u = list[repeatUpgradeResult];
-                ReCheckUpgrade = u.ListLink;
-                swapAmmoFrom = u.SwapAmmoFrom;
-                swapAmmoTo = u.SwapAmmoTo;
-                return u.ID;
+                r = RollEntryFromSubList(sublist, nr, min, date, ref log);
             }
-            CalculateLimit(list, date, repeatUpgradeResult);
+            else
+                log += " no sublist found";
+            return r;
+        }
+
+        public UpgradeEntry RollEntryFromSubList(UpgradeEntry[] list, NetworkRandom nr, int min, DateTime date, ref string log)
+        {
+            UpgradeEntry r = null;
+            CalculateLimit(list, date);
+            float rand = nr.Float(min < 0 ? 0f : list[min].RandomLimit, 1f);
             for (int i = 0; i < list.Length; i++)
             {
                 UpgradeEntry u = list[i];
-                if (r <= u.RandomLimit && CheckUpgradeCond(u, date, repeatUpgradeResult))
-                {
-                    ReCheckUpgrade = u.ListLink;
-                    swapAmmoFrom = u.SwapAmmoFrom;
-                    swapAmmoTo = u.SwapAmmoTo;
-                    if (u.UpgradeAll)
-                        repeatUpgradeResult = i;
-                    return u.ID;
-                }
+                if (rand <= u.RandomLimit && CheckUpgradeCond(u, date))
+                    r = u;
             }
-            ReCheckUpgrade = false;
-            swapAmmoFrom = null;
-            swapAmmoTo = null;
-            return null;
+            log += $" -> {r.ID} ({rand})";
+            if (r.ListLink)
+            {
+                UpgradeEntry li = RollEntryFromMatchingSubList(r.ID, nr, date, ref log);
+                if (li != null)
+                    r = li;
+            }
+            return r;
         }
 
         public int CompareTo(BTRandomMechComponentUpgrader_UpgradeList other)

@@ -21,6 +21,8 @@ namespace BTRandomMechComponentUpgrader
 
         public static List<BTRandomMechComponentUpgrader_UpgradeList> UpgradeLists;
 
+        public static IMechDefSpawnModifier[] SpawnModifiers;
+
         public static void Init(string directory, string settingsJSON)
         {
             Log = Logger.GetLogger("BTRandomMechComponentUpgrader");
@@ -33,6 +35,7 @@ namespace BTRandomMechComponentUpgrader
                 Sett = new BTRandomMechComponentUpgrader_Settings();
                 Log.LogException(e);
             }
+            SpawnModifiers = new IMechDefSpawnModifier[] { new RMCU_Modifier_Upgrades(), new RMCU_Modifier_Upgrades(), new RMCU_Modifier_TonnageFixInventory(), new RMCU_Modifier_TonnageFixArmor() };
             if (Sett.LogLevelLog)
                 Logger.SetLoggerLevel("BTRandomMechComponentUpgrader", LogLevel.Log);
             HarmonyInstance harmony = HarmonyInstance.Create("com.github.mcb5637.BTRandomMechComponentUpgrader");
