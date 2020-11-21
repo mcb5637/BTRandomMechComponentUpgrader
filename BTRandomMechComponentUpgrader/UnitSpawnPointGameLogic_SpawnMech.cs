@@ -97,7 +97,7 @@ namespace BTRandomMechComponentUpgrader
                         ChassisLocations loc = ChassisLocations.None;
                         foreach (ChassisLocations lo in Locations)
                         {
-                            if (CanUpgrade(null, d, canFreeTonns, mDef, lo) && CanPutComponentIntoLoc(d, lo))
+                            if (CanUpgrade(null, d, canFreeTonns, mDef, lo, inv) && CanPutComponentIntoLoc(d, lo))
                             {
                                 loc = lo;
                                 break;
@@ -105,10 +105,10 @@ namespace BTRandomMechComponentUpgrader
                         }
                         if (loc == ChassisLocations.None)
                         {
-                            BTRandomMechComponentUpgrader_Init.Log.Log($"cannot add {sel}");
+                            BTRandomMechComponentUpgrader_Init.Log.Log($"cannot add {sel}, rolled {r1}");
                             continue;
                         }
-                        BTRandomMechComponentUpgrader_Init.Log.Log($"adding {sel} into {loc}");
+                        BTRandomMechComponentUpgrader_Init.Log.Log($"adding {sel} into {loc}, rolled {r1}");
                         MechComponentRef r = new MechComponentRef(sel, null, d.ComponentType, loc, -1, ComponentDamageLevel.Functional, false);
                         r.SetComponentDef(d);
                         inv.Add(r);
@@ -133,7 +133,7 @@ namespace BTRandomMechComponentUpgrader
             MechStatisticsRules.CalculateTonnage(mDef, ref tonnage, ref max);
             while (tonnage > mDef.Chassis.Tonnage)
             {
-                int i = inv.FindIndex((x) => ulist.CanRemove.Contains(x.ComponentDefID));
+                int i = inv.FindIndex((x) => !x.IsFixed && ulist.CanRemove.Contains(x.ComponentDefID));
                 if (i == -1)
                 {
                     BTRandomMechComponentUpgrader_Init.Log.Log("no removable found");
@@ -254,6 +254,8 @@ namespace BTRandomMechComponentUpgrader
             Dictionary<BTRandomMechComponentUpgrader_UpgradeList.UpgradeEntry[], int> repeatUpgradeResults = new Dictionary<BTRandomMechComponentUpgrader_UpgradeList.UpgradeEntry[], int>();
             foreach (MechComponentRef r in mDef.Inventory)
             {
+                if (r.IsFixed)
+                    continue;
                 CheckForAndPerformUpgrade(r, s, ulist, ref canFreeTonns, mDef, repeatUpgradeResults);
             }
         }
@@ -288,9 +290,9 @@ namespace BTRandomMechComponentUpgrader
                     if (repeat <= -2)
                         repeat = -1;
                     repeatResults[le] = repeat;
-                    BTRandomMechComponentUpgrader_Init.Log.Log($"changing {r.ComponentDefID} -> {sel}");
+                    BTRandomMechComponentUpgrader_Init.Log.Log($"changing {r.ComponentDefID} -> {sel}, rolled {r1}");
                     MechComponentDef d = GetComponentDefFromID(s, sel);
-                    if (!CanUpgrade(r, d, canFreeTonns, mech, r.MountedLocation))
+                    if (!CanUpgrade(r, d, canFreeTonns, mech, r.MountedLocation, mech.Inventory))
                     {
                         BTRandomMechComponentUpgrader_Init.Log.Log("cannot upgrade");
                         return;
@@ -347,7 +349,7 @@ namespace BTRandomMechComponentUpgrader
             canFreeTonns -= r.Def.Tonnage;
         }
 
-        public static bool CanUpgrade(MechComponentRef r, MechComponentDef d, float canFreeTonns, MechDef mech, ChassisLocations loc)
+        public static bool CanUpgrade(MechComponentRef r, MechComponentDef d, float canFreeTonns, MechDef mech, ChassisLocations loc, IEnumerable<MechComponentRef> inv)
         {
             if (d == null)
                 return false;
@@ -357,7 +359,7 @@ namespace BTRandomMechComponentUpgrader
             }
             if (canFreeTonns < d.Tonnage)
                 return false;
-            int slots = GetFreeSlotsInLoc(mech, null, loc, r);
+            int slots = GetFreeSlotsInLoc(mech, inv, loc, r);
             if (slots < d.InventorySize)
                 return false;
             return true;
@@ -366,8 +368,6 @@ namespace BTRandomMechComponentUpgrader
         public static int GetFreeSlotsInLoc(MechDef mech, IEnumerable<MechComponentRef> inv, ChassisLocations loc, MechComponentRef except)
         {
             int slots = mech.GetChassisLocationDef(loc).InventorySlots;
-            if (inv == null)
-                inv = mech.Inventory;
             foreach (MechComponentRef i in inv)
                 if (i.MountedLocation == loc && i != except)
                     slots -= i.Def.InventorySize;

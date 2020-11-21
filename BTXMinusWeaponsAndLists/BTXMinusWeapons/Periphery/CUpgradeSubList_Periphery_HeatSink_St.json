@@ -1,7 +1,8 @@
 ﻿[
   {
     "ID": "Gear_HeatSink_Generic_Standard",
-    "Weight": 90
+    "Weight": 90,
+    "AllowDowngrade": true
   },
   {
     "ID": "Gear_HeatSink_Generic_Double",
