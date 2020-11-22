@@ -378,14 +378,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BTRandomMechComponentUpgrader_Init.cs" />
-    <Compile Include="BTRandomMechComponentUpgrader_Settings.cs" />
-    <Compile Include="BTRandomMechComponentUpgrader_UpgradeList.cs" />
+    <Compile Include="MechProcesser.cs" />
+    <Compile Include="Modifier_AmmoSwapper.cs" />
+    <Compile Include="Settings.cs" />
+    <Compile Include="UpgradeList.cs" />
     <Compile Include="IMechDefSpawnModifier.cs" />
     <Compile Include="RMCU_Helper.cs" />
-    <Compile Include="RMCU_Modifier_Additions.cs" />
-    <Compile Include="RMCU_Modifier_TonnageFixArmor.cs" />
-    <Compile Include="RMCU_Modifier_Upgrades.cs" />
-    <Compile Include="RMCU_Modifier_TonnageFixInventory.cs" />
+    <Compile Include="Modifier_Additions.cs" />
+    <Compile Include="Modifier_TonnageFixArmor.cs" />
+    <Compile Include="Modifier_Upgrades.cs" />
+    <Compile Include="Modifier_TonnageFixInventory.cs" />
     <Compile Include="UnitSpawnPointGameLogic_SpawnMech.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

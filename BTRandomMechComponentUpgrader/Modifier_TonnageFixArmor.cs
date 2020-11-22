@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace BTRandomMechComponentUpgrader
 {
-    class RMCU_Modifier_TonnageFixArmor : IMechDefSpawnModifier
+    class Modifier_TonnageFixArmor : IMechDefSpawnModifier
     {
-        public void ModifyMech(MechDef mDef, SimGameState s, BTRandomMechComponentUpgrader_UpgradeList ulist, ref float _)
+        public void ModifyMech(MechDef mDef, SimGameState s, UpgradeList ulist, ref float _, List<string[]> changedAmmoTypes)
         {
             float tonnage = 0;
             float max = 0;

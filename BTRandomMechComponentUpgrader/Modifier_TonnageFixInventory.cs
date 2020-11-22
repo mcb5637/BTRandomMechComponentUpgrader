@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace BTRandomMechComponentUpgrader
 {
-    class RMCU_Modifier_TonnageFixInventory : IMechDefSpawnModifier
+    class Modifier_TonnageFixInventory : IMechDefSpawnModifier
     {
-        public void ModifyMech(MechDef mDef, SimGameState s, BTRandomMechComponentUpgrader_UpgradeList ulist, ref float _)
+        public void ModifyMech(MechDef mDef, SimGameState s, UpgradeList ulist, ref float _, List<string[]> changedAmmoTypes)
         {
             BTRandomMechComponentUpgrader_Init.Log.Log("correcting tonage 1: inventory");
             List<MechComponentRef> inv = mDef.Inventory.ToList();

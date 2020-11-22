@@ -7,18 +7,18 @@ using System.Threading.Tasks;
 
 namespace BTRandomMechComponentUpgrader
 {
-    class RMCU_Modifier_Additions : IMechDefSpawnModifier
+    class Modifier_Additions : IMechDefSpawnModifier
     {
-        public void ModifyMech(MechDef mDef, SimGameState s, BTRandomMechComponentUpgrader_UpgradeList ulist, ref float canFreeTonns)
+        public void ModifyMech(MechDef mDef, SimGameState s, UpgradeList ulist, ref float canFreeTonns, List<string[]> changedAmmoTypes)
         {
             BTRandomMechComponentUpgrader_Init.Log.Log("checking addition sublists");
             List<MechComponentRef> inv = mDef.Inventory.ToList();
-            foreach (BTRandomMechComponentUpgrader_UpgradeList.UpgradeEntry[] l in ulist.Additions)
+            foreach (UpgradeList.UpgradeEntry[] l in ulist.Additions)
             {
                 if (s.NetworkRandom.Float(0f, 1f) < ulist.UpgradePerComponentChance)
                 {
                     string log = "";
-                    BTRandomMechComponentUpgrader_UpgradeList.UpgradeEntry ue = ulist.RollEntryFromSubList(l, s.NetworkRandom, -1, s.CurrentDate, ref log);
+                    UpgradeList.UpgradeEntry ue = ulist.RollEntryFromSubList(l, s.NetworkRandom, -1, s.CurrentDate, ref log);
                     if (ue != null && !ue.ID.Equals(""))
                     {
                         MechComponentDef d = s.GetComponentDefFromID(ue.ID);

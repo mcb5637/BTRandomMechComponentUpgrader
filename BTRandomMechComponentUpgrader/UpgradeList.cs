@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace BTRandomMechComponentUpgrader
 {
-    class BTRandomMechComponentUpgrader_UpgradeList : IComparable<BTRandomMechComponentUpgrader_UpgradeList>
+    class UpgradeList : IComparable<UpgradeList>
     {
         public List<UpgradeEntry[]> Upgrades = new List<UpgradeEntry[]>();
         public string[] Factions = new string[] { };
@@ -97,7 +97,7 @@ namespace BTRandomMechComponentUpgrader
             return r;
         }
 
-        public int CompareTo(BTRandomMechComponentUpgrader_UpgradeList other)
+        public int CompareTo(UpgradeList other)
         {
             return this.Sort - other.Sort;
         }
@@ -109,9 +109,6 @@ namespace BTRandomMechComponentUpgrader
             public float RandomLimit = 0;
             public DateTime MinDate = DateTime.MinValue;
             public bool ListLink = false;
-            public bool UpgradeAll = false;
-            public string SwapAmmoFrom = null;
-            public string SwapAmmoTo = null;
             public bool AllowDowngrade = false;
         }
     }

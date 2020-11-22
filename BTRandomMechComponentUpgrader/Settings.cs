@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BTRandomMechComponentUpgrader
 {
-    class BTRandomMechComponentUpgrader_Settings
+    class Settings
     {
         //public string[][] UpgradeLists = new string[][] { new string[] { } };
         //public string[] UpgradeListNames = new string[] { };
