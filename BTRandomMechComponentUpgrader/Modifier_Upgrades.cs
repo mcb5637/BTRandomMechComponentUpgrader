@@ -23,11 +23,11 @@ namespace BTRandomMechComponentUpgrader
         public void CheckForAndPerformUpgrade(MechComponentRef r, SimGameState s, UpgradeList l, ref float canFreeTonns, MechDef mech, List<string[]> changedAmmoTypes)
         {
             string baseid = r.Def.Description.Id;
-            if (s.NetworkRandom.Float(0f, 1f) > l.UpgradePerComponentChance) // roll if upgrade only if no repeat is saved
+            if (s.NetworkRandom.Float(0f, 1f) > l.UpgradePerComponentChance)
                 return;
 
             string log = baseid;
-            UpgradeList.UpgradeEntry ue = l.RollEntryFromMatchingSubList(baseid, s.NetworkRandom, s.CurrentDate, ref log);
+            UpgradeList.UpgradeEntry ue = l.RollEntryFromMatchingSubList(baseid, s.NetworkRandom, s.CurrentDate, ref log, l.UpgradePerComponentChance);
             if (ue != null)
             {
                 MechComponentDef d = s.GetComponentDefFromID(ue.ID);

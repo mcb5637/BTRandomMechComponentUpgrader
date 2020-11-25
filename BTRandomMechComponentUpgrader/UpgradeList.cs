@@ -18,7 +18,7 @@ namespace BTRandomMechComponentUpgrader
         public bool AllowDowngrade = false;
         public string[] LoadUpgrades = new string[] { };
         public string[] LoadAdditions = new string[] { };
-        public string Name;
+        internal string Name;
         public int Sort = 0;
 
         private static void CalculateLimit(UpgradeEntry[] ut, DateTime d)
@@ -63,20 +63,20 @@ namespace BTRandomMechComponentUpgrader
             return true;
         }
 
-        public UpgradeEntry RollEntryFromMatchingSubList(string baseid, NetworkRandom nr, DateTime date, ref string log)
+        public UpgradeEntry RollEntryFromMatchingSubList(string baseid, NetworkRandom nr, DateTime date, ref string log, float linkRerollChance)
         {
             UpgradeEntry[] sublist = GetUpgradeArrayAndOffset(baseid, out int min);
             UpgradeEntry r = null;
             if (sublist != null)
             {
-                r = RollEntryFromSubList(sublist, nr, min, date, ref log);
+                r = RollEntryFromSubList(sublist, nr, min, date, ref log, linkRerollChance);
             }
             else
                 log += " no sublist found";
             return r;
         }
 
-        public UpgradeEntry RollEntryFromSubList(UpgradeEntry[] list, NetworkRandom nr, int min, DateTime date, ref string log)
+        public UpgradeEntry RollEntryFromSubList(UpgradeEntry[] list, NetworkRandom nr, int min, DateTime date, ref string log, float linkRerollChance)
         {
             UpgradeEntry r = null;
             CalculateLimit(list, date);
@@ -85,12 +85,15 @@ namespace BTRandomMechComponentUpgrader
             {
                 UpgradeEntry u = list[i];
                 if (rand <= u.RandomLimit && CheckUpgradeCond(u, date))
+                {
                     r = u;
+                    break;
+                }
             }
-            log += $" -> {r.ID} ({rand})";
-            if (r.ListLink)
+            log += $" -> {r.ID} ({rand}, {min}, {list[0].Name})";
+            if (r.ListLink && nr.Float(0f, 1f) <= linkRerollChance)
             {
-                UpgradeEntry li = RollEntryFromMatchingSubList(r.ID, nr, date, ref log);
+                UpgradeEntry li = RollEntryFromMatchingSubList(r.ID, nr, date, ref log, linkRerollChance);
                 if (li != null)
                     r = li;
             }
@@ -110,6 +113,7 @@ namespace BTRandomMechComponentUpgrader
             public DateTime MinDate = DateTime.MinValue;
             public bool ListLink = false;
             public bool AllowDowngrade = false;
+            internal string Name;
         }
     }
 }

@@ -52,7 +52,10 @@ namespace BTRandomMechComponentUpgrader
                 foreach (KeyValuePair<string, VersionManifestEntry> kv in customResources["ComponentUpgradeSubList"])
                 {
                     missing = kv.Value.FilePath;
-                    entries.Add(kv.Value.FileName, LoadUpgradeSubList(kv.Value.FilePath));
+                    UpgradeList.UpgradeEntry[] sublist = LoadUpgradeSubList(kv.Value.FilePath);
+                    if (sublist.Length > 0)
+                        sublist[0].Name = kv.Value.FileName;
+                    entries.Add(kv.Value.FileName, sublist);
                 }
                 foreach (KeyValuePair<string, VersionManifestEntry> kv in customResources["ComponentUpgradeList"])
                 {
@@ -65,6 +68,9 @@ namespace BTRandomMechComponentUpgrader
                     MechProcesser.UpgradeLists.Add(ulist);
                 }
                 MechProcesser.UpgradeLists.Sort();
+                Log.Log($"loaded with {MechProcesser.UpgradeLists.Count()} upgradelists");
+                foreach (UpgradeList l in MechProcesser.UpgradeLists)
+                    Log.Log($"list: {l.Name} with sort {l.Sort}");
             }
             catch (Exception e)
             {
