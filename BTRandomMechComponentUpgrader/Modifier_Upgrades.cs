@@ -9,7 +9,7 @@ namespace BTRandomMechComponentUpgrader
 {
     class Modifier_Upgrades : IMechDefSpawnModifier
     {
-        public void ModifyMech(MechDef mDef, SimGameState s, UpgradeList ulist, ref float canFreeTonns, List<string[]> changedAmmoTypes)
+        public void ModifyMech(MechDef mDef, SimGameState s, UpgradeList ulist, ref float canFreeTonns, List<string[]> changedAmmoTypes, MechDef fromData)
         {
             BTRandomMechComponentUpgrader_Init.Log.Log("checking upgrade sublists");
             foreach (MechComponentRef r in mDef.Inventory)

@@ -9,7 +9,7 @@ namespace BTRandomMechComponentUpgrader
 {
     class Modifier_TonnageFixArmor : IMechDefSpawnModifier
     {
-        public void ModifyMech(MechDef mDef, SimGameState s, UpgradeList ulist, ref float _, List<string[]> changedAmmoTypes)
+        public void ModifyMech(MechDef mDef, SimGameState s, UpgradeList ulist, ref float _, List<string[]> changedAmmoTypes, MechDef fromData)
         {
             float tonnage = 0;
             float max = 0;
@@ -29,7 +29,7 @@ namespace BTRandomMechComponentUpgrader
                     l.AssignedArmor += 1;
                     l.CurrentArmor += 1;
                     tonnage += armorfact;
-                    BTRandomMechComponentUpgrader_Init.Log.Log($"increased {l} armor to {l.AssignedArmor}");
+                    BTRandomMechComponentUpgrader_Init.Log.Log($"increased {c} armor to {l.AssignedArmor}");
                     assOne = true;
                 }
                 foreach (ChassisLocations c in RMCU_Helper.RearArmoredLocs)
@@ -42,7 +42,7 @@ namespace BTRandomMechComponentUpgrader
                     l.AssignedRearArmor += 1;
                     l.CurrentRearArmor += 1;
                     tonnage += armorfact;
-                    BTRandomMechComponentUpgrader_Init.Log.Log($"increased {l} rear armor to {l.AssignedRearArmor}");
+                    BTRandomMechComponentUpgrader_Init.Log.Log($"increased {c} rear armor to {l.AssignedRearArmor}");
                     assOne = true;
                 }
                 if (!assOne)

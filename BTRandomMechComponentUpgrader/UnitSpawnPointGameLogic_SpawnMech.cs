@@ -47,7 +47,7 @@ namespace BTRandomMechComponentUpgrader
 
                 MechDef n = MechProcesser.ProcessMech(mDef, s, ulist);
 
-                if (MechProcesser.ValidateMech(m, s))
+                if (MechProcesser.ValidateMech(n, s))
                 {
                     mDef = n;
                     BTRandomMechComponentUpgrader_Init.Log.Log("validated");

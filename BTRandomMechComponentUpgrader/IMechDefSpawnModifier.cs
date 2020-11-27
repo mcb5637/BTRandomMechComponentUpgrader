@@ -9,6 +9,6 @@ namespace BTRandomMechComponentUpgrader
 {
     interface IMechDefSpawnModifier
     {
-        void ModifyMech(MechDef mDef, SimGameState s, UpgradeList ulist, ref float canFreeTonns, List<string[]> changedAmmoTypes);
+        void ModifyMech(MechDef mDef, SimGameState s, UpgradeList ulist, ref float canFreeTonns, List<string[]> changedAmmoTypes, MechDef fromData);
     }
 }

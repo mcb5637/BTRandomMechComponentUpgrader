@@ -10,14 +10,17 @@ namespace BTRandomMechComponentUpgrader
 {
     class Modifier_AmmoSwapper : IMechDefSpawnModifier // TODO check for CAC
     {
-        public void ModifyMech(MechDef mDef, SimGameState s, UpgradeList ulist, ref float canFreeTonns, List<string[]> changedAmmoTypes)
+        public void ModifyMech(MechDef mDef, SimGameState s, UpgradeList ulist, ref float canFreeTonns, List<string[]> changedAmmoTypes, MechDef fromData)
         {
             BTRandomMechComponentUpgrader_Init.Log.Log("checking changed ammo types");
             foreach (string[] ca in changedAmmoTypes)
             {
-                float or = (float)GetMainAmmoBox(ca[0], s).Capacity / GetAmmoTypeUsagePerTurn(mDef, ca[0]);
+                AmmunitionBoxDef basebox = GetMainAmmoBox(ca[0], s);
                 AmmunitionBoxDef box = GetMainAmmoBox(ca[1], s);
-                float ne = (float)box.Capacity / GetAmmoTypeUsagePerTurn(mDef, ca[1]);
+                if (basebox == null || box == null)
+                    continue;
+                float or = (float)GetAmmoTypeUsagePerTurn(mDef, ca[0]) / basebox.Capacity;
+                float ne = (float)GetAmmoTypeUsagePerTurn(mDef, ca[1]) / box.Capacity;
                 float ratio = ne / (or + ne);
                 int swap = Mathf.RoundToInt(CountAmmoBoxes(mDef, ca[0]) * ratio);
                 BTRandomMechComponentUpgrader_Init.Log.Log($"changing ammo {ca[0]} -> {ca[1]} (usage {or}/{ne}, changing {swap} boxes)");

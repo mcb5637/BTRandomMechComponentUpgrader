@@ -28,7 +28,7 @@ namespace BTRandomMechComponentUpgrader
             List<string[]> changedAmmoTypes = new List<string[]>();
 
             foreach (IMechDefSpawnModifier mod in modifiers)
-                mod.ModifyMech(n, s, ulist, ref canFreeTonns, changedAmmoTypes);
+                mod.ModifyMech(n, s, ulist, ref canFreeTonns, changedAmmoTypes, mDef);
 
             BTRandomMechComponentUpgrader_Init.Log.Log("all modifications done");
 
