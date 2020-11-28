@@ -72,10 +72,7 @@
     "ID": "Weapon_Autocannon_LB5X_0-STOCK",
     "Weight": 4,
     "MinDate": "3050-01-01",
-    "ListLink": true,
-    "UpgradeAll": true,
-    "SwapAmmoFrom": "Ammo_AmmunitionBox_Generic_AC5",
-    "SwapAmmoTo": "Ammo_AmmunitionBox_Generic_LB5X"
+    "ListLink": true
   },
   {
     "ID": "Weapon_Autocannon_UAC5_NU_0-STOCK",

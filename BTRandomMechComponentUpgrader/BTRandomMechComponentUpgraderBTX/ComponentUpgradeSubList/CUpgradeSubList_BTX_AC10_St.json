@@ -43,10 +43,7 @@
     "ID": "Weapon_Autocannon_LB10X_NU_0-STOCK",
     "Weight": 2,
     "MinDate": "3050-01-01",
-    "ListLink": true,
-    "UpgradeAll": true,
-    "SwapAmmoFrom": "Ammo_AmmunitionBox_Generic_AC10",
-    "SwapAmmoTo": "Ammo_AmmunitionBox_Generic_LB10X"
+    "ListLink": true
   },
   {
     "ID": "Weapon_Autocannon_UAC10_0-STOCK",

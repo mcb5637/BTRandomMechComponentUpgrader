@@ -95,5 +95,20 @@ namespace BTRandomMechComponentUpgrader
             return t / arm;
         }
 
+        public static ChassisLocations SearchLocationToAddComponent(this MechDef mDef, MechComponentDef d, float canFreeTonns, IEnumerable<MechComponentRef> inv, MechComponentRef current, ChassisLocations avoidIfPossible)
+        {
+            foreach (ChassisLocations lo in Locations)
+            {
+                if (lo != avoidIfPossible && CanUpgrade(current, d, canFreeTonns, mDef, lo, inv) && d.CanPutComponentIntoLoc(lo))
+                {
+                    return lo;
+                }
+            }
+            if (avoidIfPossible != ChassisLocations.None && CanUpgrade(current, d, canFreeTonns, mDef, avoidIfPossible, inv) && d.CanPutComponentIntoLoc(avoidIfPossible))
+            {
+                return avoidIfPossible;
+            }
+            return ChassisLocations.None;
+        }
     }
 }

@@ -22,15 +22,7 @@ namespace BTRandomMechComponentUpgrader
                     if (ue != null && !ue.ID.Equals(""))
                     {
                         MechComponentDef d = s.GetComponentDefFromID(ue.ID);
-                        ChassisLocations loc = ChassisLocations.None;
-                        foreach (ChassisLocations lo in RMCU_Helper.Locations)
-                        {
-                            if (RMCU_Helper.CanUpgrade(null, d, canFreeTonns, mDef, lo, inv) && d.CanPutComponentIntoLoc(lo))
-                            {
-                                loc = lo;
-                                break;
-                            }
-                        }
+                        ChassisLocations loc = mDef.SearchLocationToAddComponent(d, canFreeTonns, inv, null, ChassisLocations.None);
                         if (loc == ChassisLocations.None)
                         {
                             BTRandomMechComponentUpgrader_Init.Log.Log("cannot add " + log);
@@ -40,6 +32,7 @@ namespace BTRandomMechComponentUpgrader
                         MechComponentRef r = new MechComponentRef(ue.ID, null, d.ComponentType, loc, -1, ComponentDamageLevel.Functional, false);
                         r.SetComponentDef(d);
                         inv.Add(r);
+                        canFreeTonns -= d.Tonnage;
                     }
                     else
                         BTRandomMechComponentUpgrader_Init.Log.Log("cannot add, nothing rolled " + log);
