@@ -18,7 +18,7 @@
     "EvasivePipsIgnored" : 0,
     "DamageVariance" : 0,
     "HeatDamage" : 0,
-    "AccuracyModifier" : +2,
+    "AccuracyModifier" : 2,
     "CriticalChanceMultiplier" : 1,
     "AOECapable" : false,
     "IndirectFireCapable" : false,
@@ -35,7 +35,7 @@
         "Manufacturer" : "Hovertec",
         "Model" : "Short-Range Missile Launcher",
         "UIName" : "SRM4 -",
-        "Id" : "Weapon_SRM_SRM2_-1-Hovertec",
+        "Id" : "Weapon_SRM_SRM4_-1-Hovertec",
         "Name" : "SRM4 -",
         "Details" : "The midtier rack of Short-Range Missiles, SRM4s deal good damage for comparatively few negatives other than their inherently short range and need for ammo. A glitch in the telemetry brings innaccuracy to this launcher. SRM shots deal above-average stability impact per hit compared to other weapons.",
         "Icon" : "uixSvgIcon_weapon_Missile"
