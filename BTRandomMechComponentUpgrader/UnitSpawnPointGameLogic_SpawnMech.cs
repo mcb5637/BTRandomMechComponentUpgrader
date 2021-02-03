@@ -24,6 +24,12 @@ namespace BTRandomMechComponentUpgrader
                     BTRandomMechComponentUpgrader_Init.Log.Log("no simgame, aborting");
                     return;
                 }
+
+                if (mDef.Chassis.ChassisTags.Contains("deploy_director"))
+                {
+                    BTRandomMechComponentUpgrader_Init.Log.Log($"DeployDirector, not upgrading");
+                    return;
+                }
                 
                 if (!s.DataManager.MechDefs.TryGet(mDef.Description.Id, out MechDef m))
                 {
