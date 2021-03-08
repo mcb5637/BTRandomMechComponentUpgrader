@@ -8,11 +8,11 @@
     "Weight": 10
   },
   {
-    "ID": "Weapon_Laser_LargeLaserPulse_NU_1-ExoStar",
+    "ID": "Weapon_Laser_LargeLaserPulse_NU_1-Maxell",
     "Weight": 10
   },
   {
-    "ID": "Weapon_Laser_LargeLaserPulse_NU_1-Intek",
+    "ID": "Weapon_Laser_LargeLaserPulse_NU_1-Sutel",
     "Weight": 10
   },
   {
@@ -20,11 +20,11 @@
     "Weight": 5
   },
   {
-    "ID": "Weapon_Laser_LargeLaserPulse_NU_2-ExoStar",
+    "ID": "Weapon_Laser_LargeLaserPulse_NU_2-Maxell",
     "Weight": 5
   },
   {
-    "ID": "Weapon_Laser_LargeLaserPulse_NU_2-Intek",
+    "ID": "Weapon_Laser_LargeLaserPulse_NU_2-Sutel",
     "Weight": 5
   },
   {
