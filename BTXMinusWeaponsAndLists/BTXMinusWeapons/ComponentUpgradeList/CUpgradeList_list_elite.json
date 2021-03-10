@@ -1,6 +1,7 @@
 ﻿{
   /** determine factions this list is for. first list that matches a faction gets used (the same order as you load them in the settings. **/
-  "Factions": [ "MarikA2", "MarikA", "SteinerA2", "SteinerA", "DavionA2", "DavionA", "KuritaA2", "KuritaA", "LiaoA2", "LiaoA", "BlackWidowCompany", "KellHounds", "GrayDeathLegion", "Nautilus", "Moderbjorn", "MercenaryReviewBoard", "MajestyMetals" ],
+  "Factions": [ "BlackWidowCompany", "KellHounds", "GrayDeathLegion", "MercenaryReviewBoard", "MajestyMetals", "FedCom1", "DavionA", "KuritaA", "LiaoA", "MarikA", "SteinerA" ],
+  "FactionPrefixWithNumber": [ "DavionA", "KuritaA", "LiaoA", "MarikA", "SteinerA" ],
   /** base upgrade/addition chance (can be set to 1 to run on everything, should be used with AllowDowngrade when 1) **/
   "UpgradePerComponentChance": 1,
   /** Weight modification allows to remove any of these (in this order), or add them if Weight gets freed. **/

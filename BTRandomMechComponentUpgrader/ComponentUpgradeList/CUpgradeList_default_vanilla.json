@@ -1,12 +1,18 @@
 ﻿{
-  /** determine factions this list is for. first list that matches a faction gets used (the same order as you load them in the settings. **/
+  /** determine factions this list is for. first list that matches a faction gets used. **/
   "Factions": [ "default_all" ],
+  /** probably only used for BTX, the same rules as Factions apply, just to match the faction name has to start with this string followed by a decimal number. **/
+  "FactionPrefixWithNumber": [],
   /** base upgrade/addition chance (can be set to 1 to run on everything, should be used with AllowDowngrade when 1) **/
   "UpgradePerComponentChance": 0.2,
   /** weigth modification allows to remove any of these (in this order), or add them if weight gets freed. **/
   "CanRemove": [ "Gear_HeatSink_Generic_Standard", "Gear_HeatSink_Generic_Double" ],
   /** a factor of how much weight can be removed at maximum. **/
   "RemoveMaxFactor": 0.5,
+  /** allows downgrade in all sublists (there is a setting per entry component as well, actual value is determined by or) **/
+  "AllowDowngrade": false,
+  /** upgradelists get sorted by this value, lowest gets checked first **/
+  "Sort": 1,
   /** upgrading single components.
   MinDate requires a date to be passed, if not passed chance gets adjusted to 0.
   ListLink rerolls the upgrade, possibly upgrading it furher, but this item gets ignored when calculating the upgrade start point.

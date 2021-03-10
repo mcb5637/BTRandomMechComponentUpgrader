@@ -1,0 +1,21 @@
+﻿{
+  /** determine factions this list is for. first list that matches a faction gets used (the same order as you load them in the settings. **/
+  "Factions": [ "DiamondShark", "GhostBear", "JadeFalcon", "NovaCat", "SmokeJaguar", "SteelViper", "Wolf" ],
+  "FactionPrefixWithNumber": [ ],
+  /** base upgrade/addition chance (can be set to 1 to run on everything, should be used with AllowDowngrade when 1) **/
+  "UpgradePerComponentChance": 0,
+  /** Weight modification allows to remove any of these (in this order), or add them if Weight gets freed. **/
+  "CanRemove": [ ],
+  /** a factor of how much Weight can be removed at maximum. **/
+  "RemoveMaxFactor": 0,
+  "Sort": -1,
+  /** upgrading single components.
+  MinDate requires a date to be passed, if not passed chance gets adjusted to 0.
+  ListLink rerolls the upgrade, possibly upgrading it furher, but this item gets ignored when calculating the upgrade start point.
+  AllowDowngrade allows lower items (and itself) to be selected, downgrading equipment (global or as per component) (i recommend only putting it on the base component, so something like The Raids custom mechs dont get downgraded).**/
+  "LoadUpgrades": [
+  ],
+  /** adding components randomly, uses the same format as upgrades, but anything special (under ListLink) gets ignored. **/
+  "LoadAdditions": [
+  ]
+}

@@ -10,7 +10,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
-[assembly:AssemblyVersion("1.2.0")]
+[assembly:AssemblyVersion("1.3.0")]
 
 namespace BTRandomMechComponentUpgrader
 {

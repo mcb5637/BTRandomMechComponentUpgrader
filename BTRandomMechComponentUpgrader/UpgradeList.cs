@@ -11,6 +11,7 @@ namespace BTRandomMechComponentUpgrader
     {
         public List<UpgradeEntry[]> Upgrades = new List<UpgradeEntry[]>();
         public string[] Factions = new string[] { };
+        public string[] FactionPrefixWithNumber = new string[] { };
         public float UpgradePerComponentChance = 0.5f;
         public string[] CanRemove = new string[] { };
         public float RemoveMaxFactor = 0.5f;
@@ -35,7 +36,15 @@ namespace BTRandomMechComponentUpgrader
 
         public bool DoesApplyToFaction(string fac)
         {
-            return Factions.Contains("default_all") || Factions.Contains(fac);
+            return Factions.Contains("default_all") || Factions.Contains(fac) || FactionPrefixWithNumber.Any((x) => StartWithAndRestIsNumeric(fac, x));
+        }
+        public static bool StartWithAndRestIsNumeric(string test, string pre)
+        {
+            if (test.Length <= pre.Length)
+                return false;
+            if (!test.StartsWith(pre))
+                return false;
+            return test.Skip(pre.Length).All(char.IsDigit);
         }
 
         public UpgradeEntry[] GetUpgradeArrayAndOffset(string comp, out int min)

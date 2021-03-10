@@ -1,6 +1,7 @@
 ﻿{
   /** determine factions this list is for. first list that matches a faction gets used (the same order as you load them in the settings. **/
   "Factions": [ "Marik", "Steiner", "Davion", "Kurita", "Liao", "BaumannGroup" ],
+  "FactionPrefixWithNumber": [ "DavionC", "KuritaC", "LiaoC", "MarikC", "SteinerC" ],
   /** base upgrade/addition chance (can be set to 1 to run on everything, should be used with AllowDowngrade when 1) **/
   "UpgradePerComponentChance": 1,
   /** Weight modification allows to remove any of these (in this order), or add them if Weight gets freed. **/
