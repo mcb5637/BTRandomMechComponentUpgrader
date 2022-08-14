@@ -5,7 +5,7 @@
   "Description": "",
   "Author": "mcb",
   "Website": "https://github.com/mcb5637/BTRandomMechComponentUpgrader",
-  "Version": "1.3.0",
+  "Version": "1.3.1",
 
   "DependsOn": [ "BTRandomMechComponentUpgrader", "BT_Extended" ],
 
@@ -22,6 +22,5 @@
       "Type": "ComponentUpgradeSubList",
       "Path": "ComponentUpgradeSubList"
     }
-  ],
-  "RemoveManifestEntries": [ "CUpgradeList_default_vanilla" ]
+  ]
 }
