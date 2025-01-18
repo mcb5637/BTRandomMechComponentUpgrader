@@ -11,7 +11,7 @@ namespace BTRandomMechComponentUpgrader
     {
         public void ModifyMech(MechDef mDef, SimGameState s, UpgradeList ulist, ref float canFreeTonns, List<string[]> changedAmmoTypes, MechDef fromData)
         {
-            BTRandomMechComponentUpgrader_Init.Log.Log("checking upgrade sublists");
+            Main.Log.Log("checking upgrade sublists");
             foreach (MechComponentRef r in mDef.Inventory)
             {
                 if (r.IsFixed)
@@ -35,13 +35,13 @@ namespace BTRandomMechComponentUpgrader
                 {
                     CheckChangedAmmo(r.Def, d, changedAmmoTypes);
                     r.DoUpgrade(d, ref canFreeTonns);
-                    BTRandomMechComponentUpgrader_Init.Log.Log("changing " + log);
+                    Main.Log.Log("changing " + log);
                 }
                 else
-                    BTRandomMechComponentUpgrader_Init.Log.Log("cannot upgrade " + log);
+                    Main.Log.Log("cannot upgrade " + log);
             }
             else
-                BTRandomMechComponentUpgrader_Init.Log.Log("upgrade unavailable " + log);
+                Main.Log.Log("upgrade unavailable " + log);
         }
 
         public void CheckChangedAmmo(MechComponentDef orig, MechComponentDef chang, List<string[]> changedAmmoTypes)

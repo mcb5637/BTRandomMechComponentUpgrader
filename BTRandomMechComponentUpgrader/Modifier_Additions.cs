@@ -11,7 +11,7 @@ namespace BTRandomMechComponentUpgrader
     {
         public void ModifyMech(MechDef mDef, SimGameState s, UpgradeList ulist, ref float canFreeTonns, List<string[]> changedAmmoTypes, MechDef fromData)
         {
-            BTRandomMechComponentUpgrader_Init.Log.Log("checking addition sublists");
+            Main.Log.Log("checking addition sublists");
             List<MechComponentRef> inv = mDef.Inventory.ToList();
             foreach (UpgradeList.UpgradeEntry[] l in ulist.Additions)
             {
@@ -25,17 +25,17 @@ namespace BTRandomMechComponentUpgrader
                         ChassisLocations loc = mDef.SearchLocationToAddComponent(d, canFreeTonns, inv, null, ChassisLocations.None);
                         if (loc == ChassisLocations.None)
                         {
-                            BTRandomMechComponentUpgrader_Init.Log.Log("cannot add " + log);
+                            Main.Log.Log("cannot add " + log);
                             continue;
                         }
-                        BTRandomMechComponentUpgrader_Init.Log.Log($"adding {log} into {loc}");
+                        Main.Log.Log($"adding {log} into {loc}");
                         MechComponentRef r = new MechComponentRef(ue.ID, null, d.ComponentType, loc, -1, ComponentDamageLevel.Functional, false);
                         r.SetComponentDef(d);
                         inv.Add(r);
                         canFreeTonns -= d.Tonnage;
                     }
                     else
-                        BTRandomMechComponentUpgrader_Init.Log.Log("cannot add, nothing rolled " + log);
+                        Main.Log.Log("cannot add, nothing rolled " + log);
                 }
             }
             mDef.SetInventory(inv.ToArray());

@@ -14,7 +14,7 @@ using System.Threading.Tasks;
 
 namespace BTRandomMechComponentUpgrader
 {
-    class BTRandomMechComponentUpgrader_Init
+    class Main
     {
         public static Settings Sett;
         public static ILog Log;
@@ -48,7 +48,7 @@ namespace BTRandomMechComponentUpgrader
             try
             {
                 Dictionary<string, UpgradeList.UpgradeEntry[]> entries = new Dictionary<string, UpgradeList.UpgradeEntry[]>();
-                MechProcesser.UpgradeLists = new List<UpgradeList>();
+                MechProcessor.UpgradeLists = new List<UpgradeList>();
                 foreach (KeyValuePair<string, VersionManifestEntry> kv in customResources["ComponentUpgradeSubList"])
                 {
                     missing = kv.Value.FilePath;
@@ -65,16 +65,16 @@ namespace BTRandomMechComponentUpgrader
                     LoadListComponents(ulist.LoadUpgrades, ulist.Upgrades, entries, out missing);
                     LoadListComponents(ulist.LoadAdditions, ulist.Additions, entries, out missing);
                     //ulist.CalculateLimits();
-                    MechProcesser.UpgradeLists.Add(ulist);
+                    MechProcessor.UpgradeLists.Add(ulist);
                 }
-                MechProcesser.UpgradeLists.Sort();
-                Log.Log($"loaded with {MechProcesser.UpgradeLists.Count()} upgradelists");
-                foreach (UpgradeList l in MechProcesser.UpgradeLists)
+                MechProcessor.UpgradeLists.Sort();
+                Log.Log($"loaded with {MechProcessor.UpgradeLists.Count()} upgradelists");
+                foreach (UpgradeList l in MechProcessor.UpgradeLists)
                     Log.Log($"list: {l.Name} with sort {l.Sort}");
             }
             catch (Exception e)
             {
-                MechProcesser.UpgradeLists = new List<UpgradeList>();
+                MechProcessor.UpgradeLists = new List<UpgradeList>();
                 Log.LogException(e);
                 Log.LogError(missing);
             }

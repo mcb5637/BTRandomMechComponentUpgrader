@@ -11,7 +11,7 @@ namespace BTRandomMechComponentUpgrader
     {
         public void ModifyMech(MechDef mDef, SimGameState s, UpgradeList ulist, ref float _, List<string[]> changedAmmoTypes, MechDef fromData)
         {
-            BTRandomMechComponentUpgrader_Init.Log.Log("correcting tonage 1: inventory");
+            Main.Log.Log("correcting tonage 1: inventory");
             List<MechComponentRef> inv = mDef.Inventory.ToList();
             float tonnage = 0;
             float max = 0;
@@ -21,10 +21,10 @@ namespace BTRandomMechComponentUpgrader
                 int i = inv.FindIndex((x) => !x.IsFixed && ulist.CanRemove.Contains(x.ComponentDefID));
                 if (i == -1)
                 {
-                    BTRandomMechComponentUpgrader_Init.Log.Log("no removable found");
+                    Main.Log.Log("no removable found");
                     break;
                 }
-                BTRandomMechComponentUpgrader_Init.Log.Log($"removed {inv[i].ComponentDefID} to reduce weight");
+                Main.Log.Log($"removed {inv[i].ComponentDefID} to reduce weight");
                 tonnage -= inv[i].Def.Tonnage;
                 inv.RemoveAt(i);
             }
@@ -45,14 +45,14 @@ namespace BTRandomMechComponentUpgrader
                     }
                     if (loc == ChassisLocations.None)
                     {
-                        BTRandomMechComponentUpgrader_Init.Log.Log("no free location found!");
+                        Main.Log.Log("no free location found!");
                         break;
                     }
                     MechComponentRef r = new MechComponentRef(d.Description.Id, null, d.ComponentType, loc, -1, ComponentDamageLevel.Functional, false);
                     r.SetComponentDef(d);
                     inv.Add(r);
                     tonnage += d.Tonnage;
-                    BTRandomMechComponentUpgrader_Init.Log.Log($"added {r.ComponentDefID} to use free weight");
+                    Main.Log.Log($"added {r.ComponentDefID} to use free weight");
                 }
             }
             mDef.SetInventory(inv.ToArray());

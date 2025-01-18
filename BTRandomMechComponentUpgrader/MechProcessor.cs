@@ -9,7 +9,7 @@ using UnityEngine;
 
 namespace BTRandomMechComponentUpgrader
 {
-    class MechProcesser
+    class MechProcessor
     {
         public static IMechDefSpawnModifier[] DefaultModifiers = new IMechDefSpawnModifier[] { new Modifier_Upgrades(), new Modifier_Additions(), new Modifier_AmmoSwapper(), new Modifier_TonnageFixInventory(), new Modifier_TonnageFixArmor() };
         public static List<UpgradeList> UpgradeLists;
@@ -19,7 +19,7 @@ namespace BTRandomMechComponentUpgrader
             if (modifiers == null)
                 modifiers = DefaultModifiers;
 
-            BTRandomMechComponentUpgrader_Init.Log.Log($"upgrading {mDef.Description.Name} {mDef.Chassis.VariantName}, using UpgradeList {ulist.Name}");
+            Main.Log.Log($"upgrading {mDef.Description.Name} {mDef.Chassis.VariantName}, using UpgradeList {ulist.Name}");
 
             MechDef n = new MechDef(mDef); // dont break original mechdef
 
@@ -30,7 +30,7 @@ namespace BTRandomMechComponentUpgrader
             foreach (IMechDefSpawnModifier mod in modifiers)
                 mod.ModifyMech(n, s, ulist, ref canFreeTonns, changedAmmoTypes, mDef);
 
-            BTRandomMechComponentUpgrader_Init.Log.Log("all modifications done");
+            Main.Log.Log("all modifications done");
 
             return n;
         }
@@ -41,11 +41,11 @@ namespace BTRandomMechComponentUpgrader
             {
                 if (l.DoesApplyToFaction(team))
                 {
-                    BTRandomMechComponentUpgrader_Init.Log.Log($"searching UpgradeList for faction {team}, found {l.Name}");
+                    Main.Log.Log($"searching UpgradeList for faction {team}, found {l.Name}");
                     return l;
                 }
             }
-            BTRandomMechComponentUpgrader_Init.Log.Log($"searching UpgradeList for faction {team}, found none");
+            Main.Log.Log($"searching UpgradeList for faction {team}, found none");
             return null;
         }
 
@@ -56,7 +56,7 @@ namespace BTRandomMechComponentUpgrader
             {
                 foreach (Text t in kv.Value)
                 {
-                    BTRandomMechComponentUpgrader_Init.Log.Log($"validation error: {t}");
+                    Main.Log.Log($"validation error: {t}");
                     r = false; // dont return here, to log all errors
                 }
             }

@@ -62,8 +62,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BTRandomMechComponentUpgrader_Init.cs" />
-    <Compile Include="MechProcesser.cs" />
+    <Compile Include="Main.cs" />
+    <Compile Include="MechProcessor.cs" />
     <Compile Include="Modifier_AmmoSwapper.cs" />
     <Compile Include="Settings.cs" />
     <Compile Include="UpgradeList.cs" />

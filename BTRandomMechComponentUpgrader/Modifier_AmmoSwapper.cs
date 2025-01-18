@@ -12,7 +12,7 @@ namespace BTRandomMechComponentUpgrader
     {
         public void ModifyMech(MechDef mDef, SimGameState s, UpgradeList ulist, ref float canFreeTonns, List<string[]> changedAmmoTypes, MechDef fromData)
         {
-            BTRandomMechComponentUpgrader_Init.Log.Log("checking changed ammo types");
+            Main.Log.Log("checking changed ammo types");
             List<MechComponentRef> inv = mDef.Inventory.ToList();
             foreach (string[] ca in changedAmmoTypes)
             {
@@ -20,12 +20,12 @@ namespace BTRandomMechComponentUpgrader
                 AmmunitionBoxDef box = GetMainAmmoBox(ca[1], s);
                 if (box == null && basebox == null)
                 {
-                    BTRandomMechComponentUpgrader_Init.Log.Log($"changing ammo {ca[0]} -> {ca[1]} (both null ???)");
+                    Main.Log.Log($"changing ammo {ca[0]} -> {ca[1]} (both null ???)");
                     continue;
                 }
                 if (box == null) // removed ammo dependency, remove all ammoboxes as well, tonnagefixer will take care of missing tonnage
                 {
-                    BTRandomMechComponentUpgrader_Init.Log.Log($"changing ammo {ca[0]} -> {ca[1]} (box null, removing all)");
+                    Main.Log.Log($"changing ammo {ca[0]} -> {ca[1]} (box null, removing all)");
                     inv.RemoveAll((a) => ca[0].Equals((a.Def as AmmunitionBoxDef)?.AmmoID));
                     continue;
                 }
@@ -44,32 +44,32 @@ namespace BTRandomMechComponentUpgrader
                 }
                 float ratio = ne / (or + ne);
                 int swap = Mathf.RoundToInt(numOldBox * ratio);
-                BTRandomMechComponentUpgrader_Init.Log.Log($"changing ammo {ca[0]} -> {ca[1]} (usage {or}/{ne}, changing {swap} boxes)");
+                Main.Log.Log($"changing ammo {ca[0]} -> {ca[1]} (usage {or}/{ne}, changing {swap} boxes)");
                 foreach (MechComponentRef r in inv.Where((a) => ca[0].Equals((a.Def as AmmunitionBoxDef)?.AmmoID))) {
                     if (swap <= 0)
                         break;
                     if (r.CanUpgrade(box, canFreeTonns, mDef, r.MountedLocation, inv))
                     {
-                        BTRandomMechComponentUpgrader_Init.Log.Log($"changing ammo {r.Def.Description.Id} -> {box.Description.Id}");
+                        Main.Log.Log($"changing ammo {r.Def.Description.Id} -> {box.Description.Id}");
                         r.DoUpgrade(box, ref canFreeTonns);
                         swap--;
                     }
                     else
-                        BTRandomMechComponentUpgrader_Init.Log.Log($"cannot change ammo {r.Def.Description.Id} -> {box.Description.Id}");
+                        Main.Log.Log($"cannot change ammo {r.Def.Description.Id} -> {box.Description.Id}");
                 }
                 if (swap > 0)
-                    BTRandomMechComponentUpgrader_Init.Log.Log($"missed {swap} changes");
+                    Main.Log.Log($"missed {swap} changes");
             }
             mDef.SetInventory(inv.ToArray());
         }
 
         private static void TryAddAmmoBox(MechDef mDef, ref float canFreeTonns, List<MechComponentRef> inv, string[] ca, AmmunitionBoxDef box)
         {
-            BTRandomMechComponentUpgrader_Init.Log.Log($"changing ammo {ca[0]} -> {ca[1]} (basebox null, try adding one)");
+            Main.Log.Log($"changing ammo {ca[0]} -> {ca[1]} (basebox null, try adding one)");
             ChassisLocations loc = mDef.SearchLocationToAddComponent(box, canFreeTonns, inv, null, ChassisLocations.None);
             if (loc != ChassisLocations.None)
             {
-                BTRandomMechComponentUpgrader_Init.Log.Log($"adding into {loc}");
+                Main.Log.Log($"adding into {loc}");
                 MechComponentRef r = new MechComponentRef(box.Description.Id, null, box.ComponentType, loc, -1, ComponentDamageLevel.Functional, false);
                 r.SetComponentDef(box);
                 inv.Add(r);
