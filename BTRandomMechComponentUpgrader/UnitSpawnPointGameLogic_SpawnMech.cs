@@ -43,7 +43,7 @@ namespace BTRandomMechComponentUpgrader
                     return;
                 }
 
-                string teamName = team.IsLocalPlayer ? __instance.Combat.ActiveContract.Override.employerTeam.FactionValue.ToString() : team.FactionValue.ToString();
+                FactionValue teamName = team.IsLocalPlayer ? __instance.Combat.ActiveContract.Override.employerTeam.FactionValue : team.FactionValue;
                 UpgradeList ulist = MechProcessor.GetUpgradeList(teamName); // check if we got a upgradelist for that faction
                 if (ulist == null)
                 {

@@ -9,7 +9,7 @@ using UnityEngine;
 
 namespace BTRandomMechComponentUpgrader
 {
-    class MechProcessor
+    public class MechProcessor
     {
         public static IMechDefSpawnModifier[] DefaultModifiers = new IMechDefSpawnModifier[] { new Modifier_Upgrades(), new Modifier_Additions(), new Modifier_AmmoSwapper(), new Modifier_TonnageFixInventory(), new Modifier_TonnageFixArmor() };
         public static List<UpgradeList> UpgradeLists;
@@ -35,11 +35,13 @@ namespace BTRandomMechComponentUpgrader
             return n;
         }
 
-        public static UpgradeList GetUpgradeList(string team)
+        public static Func<FactionValue, UpgradeList> GetUpgradeList = GetUpgradeListDefault;
+
+        public static UpgradeList GetUpgradeListDefault(FactionValue team)
         {
             foreach (UpgradeList l in UpgradeLists)
             {
-                if (l.DoesApplyToFaction(team))
+                if (l.DoesApplyToFaction(team.ToString()))
                 {
                     Main.Log.Log($"searching UpgradeList for faction {team}, found {l.Name}");
                     return l;

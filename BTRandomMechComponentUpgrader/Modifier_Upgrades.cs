@@ -27,7 +27,7 @@ namespace BTRandomMechComponentUpgrader
                 return;
 
             string log = baseid;
-            UpgradeList.UpgradeEntry ue = l.RollEntryFromMatchingSubList(baseid, s.NetworkRandom, s.CurrentDate, ref log, l.UpgradePerComponentChance);
+            UpgradeEntry ue = l.RollEntryFromMatchingSubList(baseid, s.NetworkRandom, s.CurrentDate, ref log, l.UpgradePerComponentChance);
             if (ue != null)
             {
                 MechComponentDef d = s.GetComponentDefFromID(ue.ID);

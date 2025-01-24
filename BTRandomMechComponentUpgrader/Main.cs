@@ -47,14 +47,13 @@ namespace BTRandomMechComponentUpgrader
             string missing = "";
             try
             {
-                Dictionary<string, UpgradeList.UpgradeEntry[]> entries = new Dictionary<string, UpgradeList.UpgradeEntry[]>();
+                Dictionary<string, UpgradeSubList> entries = new Dictionary<string, UpgradeSubList>();
                 MechProcessor.UpgradeLists = new List<UpgradeList>();
                 foreach (KeyValuePair<string, VersionManifestEntry> kv in customResources["ComponentUpgradeSubList"])
                 {
                     missing = kv.Value.FilePath;
-                    UpgradeList.UpgradeEntry[] sublist = LoadUpgradeSubList(kv.Value.FilePath);
-                    if (sublist.Length > 0)
-                        sublist[0].Name = kv.Value.FileName;
+                    UpgradeSubList sublist = LoadUpgradeSubList(kv.Value.FilePath);
+                    sublist.Name = kv.Value.FileName;
                     entries.Add(kv.Value.FileName, sublist);
                 }
                 foreach (KeyValuePair<string, VersionManifestEntry> kv in customResources["ComponentUpgradeList"])
@@ -80,15 +79,20 @@ namespace BTRandomMechComponentUpgrader
             }
         }
 
-        private static void LoadListComponents(string[] load, List<UpgradeList.UpgradeEntry[]> data, Dictionary<string, UpgradeList.UpgradeEntry[]> entries, out string missing)
+        private static void LoadListComponents(string[] load, List<UpgradeSubList> data, Dictionary<string, UpgradeSubList> entries, out string missing)
         {
             if (load != null && load.Length > 0)
+            {
                 foreach (string l in load)
+                {
                     if (l != null)
                     {
                         missing = l;
                         data.Add(entries[l]);
                     }
+                }
+            }
+
             missing = "";
         }
 
@@ -103,7 +107,7 @@ namespace BTRandomMechComponentUpgrader
             return JsonConvert.DeserializeObject<UpgradeList>(file);
         }
 
-        public static UpgradeList.UpgradeEntry[] LoadUpgradeSubList(string name, string dir = null)
+        public static UpgradeSubList LoadUpgradeSubList(string name, string dir = null)
         {
             string path;
             if (dir == null)
@@ -111,7 +115,7 @@ namespace BTRandomMechComponentUpgrader
             else
                 path = Path.Combine(dir, name);
             string file = File.ReadAllText(path);
-            return JsonConvert.DeserializeObject<UpgradeList.UpgradeEntry[]>(file);
+            return JsonConvert.DeserializeObject<UpgradeSubList>(file);
         }
     }
 }
