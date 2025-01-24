@@ -88,7 +88,10 @@ namespace BTRandomMechComponentUpgrader
                     if (l != null)
                     {
                         missing = l;
-                        data.Add(entries[l]);
+                        string e = l;
+                        if (!e.EndsWith(".json"))
+                            e += ".json";
+                        data.Add(entries[e]);
                     }
                 }
             }

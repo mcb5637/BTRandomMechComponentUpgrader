@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,6 +12,7 @@ namespace BTRandomMechComponentUpgrader
         public UpgradeEntry[] MainUpgradePath;
         public UpgradeEntry[] AmmoTypes;
         public UpgradeEntry[] Addons;
+        [JsonIgnore]
         public string Name { get; internal set; }
 
         internal void CalculateLimit(DateTime d)

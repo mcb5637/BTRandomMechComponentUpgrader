@@ -1,4 +1,5 @@
 ﻿using Harmony;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,6 +20,7 @@ namespace BTRandomMechComponentUpgrader
         public bool AllowDowngrade = false;
         public string[] LoadUpgrades = new string[] { };
         public string[] LoadAdditions = new string[] { };
+        [JsonIgnore]
         public string Name { get; internal set; }
         public int Sort = 0;
 
