@@ -12,11 +12,20 @@ namespace BTRandomMechComponentUpgrader
         public bool AllowDowngrade = false;
 
 
-        internal bool CheckUpgradeCond(DateTime d)
+        public bool CheckUpgradeCond(DateTime d)
         {
             if (MinDate > d)
                 return false;
             return true;
+        }
+
+        public int GetWeight(DateTime d, int[] wlt)
+        {
+            if (!CheckUpgradeCond(d))
+                return 0;
+            if (wlt != null)
+                return wlt[Math.Max(Math.Min(Weight, wlt.Length), 0)];
+            return Weight;
         }
     }
 }

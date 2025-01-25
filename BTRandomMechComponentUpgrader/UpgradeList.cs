@@ -20,6 +20,7 @@ namespace BTRandomMechComponentUpgrader
         public bool AllowDowngrade = false;
         public string[] LoadUpgrades = new string[] { };
         public string[] LoadAdditions = new string[] { };
+        public int[] WeightLookupTable = null;
         [JsonIgnore]
         public string Name { get; internal set; }
         public int Sort = 0;
@@ -71,7 +72,7 @@ namespace BTRandomMechComponentUpgrader
         public UpgradeEntry RollEntryFromSubList(UpgradeSubList list, NetworkRandom nr, int min, DateTime date, ref string log, float linkRerollChance)
         {
             UpgradeEntry r = null;
-            list.CalculateLimit(date);
+            list.CalculateLimit(date, WeightLookupTable);
             float rand = nr.Float(min < 0 ? 0f : list.MainUpgradePath[min].RandomLimit, 1f);
             for (int i = 0; i < list.MainUpgradePath.Length; i++)
             {
@@ -82,7 +83,7 @@ namespace BTRandomMechComponentUpgrader
                     break;
                 }
             }
-            log += $" -> {r.ID} ({rand}, {min}, {list.Name})";
+            log += $" -> {r.ID} ({rand}, {min}, {list.Name}, {(WeightLookupTable == null ? "null" : WeightLookupTable.Join())})";
             if (r.ListLink && nr.Float(0f, 1f) <= linkRerollChance)
             {
                 UpgradeEntry li = RollEntryFromMatchingSubList(r.ID, nr, date, ref log, linkRerollChance);

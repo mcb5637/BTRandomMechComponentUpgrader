@@ -15,14 +15,13 @@ namespace BTRandomMechComponentUpgrader
         [JsonIgnore]
         public string Name { get; internal set; }
 
-        internal void CalculateLimit(DateTime d)
+        internal void CalculateLimit(DateTime d, int[] wlt)
         {
-            float cw = MainUpgradePath.Sum((u) => u.CheckUpgradeCond(d) ? u.Weight : 0);
+            float cw = MainUpgradePath.Sum(u => u.GetWeight(d, wlt));
             float last = 0;
             foreach (UpgradeEntry u in MainUpgradePath)
             {
-                if (u.CheckUpgradeCond(d))
-                    last += u.Weight / cw;
+                last += u.GetWeight(d, wlt) / cw;
                 u.RandomLimit = last;
             }
         }
