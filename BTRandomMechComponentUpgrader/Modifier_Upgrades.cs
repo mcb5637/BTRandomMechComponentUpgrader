@@ -20,14 +20,14 @@ namespace BTRandomMechComponentUpgrader
             }
         }
 
-        public void CheckForAndPerformUpgrade(MechComponentRef r, SimGameState s, UpgradeList l, ref float canFreeTonns, MechDef mech, List<string[]> changedAmmoTypes)
+        private void CheckForAndPerformUpgrade(MechComponentRef r, SimGameState s, UpgradeList l, ref float canFreeTonns, MechDef mech, List<string[]> changedAmmoTypes)
         {
             string baseid = r.Def.Description.Id;
             if (s.NetworkRandom.Float(0f, 1f) > l.UpgradePerComponentChance)
                 return;
 
             string log = baseid;
-            UpgradeEntry ue = l.RollEntryFromMatchingSubList(baseid, s.NetworkRandom, s.CurrentDate, ref log, l.UpgradePerComponentChance);
+            UpgradeEntry ue = l.RollEntryFromMatchingSubList(baseid, s.NetworkRandom, s.CurrentDate, SubListType.Main, ref log, l.UpgradePerComponentChance);
             if (ue != null)
             {
                 MechComponentDef d = s.GetComponentDefFromID(ue.ID);
@@ -44,7 +44,7 @@ namespace BTRandomMechComponentUpgrader
                 Main.Log.Log("upgrade unavailable " + log);
         }
 
-        public void CheckChangedAmmo(MechComponentDef orig, MechComponentDef chang, List<string[]> changedAmmoTypes)
+        private void CheckChangedAmmo(MechComponentDef orig, MechComponentDef chang, List<string[]> changedAmmoTypes)
         {
             WeaponDef o = orig as WeaponDef;
             WeaponDef c = chang as WeaponDef;

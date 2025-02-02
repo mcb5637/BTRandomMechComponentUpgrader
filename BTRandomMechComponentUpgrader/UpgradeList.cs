@@ -38,55 +38,66 @@ namespace BTRandomMechComponentUpgrader
             return test.Skip(pre.Length).All(char.IsDigit);
         }
 
-        public UpgradeSubList GetUpgradeSubListAndOffset(string comp, out int min)
+        public UpgradeSubList GetUpgradeSubListAndOffset(string comp, SubListType t, out int min)
         {
             foreach (UpgradeSubList list in Upgrades)
             {
-                for (int i = 0; i < list.MainUpgradePath.Length; i++)
-                {
-                    UpgradeEntry u = list.MainUpgradePath[i];
-                    if (u.ID.Equals(comp) && !u.ListLink)
-                    {
-                        min = (u.AllowDowngrade || this.AllowDowngrade) ? -1 : i;
-                        return list;
-                    }
-                }
+                if (IsInUpgradeArray(comp, list.Get(t), out min))
+                    return list;
             }
             min = -1;
             return null;
         }
 
-        public UpgradeEntry RollEntryFromMatchingSubList(string baseid, NetworkRandom nr, DateTime date, ref string log, float linkRerollChance)
+        public bool IsInUpgradeArray(string comp, UpgradeEntry[] list, out int min)
         {
-            UpgradeSubList sublist = GetUpgradeSubListAndOffset(baseid, out int min);
+            for (int i = 0; i < list.Length; i++)
+            {
+                UpgradeEntry u = list[i];
+                if (u.ID.Equals(comp) && !u.ListLink)
+                {
+                    min = (u.AllowDowngrade || this.AllowDowngrade) ? -1 : i;
+                    return true;
+                }
+            }
+            min = -1;
+            return false;
+        }
+
+        public UpgradeEntry RollEntryFromMatchingSubList(string baseid, NetworkRandom nr, DateTime date, SubListType t, ref string log, float linkRerollChance)
+        {
+            UpgradeSubList sublist = GetUpgradeSubListAndOffset(baseid, t, out int min);
             UpgradeEntry r = null;
             if (sublist != null)
             {
-                r = RollEntryFromSubList(sublist, nr, min, date, ref log, linkRerollChance);
+                r = RollEntryFromSubList(sublist, nr, min, date, t, ref log, linkRerollChance);
             }
             else
                 log += " no sublist found";
             return r;
         }
 
-        public UpgradeEntry RollEntryFromSubList(UpgradeSubList list, NetworkRandom nr, int min, DateTime date, ref string log, float linkRerollChance)
+        public UpgradeEntry RollEntryFromSubList(UpgradeSubList list, NetworkRandom nr, int min, DateTime date, SubListType t, ref string log, float linkRerollChance)
         {
             UpgradeEntry r = null;
-            list.CalculateLimit(date, WeightLookupTable);
-            float rand = nr.Float(min < 0 ? 0f : list.MainUpgradePath[min].RandomLimit, 1f);
-            for (int i = 0; i < list.MainUpgradePath.Length; i++)
+            UpgradeEntry[] entries = list.Get(t);
+            if (entries == null)
+                return null;
+            list.CalculateLimit(date, WeightLookupTable, t);
+            float rand = nr.Float(min < 0 ? 0f : entries[min].RandomLimit, 1f);
+            for (int i = 0; i < entries.Length; i++)
             {
-                UpgradeEntry u = list.MainUpgradePath[i];
+                UpgradeEntry u = entries[i];
                 if (rand <= u.RandomLimit && u.CheckUpgradeCond(date))
                 {
                     r = u;
                     break;
                 }
             }
-            log += $" -> {r.ID} ({rand}, {min}, {list.Name}, {(WeightLookupTable == null ? "null" : WeightLookupTable.Join())})";
+            log += $" -> {r.ID} ({rand}, {min}, {list.Name})";
             if (r.ListLink && nr.Float(0f, 1f) <= linkRerollChance)
             {
-                UpgradeEntry li = RollEntryFromMatchingSubList(r.ID, nr, date, ref log, linkRerollChance);
+                UpgradeEntry li = RollEntryFromMatchingSubList(r.ID, nr, date, SubListType.Main, ref log, linkRerollChance);
                 if (li != null)
                     r = li;
             }

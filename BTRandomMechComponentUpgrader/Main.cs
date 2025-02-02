@@ -10,7 +10,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
-[assembly:AssemblyVersion("1.3.1")]
+[assembly: AssemblyVersion("1.3.1")]
 
 namespace BTRandomMechComponentUpgrader
 {
@@ -18,9 +18,11 @@ namespace BTRandomMechComponentUpgrader
     {
         public static Settings Sett;
         public static ILog Log;
+        private static string Dir;
 
         public static void Init(string directory, string settingsJSON)
         {
+            Dir = directory;
             Log = Logger.GetLogger("BTRandomMechComponentUpgrader");
             try
             {
@@ -77,6 +79,24 @@ namespace BTRandomMechComponentUpgrader
                 Log.LogException(e);
                 Log.LogError(missing);
             }
+            try
+            {
+                if (AppDomain.CurrentDomain.GetAssemblies().Any(x => x.GetName().Name == "CustomActivatableEquipment"))
+                {
+                    Log.Log("found CAE, loading CustomIntegration");
+                    Assembly a = Assembly.LoadFile(Path.Combine(Dir, "CustomIntegration.dll"));
+                    MechProcessor.AddonHelp = (AddonHelper)a.GetType("CustomIntegration.CAEAddonHelper").GetConstructors().First().Invoke(Array.Empty<object>());
+                }
+                else
+                {
+                    Log.Log("no CAE");
+                }
+            }
+            catch (Exception e)
+            {
+                Log.LogException(e);
+            }
+            Log.Log($"AddonHelp={MechProcessor.AddonHelp.GetType().FullName}");
         }
 
         private static void LoadListComponents(string[] load, List<UpgradeSubList> data, Dictionary<string, UpgradeSubList> entries, out string missing)

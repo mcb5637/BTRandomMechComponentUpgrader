@@ -11,8 +11,9 @@ namespace BTRandomMechComponentUpgrader
 {
     public class MechProcessor
     {
-        public static IMechDefSpawnModifier[] DefaultModifiers = new IMechDefSpawnModifier[] { new Modifier_Upgrades(), new Modifier_Additions(), new Modifier_AmmoSwapper(), new Modifier_TonnageFixInventory(), new Modifier_TonnageFixArmor() };
+        public static IMechDefSpawnModifier[] DefaultModifiers = new IMechDefSpawnModifier[] { new Modifier_Upgrades(), new Modifier_Addon(), new Modifier_Additions(), new Modifier_AmmoSwapper(), new Modifier_TonnageFixInventory(), new Modifier_TonnageFixArmor() };
         public static List<UpgradeList> UpgradeLists;
+        public static AddonHelper AddonHelp = new AddonHelper();
 
         public static MechDef ProcessMech(MechDef mDef, SimGameState s, UpgradeList ulist, IEnumerable<IMechDefSpawnModifier> modifiers = null)
         {

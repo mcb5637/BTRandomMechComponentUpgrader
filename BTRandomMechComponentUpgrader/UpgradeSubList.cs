@@ -15,15 +15,38 @@ namespace BTRandomMechComponentUpgrader
         [JsonIgnore]
         public string Name { get; internal set; }
 
-        internal void CalculateLimit(DateTime d, int[] wlt)
+        internal void CalculateLimit(DateTime d, int[] wlt, SubListType t)
         {
-            float cw = MainUpgradePath.Sum(u => u.GetWeight(d, wlt));
+            UpgradeEntry[] l = Get(t);
+            float cw = l.Sum(u => u.GetWeight(d, wlt));
             float last = 0;
-            foreach (UpgradeEntry u in MainUpgradePath)
+            foreach (UpgradeEntry u in l)
             {
                 last += u.GetWeight(d, wlt) / cw;
                 u.RandomLimit = last;
             }
         }
+
+        public UpgradeEntry[] Get(SubListType t)
+        {
+            switch (t)
+            {
+                case SubListType.Main:
+                    return MainUpgradePath;
+                case SubListType.Ammo:
+                    return AmmoTypes;
+                case SubListType.Addon:
+                    return Addons;
+                default:
+                    return Array.Empty<UpgradeEntry>();
+            }
+        }
+    }
+
+    public enum SubListType
+    {
+        Main,
+        Ammo,
+        Addon,
     }
 }

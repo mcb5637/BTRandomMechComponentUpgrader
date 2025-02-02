@@ -18,8 +18,8 @@ namespace BTRandomMechComponentUpgrader
                 if (s.NetworkRandom.Float(0f, 1f) < ulist.UpgradePerComponentChance)
                 {
                     string log = "";
-                    UpgradeEntry ue = ulist.RollEntryFromSubList(l, s.NetworkRandom, -1, s.CurrentDate, ref log, ulist.UpgradePerComponentChance);
-                    if (ue != null && !ue.ID.Equals(""))
+                    UpgradeEntry ue = ulist.RollEntryFromSubList(l, s.NetworkRandom, -1, s.CurrentDate, SubListType.Main, ref log, ulist.UpgradePerComponentChance);
+                    if (ue != null && ue.ID != "")
                     {
                         MechComponentDef d = s.GetComponentDefFromID(ue.ID);
                         ChassisLocations loc = mDef.SearchLocationToAddComponent(d, canFreeTonns, inv, null, ChassisLocations.None);
