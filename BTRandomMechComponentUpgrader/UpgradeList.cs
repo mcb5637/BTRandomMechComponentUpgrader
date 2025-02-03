@@ -94,6 +94,11 @@ namespace BTRandomMechComponentUpgrader
                     break;
                 }
             }
+            if (r == null)
+            {
+                log += $" -> null ({rand}, {min}, {list.Name}) ({entries.Select(x => $"{x.ID}:{x.RandomLimit}").Join()})";
+                return null;
+            }
             log += $" -> {r.ID} ({rand}, {min}, {list.Name})";
             if (r.ListLink && nr.Float(0f, 1f) <= linkRerollChance)
             {
