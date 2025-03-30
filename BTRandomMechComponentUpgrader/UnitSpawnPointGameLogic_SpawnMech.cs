@@ -14,6 +14,8 @@ namespace BTRandomMechComponentUpgrader
     [HarmonyPatch(typeof(UnitSpawnPointGameLogic), "SpawnMech")]
     class UnitSpawnPointGameLogic_SpawnMech
     {
+        public const string DisableTag = "BTRandomMechComponentUpgrader_NoUpgrades";
+
         public static void Prefix(UnitSpawnPointGameLogic __instance, ref MechDef mDef, Team team)
         {
             try
@@ -30,7 +32,13 @@ namespace BTRandomMechComponentUpgrader
                     Main.Log.Log($"DeployDirector, not upgrading");
                     return;
                 }
-                
+
+                if (mDef.MechTags.Contains(DisableTag) || mDef.Chassis.ChassisTags.Contains(DisableTag))
+                {
+                    Main.Log.Log($"{mDef.Description.Name} {mDef.Chassis.VariantName} has no upgrade tag, not upgrading");
+                    return;
+                }
+
                 if (!s.DataManager.MechDefs.TryGet(mDef.Description.Id, out MechDef m))
                 {
                     Main.Log.Log($"no mechdef found in datamanager for {mDef.Description.Id}");
