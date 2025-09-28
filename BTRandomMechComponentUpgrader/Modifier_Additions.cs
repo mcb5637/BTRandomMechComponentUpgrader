@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace BTRandomMechComponentUpgrader
 {
-    class Modifier_Additions : IMechDefSpawnModifier
+    public class Modifier_Additions : IMechDefSpawnModifier
     {
         public void ModifyMech(MechDef mDef, SimGameState s, UpgradeList ulist, ref float canFreeTonns, List<string[]> changedAmmoTypes, MechDef fromData)
         {

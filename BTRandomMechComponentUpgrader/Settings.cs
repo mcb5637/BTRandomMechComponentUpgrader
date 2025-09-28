@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BTRandomMechComponentUpgrader
 {
-    class Settings
+    public class Settings
     {
         public bool LogLevelLog = true;
     }

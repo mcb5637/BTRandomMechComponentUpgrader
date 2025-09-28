@@ -14,7 +14,7 @@ using System.Threading.Tasks;
 
 namespace BTRandomMechComponentUpgrader
 {
-    class Main
+    public class Main
     {
         public static Settings Sett;
         public static ILog Log;

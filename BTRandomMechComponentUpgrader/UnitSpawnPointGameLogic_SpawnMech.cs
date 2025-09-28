@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 namespace BTRandomMechComponentUpgrader
 {
     [HarmonyPatch(typeof(UnitSpawnPointGameLogic), "SpawnMech")]
-    class UnitSpawnPointGameLogic_SpawnMech
+    internal class UnitSpawnPointGameLogic_SpawnMech
     {
         public const string DisableTag = "BTRandomMechComponentUpgrader_NoUpgrades";
 

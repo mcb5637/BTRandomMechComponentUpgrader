@@ -8,7 +8,7 @@ using UnityEngine;
 
 namespace BTRandomMechComponentUpgrader
 {
-    class Modifier_AmmoSwapper : IMechDefSpawnModifier // TODO check for CAC
+    public class Modifier_AmmoSwapper : IMechDefSpawnModifier // TODO check for CAC
     {
         public void ModifyMech(MechDef mDef, SimGameState s, UpgradeList ulist, ref float canFreeTonns, List<string[]> changedAmmoTypes, MechDef fromData)
         {

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace BTRandomMechComponentUpgrader
 {
-    static class RMCU_Helper
+    internal static class RMCU_Helper
     {
         public static readonly ChassisLocations[] Locations = new ChassisLocations[] { ChassisLocations.CenterTorso, ChassisLocations.Head,
             ChassisLocations.RightArm, ChassisLocations.RightLeg, ChassisLocations.RightTorso,
