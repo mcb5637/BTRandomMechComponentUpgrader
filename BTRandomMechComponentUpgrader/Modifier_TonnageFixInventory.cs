@@ -9,7 +9,7 @@ namespace BTRandomMechComponentUpgrader
 {
     public class Modifier_TonnageFixInventory : IMechDefSpawnModifier
     {
-        public void ModifyMech(MechDef mDef, SimGameState s, UpgradeList ulist, ref float _, List<string[]> changedAmmoTypes, MechDef fromData)
+        public void ModifyMech(MechDef mDef, SimGameState s, UpgradeList ulist, ref float _, AmmoTracker changedAmmoTypes, MechDef fromData)
         {
             Main.Log.Log("correcting tonage 1: inventory");
             List<MechComponentRef> inv = mDef.Inventory.ToList();

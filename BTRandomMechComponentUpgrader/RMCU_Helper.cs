@@ -110,5 +110,13 @@ namespace BTRandomMechComponentUpgrader
             }
             return ChassisLocations.None;
         }
+
+        // no generic math in old c# code...
+        public static void AddToDictDefault<K>(this Dictionary<K, int> d, K key, int add)
+        {
+            if (!d.TryGetValue(key, out int x))
+                x = 0;
+            d[key] = x + add;
+        }
     }
 }

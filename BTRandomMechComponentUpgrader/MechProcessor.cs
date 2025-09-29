@@ -26,7 +26,7 @@ namespace BTRandomMechComponentUpgrader
 
             float canFreeTonns = Mathf.Floor(n.Inventory.Sum((r) => ulist.CanRemove.Contains(r.ComponentDefID) ? r.Def.Tonnage : 0f) * ulist.RemoveMaxFactor);
 
-            List<string[]> changedAmmoTypes = new List<string[]>();
+            AmmoTracker changedAmmoTypes = new AmmoTracker();
 
             foreach (IMechDefSpawnModifier mod in modifiers)
                 mod.ModifyMech(n, s, ulist, ref canFreeTonns, changedAmmoTypes, mDef);

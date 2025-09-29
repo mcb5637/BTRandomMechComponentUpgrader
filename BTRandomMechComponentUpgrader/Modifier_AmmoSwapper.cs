@@ -8,64 +8,205 @@ using UnityEngine;
 
 namespace BTRandomMechComponentUpgrader
 {
-    public class Modifier_AmmoSwapper : IMechDefSpawnModifier // TODO check for CAC
+    public class AmmoTracker
     {
-        public void ModifyMech(MechDef mDef, SimGameState s, UpgradeList ulist, ref float canFreeTonns, List<string[]> changedAmmoTypes, MechDef fromData)
+        public class AmmoGroup
+        {
+            public List<string> AmmoLockout = new List<string>();
+            public Dictionary<string, int> IdealAmmoRatios = new Dictionary<string, int>();
+            public Dictionary<string, int> CurrentAmmoRatios = new Dictionary<string, int>();
+            public Dictionary<string, int> RemovedAmmoTypes = new Dictionary<string, int>();
+            public Dictionary<string, int> AddedAmmoTypes = new Dictionary<string, int>();
+            public Dictionary<string, int> IdealBoxes = new Dictionary<string, int>();
+
+            public UpgradeSubList LongestSublist = null;
+
+
+            internal void CheckLen(UpgradeSubList l)
+            {
+                if (l.AmmoTypes.Length > (LongestSublist?.AmmoTypes?.Length ?? 0))
+                    LongestSublist = l;
+            }
+
+            public void CalculateIdealBoxes()
+            {
+                if (IdealAmmoRatios.Count == 0)
+                    return;
+                var totalBoxes = CurrentAmmoRatios.Values.Sum();
+                double ratioSum = IdealAmmoRatios.Where(kv => !AmmoLockout.Contains(kv.Key)).Select(kv => kv.Value).Sum();
+                int assigned = 0;
+                foreach (var kv in IdealAmmoRatios.Skip(1))
+                {
+                    if (AmmoLockout.Contains(kv.Key))
+                        continue;
+                    int num = (int)Math.Floor(kv.Value / ratioSum * totalBoxes);
+                    assigned += num;
+                    IdealBoxes[kv.Key] = assigned;
+                }
+                var f = IdealAmmoRatios.First();
+                IdealBoxes[f.Key] = totalBoxes - assigned;
+            }
+
+            internal string ToLogString(string groupName)
+            {
+                return $"{groupName} IdealAmmoRatios:{Join(IdealAmmoRatios)} IdealBoxes:{Join(IdealBoxes)} CurrentAmmoRatios:{Join(CurrentAmmoRatios)}";
+
+                string Join(Dictionary<string, int> d)
+                {
+                    return string.Join(",", d.Select(kv => $"{kv.Key}:{kv.Value}"));
+                }
+            }
+
+            internal IEnumerable<string> IterIdealBoxIDs()
+            {
+                foreach (var kv in IdealBoxes)
+                {
+                    if (kv.Value <= 0)
+                        continue;
+                    for (int i = 0; i < kv.Value; i++)
+                        yield return kv.Key;
+                }
+            }
+        }
+
+        public Dictionary<string, AmmoGroup> AmmoGroups;
+
+        public AmmoGroup GetGroup(string name)
+        {
+            if (AmmoGroups.TryGetValue(name, out AmmoGroup group))
+            {
+                return group;
+            }
+            else
+            {
+                AmmoGroup n = new AmmoGroup();
+                AmmoGroups.Add(name, n);
+                return n;
+            }
+        }
+
+
+        public void OnChange(MechComponentDef orig, MechComponentDef chang, UpgradeSubList rootSubList, UpgradeSubList lastSubList)
+        {
+            if (orig is WeaponDef o)
+            {
+                AmmoGroup og = GetGroup(rootSubList.AmmoGroup);
+                foreach (var a in rootSubList.AmmoTypes)
+                    og.RemovedAmmoTypes.AddToDictDefault(a.ID, 1);
+            }
+            if (chang is WeaponDef c)
+            {
+                AmmoGroup ng = GetGroup(lastSubList.AmmoGroup);
+                foreach (var a in lastSubList.AmmoTypes)
+                    ng.AddedAmmoTypes.AddToDictDefault(a.ID, 1);
+            }
+        }
+    }
+
+    public class Modifier_AmmoSwapper : IMechDefSpawnModifier
+    {
+        public static Action<MechDef, SimGameState, UpgradeList, float, AmmoTracker, MechDef> SmartAmmoAdjust = (m, s, u, f, t, d) => {};
+
+        public void ModifyMech(MechDef mDef, SimGameState s, UpgradeList ulist, ref float canFreeTonns, AmmoTracker changedAmmoTypes, MechDef fromData)
         {
             Main.Log.Log("checking changed ammo types");
             List<MechComponentRef> inv = mDef.Inventory.ToList();
-            foreach (string[] ca in changedAmmoTypes)
+
+
+            foreach (var r in inv)
             {
-                AmmunitionBoxDef basebox = GetMainAmmoBox(ca[0], s);
-                AmmunitionBoxDef box = GetMainAmmoBox(ca[1], s);
-                if (box == null && basebox == null)
+                if (r.Def is WeaponDef w)
                 {
-                    Main.Log.Log($"changing ammo {ca[0]} -> {ca[1]} (both null ???)");
-                    continue;
-                }
-                if (box == null) // removed ammo dependency, remove all ammoboxes as well, tonnagefixer will take care of missing tonnage
-                {
-                    Main.Log.Log($"changing ammo {ca[0]} -> {ca[1]} (box null, removing all)");
-                    inv.RemoveAll((a) => ca[0].Equals((a.Def as AmmunitionBoxDef)?.AmmoID));
-                    continue;
-                }
-                if (basebox == null) // added ammo dependency, try to add an ammobox
-                {
-                    TryAddAmmoBox(mDef, ref canFreeTonns, inv, ca, box);
-                    continue;
-                }
-                int numOldBox = CountAmmoBoxes(inv, ca[0]);
-                float or = (float)GetAmmoTypeUsagePerTurn(inv, ca[0]) / basebox.Capacity;
-                float ne = (float)GetAmmoTypeUsagePerTurn(inv, ca[1]) / box.Capacity;
-                if (numOldBox <= 0 || (numOldBox==1 && or>0)) // should not happen, but just in case
-                {
-                    TryAddAmmoBox(mDef, ref canFreeTonns, inv, ca, box);
-                    continue;
-                }
-                float ratio = ne / (or + ne);
-                int swap = Mathf.RoundToInt(numOldBox * ratio);
-                Main.Log.Log($"changing ammo {ca[0]} -> {ca[1]} (usage {or}/{ne}, changing {swap} boxes)");
-                foreach (MechComponentRef r in inv.Where((a) => ca[0].Equals((a.Def as AmmunitionBoxDef)?.AmmoID))) {
-                    if (swap <= 0)
-                        break;
-                    if (r.CanUpgrade(box, canFreeTonns, mDef, r.MountedLocation, inv))
+                    UpgradeSubList sl = ulist.GetUpgradeSubListAndOffset(w.Description.Id, SubListType.Main, out int _);
+                    if (sl == null)
+                        continue;
+                    AmmoTracker.AmmoGroup g = changedAmmoTypes.GetGroup(sl.AmmoGroup);
+                    g.CheckLen(sl);
+                    foreach (var e in sl.AmmoTypes)
                     {
-                        Main.Log.Log($"changing ammo {r.Def.Description.Id} -> {box.Description.Id}");
-                        r.DoUpgrade(box, ref canFreeTonns);
-                        swap--;
+                        g.IdealAmmoRatios.AddToDictDefault(e.ID, e.AmmoWeight);
+                    }
+                    foreach (var a in MechProcessor.AddonHelp.GetAddons(mDef, mDef.Inventory, r))
+                    {
+                        var e = sl.Addons.Where(x => x.ID == a.ComponentDefID).FirstOrDefault();
+                        if (e != null)
+                        {
+                            foreach (var l in e.AmmoLockoutByAddon)
+                            {
+                                if (!g.AmmoLockout.Contains(l))
+                                    g.AmmoLockout.Add(l);
+                            }
+                        }
+                    }
+                }
+                else if (r.Def is AmmunitionBoxDef a)
+                {
+                    UpgradeSubList sl = ulist.GetUpgradeSubListAndOffset(a.Description.Id, SubListType.Ammo, out int _);
+                    if (sl == null)
+                        continue;
+                    AmmoTracker.AmmoGroup g = changedAmmoTypes.GetGroup(sl.AmmoGroup);
+                    g.CurrentAmmoRatios.AddToDictDefault(a.Description.Id, 1);
+                }
+            }
+
+            Main.Log.Log("ammo groups before smart adjust:");
+            foreach (var g in changedAmmoTypes.AmmoGroups)
+            {
+                g.Value.CalculateIdealBoxes();
+                Main.Log.Log(g.Value.ToLogString(g.Key));
+            }
+
+            SmartAmmoAdjust(mDef, s, ulist, canFreeTonns, changedAmmoTypes, fromData);
+
+            Main.Log.Log("ammo groups after smart adjust:");
+            foreach (var g in changedAmmoTypes.AmmoGroups)
+            {
+                Main.Log.Log(g.Value.ToLogString(g.Key));
+
+                var boxids = g.Value.IterIdealBoxIDs().GetEnumerator();
+                var boxes = inv.Where(x => g.Value.CurrentAmmoRatios.ContainsKey(x.ComponentDefID)).ToList();
+
+                while (true)
+                {
+                    bool hasid = boxids.MoveNext();
+                    if (!hasid && boxes.Count == 0)
+                        break;
+                    var box = boxes.Count == 0 ? null : boxes[0];
+                    var newid = hasid ? boxids.Current : null;
+                    if (box != null)
+                        boxes.RemoveAt(0);
+
+                    if (box == null && newid == null)
+                    {
+                        Main.Log.Log("changing ammo null -> null (both null ???)");
+                    }
+                    else if (newid == null)
+                    {
+                        Main.Log.Log($"changing ammo {box.ComponentDefID} -> null (remove)");
+                        inv.Remove(box);
+                    }
+                    else if (box == null)
+                    {
+                        Main.Log.Log($"changing ammo null -> {newid} (try add)");
+                        TryAddAmmoBox(mDef, ref canFreeTonns, inv, GetBox(newid, s));
                     }
                     else
-                        Main.Log.Log($"cannot change ammo {r.Def.Description.Id} -> {box.Description.Id}");
+                    {
+                        Main.Log.Log($"changing ammo {box.ComponentDefID} -> {newid} (swap)");
+                        var repl = GetBox(newid, s);
+                        if (box.CanUpgrade(repl, canFreeTonns, mDef, box.MountedLocation, inv))
+                        {
+                            Main.Log.Log($"upgrading");
+                            box.DoUpgrade(repl, ref canFreeTonns);
+                        }
+                    }
                 }
-                if (swap > 0)
-                    Main.Log.Log($"missed {swap} changes");
             }
             mDef.SetInventory(inv.ToArray());
         }
 
-        private static void TryAddAmmoBox(MechDef mDef, ref float canFreeTonns, List<MechComponentRef> inv, string[] ca, AmmunitionBoxDef box)
+        private static void TryAddAmmoBox(MechDef mDef, ref float canFreeTonns, List<MechComponentRef> inv, AmmunitionBoxDef box)
         {
-            Main.Log.Log($"changing ammo {ca[0]} -> {ca[1]} (basebox null, try adding one)");
             ChassisLocations loc = mDef.SearchLocationToAddComponent(box, canFreeTonns, inv, null, ChassisLocations.None);
             if (loc != ChassisLocations.None)
             {
@@ -77,23 +218,9 @@ namespace BTRandomMechComponentUpgrader
             }
         }
 
-        public int GetAmmoTypeUsagePerTurn(IEnumerable<MechComponentRef> inv, string ammo)
+        internal AmmunitionBoxDef GetBox(string id, SimGameState s)
         {
-            int r = 0;
-            foreach (WeaponDef w in inv.Select((a) => a.Def).OfType<WeaponDef>().Where((a) => ammo.Equals(a.AmmoCategoryToAmmoId))) {
-                r += w.ShotsWhenFired;
-            }
-            return r;
-        }
-
-        public AmmunitionBoxDef GetMainAmmoBox(string ammo, SimGameState s)
-        {
-            return s.DataManager.AmmoBoxDefs.Where((a) => ammo.Equals(a.Value.AmmoID)).First().Value;
-        }
-
-        public int CountAmmoBoxes(IEnumerable<MechComponentRef> inv, string ammo)
-        {
-            return inv.Select((a) => a.Def).OfType<AmmunitionBoxDef>().Where((a) => ammo.Equals(a.AmmoID)).Count();
+            return s.DataManager.AmmoBoxDefs.Get(id);
         }
     }
 }

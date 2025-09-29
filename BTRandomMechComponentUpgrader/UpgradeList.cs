@@ -64,23 +64,25 @@ namespace BTRandomMechComponentUpgrader
             return false;
         }
 
-        public UpgradeEntry RollEntryFromMatchingSubList(string baseid, NetworkRandom nr, DateTime date, SubListType t, ref string log, float linkRerollChance)
+        public UpgradeEntry RollEntryFromMatchingSubList(string baseid, NetworkRandom nr, DateTime date, SubListType t, ref string log, float linkRerollChance, out UpgradeSubList rootSubList, out UpgradeSubList lastSubList)
         {
-            UpgradeSubList sublist = GetUpgradeSubListAndOffset(baseid, t, out int min);
+            rootSubList = GetUpgradeSubListAndOffset(baseid, t, out int min);
             UpgradeEntry r = null;
-            if (sublist != null)
+            lastSubList = null;
+            if (rootSubList != null)
             {
-                r = RollEntryFromSubList(sublist, nr, min, date, t, ref log, linkRerollChance);
+                r = RollEntryFromSubList(rootSubList, nr, min, date, t, ref log, linkRerollChance, out lastSubList);
             }
             else
                 log += " no sublist found";
             return r;
         }
 
-        public UpgradeEntry RollEntryFromSubList(UpgradeSubList list, NetworkRandom nr, int min, DateTime date, SubListType t, ref string log, float linkRerollChance)
+        public UpgradeEntry RollEntryFromSubList(UpgradeSubList list, NetworkRandom nr, int min, DateTime date, SubListType t, ref string log, float linkRerollChance, out UpgradeSubList lastSubList)
         {
             UpgradeEntry r = null;
             UpgradeEntry[] entries = list.Get(t);
+            lastSubList = list;
             if (entries == null)
                 return null;
             list.CalculateLimit(date, WeightLookupTable, t);
@@ -102,7 +104,7 @@ namespace BTRandomMechComponentUpgrader
             log += $" -> {r.ID} ({rand}, {min}, {list.Name})";
             if (r.ListLink && nr.Float(0f, 1f) <= linkRerollChance)
             {
-                UpgradeEntry li = RollEntryFromMatchingSubList(r.ID, nr, date, SubListType.Main, ref log, linkRerollChance);
+                UpgradeEntry li = RollEntryFromMatchingSubList(r.ID, nr, date, SubListType.Main, ref log, linkRerollChance, out UpgradeSubList _, out lastSubList);
                 if (li != null)
                     r = li;
             }

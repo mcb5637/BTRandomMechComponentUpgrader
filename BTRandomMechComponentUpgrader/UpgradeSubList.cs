@@ -12,6 +12,7 @@ namespace BTRandomMechComponentUpgrader
         public UpgradeEntry[] MainUpgradePath;
         public UpgradeEntry[] AmmoTypes;
         public UpgradeEntry[] Addons;
+        public string AmmoGroup = "";
         [JsonIgnore]
         public string Name { get; internal set; }
 

@@ -10,6 +10,8 @@ namespace BTRandomMechComponentUpgrader
         public DateTime MinDate = DateTime.MinValue;
         public bool ListLink = false;
         public bool AllowDowngrade = false;
+        public string[] AmmoLockoutByAddon = Array.Empty<string>();
+        public int AmmoWeight = 1;
 
 
         public bool CheckUpgradeCond(DateTime d)

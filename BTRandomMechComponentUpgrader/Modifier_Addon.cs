@@ -9,7 +9,7 @@ namespace BTRandomMechComponentUpgrader
 {
     public class Modifier_Addon : IMechDefSpawnModifier
     {
-        public void ModifyMech(MechDef mDef, SimGameState s, UpgradeList ulist, ref float canFreeTonns, List<string[]> changedAmmoTypes, MechDef fromData)
+        public void ModifyMech(MechDef mDef, SimGameState s, UpgradeList ulist, ref float canFreeTonns, AmmoTracker changedAmmoTypes, MechDef fromData)
         {
             if (!MechProcessor.AddonHelp.AddonsEnabled)
                 return;
@@ -56,7 +56,7 @@ namespace BTRandomMechComponentUpgrader
         private static void AddAddon(MechComponentRef c, SimGameState s, UpgradeList l, ref float canFreeTonns, MechDef mech, UpgradeSubList sl)
         {
             string log = "";
-            UpgradeEntry ue = l.RollEntryFromSubList(sl, s.NetworkRandom, -1, s.CurrentDate, SubListType.Addon, ref log, l.UpgradePerComponentChance);
+            UpgradeEntry ue = l.RollEntryFromSubList(sl, s.NetworkRandom, -1, s.CurrentDate, SubListType.Addon, ref log, l.UpgradePerComponentChance, out UpgradeSubList _);
             if (ue != null && ue.ID != "")
             {
                 MechComponentDef d = s.GetComponentDefFromID(ue.ID);
@@ -82,7 +82,7 @@ namespace BTRandomMechComponentUpgrader
         private static float UpgradeAddon(MechComponentRef r, SimGameState s, UpgradeList l, float canFreeTonns, MechDef mech, string baseid)
         {
             string log = baseid;
-            UpgradeEntry ue = l.RollEntryFromMatchingSubList(baseid, s.NetworkRandom, s.CurrentDate, SubListType.Addon, ref log, l.UpgradePerComponentChance);
+            UpgradeEntry ue = l.RollEntryFromMatchingSubList(baseid, s.NetworkRandom, s.CurrentDate, SubListType.Addon, ref log, l.UpgradePerComponentChance, out UpgradeSubList _, out UpgradeSubList _);
             if (ue != null)
             {
                 MechComponentDef d = s.GetComponentDefFromID(ue.ID);

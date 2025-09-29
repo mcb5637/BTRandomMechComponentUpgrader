@@ -9,7 +9,7 @@ namespace BTRandomMechComponentUpgrader
 {
     public class Modifier_Additions : IMechDefSpawnModifier
     {
-        public void ModifyMech(MechDef mDef, SimGameState s, UpgradeList ulist, ref float canFreeTonns, List<string[]> changedAmmoTypes, MechDef fromData)
+        public void ModifyMech(MechDef mDef, SimGameState s, UpgradeList ulist, ref float canFreeTonns, AmmoTracker changedAmmoTypes, MechDef fromData)
         {
             Main.Log.Log("checking addition sublists");
             List<MechComponentRef> inv = mDef.Inventory.ToList();
@@ -18,7 +18,7 @@ namespace BTRandomMechComponentUpgrader
                 if (s.NetworkRandom.Float(0f, 1f) < ulist.UpgradePerComponentChance)
                 {
                     string log = "";
-                    UpgradeEntry ue = ulist.RollEntryFromSubList(l, s.NetworkRandom, -1, s.CurrentDate, SubListType.Main, ref log, ulist.UpgradePerComponentChance);
+                    UpgradeEntry ue = ulist.RollEntryFromSubList(l, s.NetworkRandom, -1, s.CurrentDate, SubListType.Main, ref log, ulist.UpgradePerComponentChance, out UpgradeSubList _);
                     if (ue != null && ue.ID != "")
                     {
                         MechComponentDef d = s.GetComponentDefFromID(ue.ID);
