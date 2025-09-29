@@ -32,18 +32,17 @@ namespace BTRandomMechComponentUpgrader
             {
                 if (IdealAmmoRatios.Count == 0)
                     return;
-                var totalBoxes = CurrentAmmoRatios.Values.Sum();
+                int totalBoxes = CurrentAmmoRatios.Values.Sum();
                 double ratioSum = IdealAmmoRatios.Where(kv => !AmmoLockout.Contains(kv.Key)).Select(kv => kv.Value).Sum();
                 int assigned = 0;
-                foreach (var kv in IdealAmmoRatios.Skip(1))
+                var f = IdealAmmoRatios.First(kv => !AmmoLockout.Contains(kv.Key));
+                IdealBoxes.Clear();
+                foreach (var kv in IdealAmmoRatios.Where(kv => !AmmoLockout.Contains(kv.Key)).Skip(1).ToList())
                 {
-                    if (AmmoLockout.Contains(kv.Key))
-                        continue;
                     int num = (int)Math.Floor(kv.Value / ratioSum * totalBoxes);
                     assigned += num;
-                    IdealBoxes[kv.Key] = assigned;
+                    IdealBoxes[kv.Key] = num;
                 }
-                var f = IdealAmmoRatios.First();
                 IdealBoxes[f.Key] = totalBoxes - assigned;
             }
 
@@ -67,9 +66,11 @@ namespace BTRandomMechComponentUpgrader
                         yield return kv.Key;
                 }
             }
+
+            internal bool Empty => IdealAmmoRatios.Values.Sum() == 0 && CurrentAmmoRatios.Values.Sum() == 0;
         }
 
-        public Dictionary<string, AmmoGroup> AmmoGroups;
+        public Dictionary<string, AmmoGroup> AmmoGroups = new Dictionary<string, AmmoGroup>();
 
         public AmmoGroup GetGroup(string name)
         {
@@ -88,13 +89,13 @@ namespace BTRandomMechComponentUpgrader
 
         public void OnChange(MechComponentDef orig, MechComponentDef chang, UpgradeSubList rootSubList, UpgradeSubList lastSubList)
         {
-            if (orig is WeaponDef o)
+            if (orig is WeaponDef && rootSubList != null)
             {
                 AmmoGroup og = GetGroup(rootSubList.AmmoGroup);
                 foreach (var a in rootSubList.AmmoTypes)
                     og.RemovedAmmoTypes.AddToDictDefault(a.ID, 1);
             }
-            if (chang is WeaponDef c)
+            if (chang is WeaponDef && lastSubList != null)
             {
                 AmmoGroup ng = GetGroup(lastSubList.AmmoGroup);
                 foreach (var a in lastSubList.AmmoTypes)
@@ -152,6 +153,8 @@ namespace BTRandomMechComponentUpgrader
             Main.Log.Log("ammo groups before smart adjust:");
             foreach (var g in changedAmmoTypes.AmmoGroups)
             {
+                if (g.Value.Empty)
+                    continue;
                 g.Value.CalculateIdealBoxes();
                 Main.Log.Log(g.Value.ToLogString(g.Key));
             }
@@ -161,6 +164,8 @@ namespace BTRandomMechComponentUpgrader
             Main.Log.Log("ammo groups after smart adjust:");
             foreach (var g in changedAmmoTypes.AmmoGroups)
             {
+                if (g.Value.Empty)
+                    continue;
                 Main.Log.Log(g.Value.ToLogString(g.Key));
 
                 var boxids = g.Value.IterIdealBoxIDs().GetEnumerator();
@@ -189,6 +194,10 @@ namespace BTRandomMechComponentUpgrader
                     {
                         Main.Log.Log($"changing ammo null -> {newid} (try add)");
                         TryAddAmmoBox(mDef, ref canFreeTonns, inv, GetBox(newid, s));
+                    }
+                    else if (box.ComponentDefID == newid)
+                    {
+                        Main.Log.Log($"changing ammo {box.ComponentDefID} -> {newid} (already correct)");
                     }
                     else
                     {
