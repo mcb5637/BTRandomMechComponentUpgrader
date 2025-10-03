@@ -33,17 +33,23 @@ namespace BTRandomMechComponentUpgrader
                 if (IdealAmmoRatios.Count == 0)
                     return;
                 int totalBoxes = CurrentAmmoRatios.Values.Sum();
-                double ratioSum = IdealAmmoRatios.Where(kv => !AmmoLockout.Contains(kv.Key)).Select(kv => kv.Value).Sum();
+                float ratioSum = IdealAmmoRatios.Where(kv => !AmmoLockout.Contains(kv.Key)).Select(kv => kv.Value).Sum();
                 int assigned = 0;
-                var f = IdealAmmoRatios.First(kv => !AmmoLockout.Contains(kv.Key));
+                float counting = 0.0f;
+                var l = IdealAmmoRatios.Where(kv => !AmmoLockout.Contains(kv.Key)).OrderBy(x => x.Value);
                 IdealBoxes.Clear();
-                foreach (var kv in IdealAmmoRatios.Where(kv => !AmmoLockout.Contains(kv.Key)).Skip(1).ToList())
+                foreach (var kv in l)
                 {
-                    int num = (int)Math.Floor(kv.Value / ratioSum * totalBoxes);
+                    counting += kv.Value / ratioSum * totalBoxes;
+                    int num = Mathf.FloorToInt(counting - assigned);
                     assigned += num;
                     IdealBoxes[kv.Key] = num;
                 }
-                IdealBoxes[f.Key] = totalBoxes - assigned;
+                var leftover = totalBoxes - assigned;
+                if (leftover > 0)
+                {
+                    IdealBoxes[l.Last().Key] += leftover;
+                }
             }
 
             internal string ToLogString(string groupName)
