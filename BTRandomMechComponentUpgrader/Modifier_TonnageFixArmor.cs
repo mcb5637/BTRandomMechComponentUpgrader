@@ -9,7 +9,7 @@ namespace BTRandomMechComponentUpgrader
 {
     public class Modifier_TonnageFixArmor : IMechDefSpawnModifier
     {
-        public void ModifyMech(MechDef mDef, SimGameState s, UpgradeList ulist, ref float _, AmmoTracker changedAmmoTypes, MechDef fromData)
+        public void ModifyMech(MechDef mDef, SimGameState s, UpgradeList ulist, ref float _, AmmoTracker changedAmmoTypes, MechDef fromData, FactionValue team)
         {
             float tonnage = 0;
             float max = 0;

@@ -15,7 +15,7 @@ namespace BTRandomMechComponentUpgrader
         public static List<UpgradeList> UpgradeLists;
         public static AddonHelper AddonHelp = new AddonHelper();
 
-        public static MechDef ProcessMech(MechDef mDef, SimGameState s, UpgradeList ulist, IEnumerable<IMechDefSpawnModifier> modifiers = null)
+        public static MechDef ProcessMech(MechDef mDef, SimGameState s, UpgradeList ulist, FactionValue team, IEnumerable<IMechDefSpawnModifier> modifiers = null)
         {
             if (modifiers == null)
                 modifiers = DefaultModifiers;
@@ -29,7 +29,7 @@ namespace BTRandomMechComponentUpgrader
             AmmoTracker changedAmmoTypes = new AmmoTracker();
 
             foreach (IMechDefSpawnModifier mod in modifiers)
-                mod.ModifyMech(n, s, ulist, ref canFreeTonns, changedAmmoTypes, mDef);
+                mod.ModifyMech(n, s, ulist, ref canFreeTonns, changedAmmoTypes, mDef, team);
 
             Main.Log.Log("all modifications done");
 

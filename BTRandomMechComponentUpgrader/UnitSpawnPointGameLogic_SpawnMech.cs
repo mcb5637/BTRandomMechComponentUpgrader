@@ -59,7 +59,7 @@ namespace BTRandomMechComponentUpgrader
                     return;
                 }
 
-                MechDef n = MechProcessor.ProcessMech(mDef, s, ulist);
+                MechDef n = MechProcessor.ProcessMech(mDef, s, ulist, teamName);
 
                 if (MechProcessor.ValidateMech(n, s))
                 {

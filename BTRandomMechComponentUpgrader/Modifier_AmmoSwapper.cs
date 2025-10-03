@@ -106,9 +106,9 @@ namespace BTRandomMechComponentUpgrader
 
     public class Modifier_AmmoSwapper : IMechDefSpawnModifier
     {
-        public static Action<MechDef, SimGameState, UpgradeList, float, AmmoTracker, MechDef> SmartAmmoAdjust = (m, s, u, f, t, d) => {};
+        public static Action<MechDef, SimGameState, UpgradeList, float, AmmoTracker, MechDef, FactionValue> SmartAmmoAdjust = (m, s, u, f, t, d, fv) => {};
 
-        public void ModifyMech(MechDef mDef, SimGameState s, UpgradeList ulist, ref float canFreeTonns, AmmoTracker changedAmmoTypes, MechDef fromData)
+        public void ModifyMech(MechDef mDef, SimGameState s, UpgradeList ulist, ref float canFreeTonns, AmmoTracker changedAmmoTypes, MechDef fromData, FactionValue team)
         {
             Main.Log.Log("checking changed ammo types");
             List<MechComponentRef> inv = mDef.Inventory.ToList();
@@ -159,7 +159,7 @@ namespace BTRandomMechComponentUpgrader
                 Main.Log.Log(g.Value.ToLogString(g.Key));
             }
 
-            SmartAmmoAdjust(mDef, s, ulist, canFreeTonns, changedAmmoTypes, fromData);
+            SmartAmmoAdjust(mDef, s, ulist, canFreeTonns, changedAmmoTypes, fromData, team);
 
             Main.Log.Log("ammo groups after smart adjust:");
             foreach (var g in changedAmmoTypes.AmmoGroups)

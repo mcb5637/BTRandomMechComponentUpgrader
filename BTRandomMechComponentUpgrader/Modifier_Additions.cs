@@ -9,7 +9,7 @@ namespace BTRandomMechComponentUpgrader
 {
     public class Modifier_Additions : IMechDefSpawnModifier
     {
-        public void ModifyMech(MechDef mDef, SimGameState s, UpgradeList ulist, ref float canFreeTonns, AmmoTracker changedAmmoTypes, MechDef fromData)
+        public void ModifyMech(MechDef mDef, SimGameState s, UpgradeList ulist, ref float canFreeTonns, AmmoTracker changedAmmoTypes, MechDef fromData, FactionValue team)
         {
             Main.Log.Log("checking addition sublists");
             List<MechComponentRef> inv = mDef.Inventory.ToList();
