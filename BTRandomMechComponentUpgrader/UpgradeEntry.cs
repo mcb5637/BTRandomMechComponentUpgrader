@@ -21,12 +21,12 @@ namespace BTRandomMechComponentUpgrader
             return true;
         }
 
-        public int GetWeight(DateTime d, int[] wlt)
+        public int GetWeight(DateTime d, Func<UpgradeEntry, int> weightLookup = null)
         {
             if (!CheckUpgradeCond(d))
                 return 0;
-            if (wlt != null)
-                return wlt[Math.Max(Math.Min(Weight, wlt.Length), 0)];
+            if (weightLookup != null)
+                return weightLookup(this);
             return Weight;
         }
     }

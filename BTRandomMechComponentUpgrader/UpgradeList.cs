@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using UnityEngine;
 
 namespace BTRandomMechComponentUpgrader
 {
@@ -77,15 +78,18 @@ namespace BTRandomMechComponentUpgrader
                 log += " no sublist found";
             return r;
         }
-
         public UpgradeEntry RollEntryFromSubList(UpgradeSubList list, NetworkRandom nr, int min, DateTime date, SubListType t, ref string log, float linkRerollChance, out UpgradeSubList lastSubList)
+        {
+            return RollEntryFromSubList(list, nr, min, date, t, ref log, linkRerollChance, x => WeightLookupTable[Math.Max(Math.Min(x.Weight, WeightLookupTable.Length), 0)], out lastSubList);
+        }
+        public UpgradeEntry RollEntryFromSubList(UpgradeSubList list, NetworkRandom nr, int min, DateTime date, SubListType t, ref string log, float linkRerollChance, Func<UpgradeEntry, int> weightLookup, out UpgradeSubList lastSubList)
         {
             UpgradeEntry r = null;
             UpgradeEntry[] entries = list.Get(t);
             lastSubList = list;
             if (entries == null)
                 return null;
-            list.CalculateLimit(date, WeightLookupTable, t);
+            list.CalculateLimit(date, weightLookup, t);
             float rand = nr.Float(min < 0 ? 0f : entries[min].RandomLimit, 1f);
             for (int i = 0; i < entries.Length; i++)
             {

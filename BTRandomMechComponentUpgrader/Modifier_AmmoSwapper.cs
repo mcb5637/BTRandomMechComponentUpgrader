@@ -52,6 +52,26 @@ namespace BTRandomMechComponentUpgrader
                 }
             }
 
+            public void RollForIdealBoxes(UpgradeList l, NetworkRandom nr, DateTime dt)
+            {
+                if (IdealAmmoRatios.Count == 0)
+                    return;
+                int totalBoxes = CurrentAmmoRatios.Values.Sum();
+                IdealBoxes.Clear();
+                for (int i = 0; i < totalBoxes; ++i)
+                {
+                    string log = "rolling ammo for group";
+                    var e = l.RollEntryFromSubList(LongestSublist, nr, -1, dt, SubListType.Ammo, ref log, l.UpgradePerComponentChance, x => !AmmoLockout.Contains(x.ID) && IdealAmmoRatios.TryGetValue(x.ID, out int v) ? v : 0, out UpgradeSubList _);
+                    if (e == null)
+                    {
+                        Main.Log.Log(log + " nothing rolled, guess heatsinks will get bumped up");
+                        continue;
+                    }
+                    Main.Log.Log(log);
+                    IdealBoxes.AddToDictDefault(e.ID, 1);
+                }
+            }
+
             internal string ToLogString(string groupName)
             {
                 return $"{groupName} IdealAmmoRatios:{Join(IdealAmmoRatios)} IdealBoxes:{Join(IdealBoxes)} CurrentAmmoRatios:{Join(CurrentAmmoRatios)}";
@@ -112,7 +132,7 @@ namespace BTRandomMechComponentUpgrader
 
     public class Modifier_AmmoSwapper : IMechDefSpawnModifier
     {
-        public static Action<MechDef, SimGameState, UpgradeList, float, AmmoTracker, MechDef, FactionValue> SmartAmmoAdjust = (m, s, u, f, t, d, fv) => {};
+        public static Action<MechDef, SimGameState, UpgradeList, float, AmmoTracker, MechDef, FactionValue> SmartAmmoAdjust = (m, s, u, f, t, d, fv) => { };
 
         public void ModifyMech(MechDef mDef, SimGameState s, UpgradeList ulist, ref float canFreeTonns, AmmoTracker changedAmmoTypes, MechDef fromData, FactionValue team)
         {
